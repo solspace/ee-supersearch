@@ -8,7 +8,7 @@
  * @copyright	Copyright (c) 2009-2012, Solspace, Inc.
  * @link		http://www.solspace.com/docs/addon/c/Super_Search/
  * @version		2.1.0
- * @filesource	./system/expressionengine/third_party/super_search/language/english
+ * @filesource	./system/expressionengine/third_party/super_search/language/english/
  */
 
 $lang = $L = array(
