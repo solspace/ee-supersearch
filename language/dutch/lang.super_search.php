@@ -214,7 +214,7 @@ $lang = $L = array(
 'Meervouden en enkelvouden',
 
 'enable_fuzzy_searching_plurals_subtext'			=>
-'Meervouden en enkelvouden behoren tot de onduidelijke zoekopdrachten <em>(Engelse term)</em>.<br/>Ex: <strong>“coat” = “coats”, “trousers” = “trouser”</strong>',
+'Meervouden en enkelvouden behoren tot de onduidelijke zoekopdrachten.<br/>Ex: <strong>“coat” = “coats”, “trousers” = “trouser”</strong>',
 
 
 'enable_fuzzy_searching_phonetics'			=>
@@ -242,7 +242,7 @@ $lang = $L = array(
 'Lexicon',
 
 'build_search_lexicon' =>
-'Bouw zoeklexicon',
+'Stel zoeklexicon samen',
 
 'search_lexicon_explain' =>
 'Het zoeklexicon bouwt een gecombineerde dataset op van al de unieke termen in je sites. <br/>
@@ -330,7 +330,7 @@ De eerste keer kan eventjes duren, maar dat is maar een keer nodig.',
 'Hiermee kan je op je site de MySQL-datatypes van de zelf te kiezen velden controleren. Je kan de kracht van de site verbeteren door het type MySQL-veld te veranderen zodat je enkel de ruimte gebruikt die nodig is voor je data. Als een van je velden enkel uit cijfers zal bestaan, kies dan een MySQL-veld dat numeriek in plaats van alfabetisch sorteert.',
 
 'character_explanation'					=>
-'In een character of char field zitten kleine alfanumerieke tekenreeksen. Gebruik een char field om velden met eenvoudige waarden op te slaan, zoals \'ja\', \'nee\', \'j\', \'n\",
+'In een character of char field zitten kleine alfanumerieke tekenreeksen. Gebruik een char field om velden met eenvoudige waarden op te slaan, zoals \'ja\', \'nee\', \'j\', \'n\'',
 
 'integer_explanation'					=>
 'Een integer field kan gehele getallen bevatten. Ze zijn groter dan small en tiny integer fields en vereisen meer geheugen.',
@@ -412,13 +412,13 @@ De eerste keer kan eventjes duren, maar dat is maar een keer nodig.',
 'Zoeken op trefwoord toestaan in Playa fields?',
 
 'allow_keyword_search_on_playa_fields_exp'	=>
-'Zoeken op trefwoord in Playa fields kan tot verwarrende zoekresultaten leiden. Schakel deze optie enkel in als je wilt zoeken op trefwoord in titels van lemma's die te maken hebben met een bepaald lemma.',
+'Zoeken op trefwoord in Playa fields kan tot verwarrende zoekresultaten leiden. Schakel deze optie enkel in als je wilt zoeken op trefwoord in titels van lemma\'s die te maken hebben met een bepaald lemma.',
 
 'allow_keyword_search_on_relationship_fields'	=>
 'Zoeken op trefwoord toestaan in Relationship fields?',
 
 'allow_keyword_search_on_relationship_fields_exp'	=>
-'Zoeken op trefwoord in standaard EE Relationship fields kan tot verwarrende zoekresultaten leiden. Schakel deze optie enkel in als je wilt zoeken op trefwoord in titels van lemma's die te maken hebben met een bepaald lemma.',
+'Zoeken op trefwoord in standaard EE Relationship fields kan tot verwarrende zoekresultaten leiden. Schakel deze optie enkel in als je wilt zoeken op trefwoord in titels van lemma\'s die te maken hebben met een bepaald lemma.',
 
 'yes'	=>
 'Ja',
@@ -657,10 +657,10 @@ De eerste keer kan eventjes duren, maar dat is maar een keer nodig.',
 'Je laatste zoekopdracht is gewist.',
 
 'site_switcher' => 
-'Siteswitcher',
+'Kies site',
 
 'field_group_switcher' => 
-'Field Group Switcher',
+'Kies veldengroep',
 
 /* END */
 ''=>''
