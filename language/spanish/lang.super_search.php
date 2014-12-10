@@ -1,14 +1,17 @@
 <?php
 
- /**
- * Solspace - Super Search
+/**
+ * Super Search - Spanish Language
  *
  * @package		Solspace:Super Search
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2009-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Super_Search/
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2009-2014, Solspace, Inc.
+ * @link		http://solspace.com/docs/super_search
+ * @license		http://www.solspace.com/license_agreement
  * @version		2.1.0
- * @filesource	./system/expressionengine/third_party/super_search/language/spanish/
+ * @filesource	super_search/language/spanish/lang.super_search.php
+ *
+ * Translated to Spanish by N/A
  */
 
 $lang = $L = array(
@@ -65,7 +68,6 @@ $lang = $L = array(
 
 'search_utils'							=>
 'Utilidades',
-
 
 //----------------------------------------
 //  Buttons
@@ -141,8 +143,6 @@ $lang = $L = array(
 'search_log_cleared'	=>
 'El historial de búsqueda de éste sitio ha sido vaciado.',
 
-
-
 //----------------------------------------
 //  Clear cache
 //----------------------------------------
@@ -175,17 +175,14 @@ $lang = $L = array(
 'ignore_word_list'						=>
 'Lista de Palabras Ignoradas',
 
-
 'ignore_word_list_subtext'				=>
 'Si está habilitado, las siguientes palabras serán ignoradas en las búsquedas:',
-
 
 'ignore_word_list_input_placeholder'	=>
 'añade palabras extras, luego pulse intro ...',
 
 'ignore_word_list_input_empty' 			=>
 'La lista de palabras ignoradas esta vacía.',
-
 
 'search_logging'						=>
 'Preferencias de Registro',
@@ -202,13 +199,11 @@ $lang = $L = array(
 'enable_smart_excerpt_subtext'			=>
 'Extractos Inteligentes alteran el variable {excerpt} truncando los resultados al rededor de los términos de búsqueda. Esto puede ser anulado a nivel de plantilla con el parámetro <a href="http://www.solspace.com/docs/detail/super_search_results/#smart_excerpts">smart_excerpts</a>.',
 
-
 'enable_fuzzy_searching'					=>
 '¿Utilizar Búsqueda Borroso?',
 
 'enable_fuzzy_searching_subtext'			=>
 'La Búsqueda Borroso ayuda con las palabras mal escritas, pluralizados, y términos similares.</em>',
-
 
 'enable_fuzzy_searching_plurals'			=>
 'Plurales y Singulares',
@@ -216,20 +211,17 @@ $lang = $L = array(
 'enable_fuzzy_searching_plurals_subtext'			=>
 'Los plurales y singulares son términos borrosos <em>(Específico al idioma)</em>.<br/>Ej: <strong>“abrigo” = “abrigos”, “pantalones” = “pantalón”</strong>',
 
-
 'enable_fuzzy_searching_phonetics'			=>
 'Fonética ',
 
 'enable_fuzzy_searching_phonetics_subtext'			=>
 'Palabras similares fonéticamente también son buscados <em>(Específico al idioma)</em>.<br/>Ej:  <strong>“Parra” = “Para”</strong>',
 
-
 'enable_fuzzy_searching_spelling'			=>
 'Ortografía ',
 
 'enable_fuzzy_searching_spelling_subtext'			=>
 'Se identifica faltas de ortografía y se hace un intento de corregirlas. El algoritmo automáticamente aprende y da un grado a las sugerencias basados en el contenido de su sitio. Después de un tiempo, se ajustara de una forma más específica al contenido. <br/>Ej: <strong>“Siencia” = “Ciencia”</strong>',
-
 
 //----------------------------------------
 //	Lexicon
@@ -245,7 +237,7 @@ $lang = $L = array(
 'Construye el Léxico de Búsqueda',
 
 'search_lexicon_explain' =>
-'El léxico de búsqueda crea un conjunto de datos combinado de todos los términos únicos en todos sus sitios. <br/>
+'El léxico de búsqueda crea un conjunto de datos combinado de todos los términos únicos en todos sus sitios.<br/>
 Con estos datos podemos habilitar la búsqueda borrosa, correcciones, y una mejor gestión de términos de búsqueda.<br/>
 La primera vez puede tardar un tiempo, pero solo debe ser iniciado una vez.',
 	
@@ -264,15 +256,12 @@ La primera vez puede tardar un tiempo, pero solo debe ser iniciado una vez.',
 'lexicon_never_built' =>
 'El léxico nunca fue creada',
 
-
 //----------------------------------------
 //	Suggestions
 //----------------------------------------
 
-
 'suggestions' =>
 'Sugerencias Ortográficas',
-
 
 'build_suggestions_corpus' =>
 'Crea Sugerencias Ortográficas',
@@ -285,11 +274,8 @@ La primera vez puede tardar un tiempo, pero solo debe ser iniciado una vez.',
 'spelling_unknown_line' =>
 '<strong>%i% Término%s% Desconocido%s%</strong> para encontrar sugerencias',
 
-
 'spelling_known_line' =>
 '<strong>%i% Término%s% Conocido%s%</strong> con sugerencias',
-
-
 
 //----------------------------------------
 //	Fields
@@ -511,8 +497,6 @@ La primera vez puede tardar un tiempo, pero solo debe ser iniciado una vez.',
 'update_successful'						=>
 '¡Actualización Realizada!',
 
-
-
 //----------------------------------------
 //	Search Log Page
 //----------------------------------------
@@ -543,7 +527,6 @@ La primera vez puede tardar un tiempo, pero solo debe ser iniciado una vez.',
 
 'period_now'					=>
 'ahora mismo',
-
 
 'filter_searches'				=>
 'Filtrar Búsquedas',

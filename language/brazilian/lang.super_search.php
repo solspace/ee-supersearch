@@ -1,15 +1,17 @@
 <?php
 
- /**
- * Solspace - Super Search
+/**
+ * Super Search - Brazilian Portuguese Language
  *
  * @package		Solspace:Super Search
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2009-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Super_Search/
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2009-2014, Solspace, Inc.
+ * @link		http://solspace.com/docs/super_search
+ * @license		http://www.solspace.com/license_agreement
  * @version		2.1.0
- * @translated to Brazilian Portuguese by MarchiMedia
- * @filesource	./system/expressionengine/third_party/super_search/language/english/
+ * @filesource	super_search/language/brazilian/lang.super_search.php
+ *
+ * Translated to Brazilian Portuguese by MarchiMedia
  */
 
 $lang = $L = array(
