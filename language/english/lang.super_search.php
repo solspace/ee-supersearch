@@ -1,14 +1,15 @@
 <?php
 
- /**
- * Solspace - Super Search
+/**
+ * Super Search - Language
  *
  * @package		Solspace:Super Search
- * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2009-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Super_Search/
- * @version		2.1.0
- * @filesource	./system/expressionengine/third_party/super_search/language/english/
+ * @author		Solspace, Inc.
+ * @copyright	Copyright (c) 2009-2014, Solspace, Inc.
+ * @link		http://solspace.com/docs/super_search
+ * @license		http://www.solspace.com/license_agreement
+ * @version		2.2.1
+ * @filesource	super_search/language/english/lang.super_search.php
  */
 
 $lang = $L = array(
@@ -27,7 +28,7 @@ $lang = $L = array(
 'Super Search',
 
 'super_search_module_description'		=>
-'Powerful search for ExpressionEngine',
+'Powerful and flexible searching across channel entries',
 
 'update_super_search_module' =>
 'Update the Super Search add-on',
@@ -38,7 +39,7 @@ $lang = $L = array(
 'update_successful' =>
 'The update was successful',
 
-'online_documentation' => 
+'online_documentation' =>
 "Online Documentation",
 
 //----------------------------------------
@@ -57,10 +58,10 @@ $lang = $L = array(
 'cache_rules'							=>
 'Cache Rules',
 
-'search_log'							=>
+'search_log'						=>
 'Search Log',
 
-'search_options'						=>
+'search_options'							=>
 'Options',
 
 'search_utils'							=>
@@ -84,25 +85,25 @@ $lang = $L = array(
 'lexicon_needs_building' =>
 'Search Lexicon Needs Building',
 
-'lexicon_explain' => 
+'lexicon_explain' =>
 'For advanced search functionality we need to build a site lexicon.',
 
 'build_now' =>
 'Build it now',
 
-'lexicon_rebuild' => 
+'lexicon_rebuild' =>
 'Rebuild',
 
-'lexicon_build' => 
+'lexicon_build' =>
 'Build',
 
-'no_searches_yet' => 
+'no_searches_yet' =>
 'No searches have been recorded yet.',
 
 'no_searches_yet_long' =>
 'No searches have been recorded yet. You may need to <a href="%enable_link%">enable search logging</a>.',
 
-'no_searches_recorded' => 
+'no_searches_recorded' =>
 'There have been no searches logged yet.',
 
 'no_searches_recorded_logging_off' =>
@@ -126,13 +127,13 @@ $lang = $L = array(
 'search_rank' =>
 '#',
 
-'view_all' => 
+'view_all' =>
 'View All',
 
 'recent_searches' =>
 'Recent Searches',
 
-'datetime' => 
+'datetime' =>
 'Time',
 
 'clear_log'	=>
@@ -170,7 +171,7 @@ $lang = $L = array(
 'Ignore common words from searches?',
 
 'ignore_common_word_list_subtext'		=>
-'The wordlist is completely editable, and can be overridden at template level with the <a href="http://www.solspace.com/docs/detail/super_search_results/#use_ignore_word_list">use_ignore_word_list</a> parameter.',
+'The wordlist is completely editable, and can be overridden at template level with the <a href="http://www.solspace.com/docs/super_search/results/#use_ignore_word_list">use_ignore_word_list</a> parameter.',
 
 'ignore_word_list'						=>
 'Ignore Wordlist',
@@ -200,7 +201,7 @@ $lang = $L = array(
 'Use Smart Excerpts?',
 
 'enable_smart_excerpt_subtext'			=>
-'Smart Excerpts alter the {excerpt} variable to truncate around the searched terms. This can be overridden at template level with the <a href="http://www.solspace.com/docs/detail/super_search_results/#smart_excerpts">smart_excerpts</a> parameter.',
+'Smart Excerpts alter the {excerpt} variable to truncate around the searched terms. This can be overridden at template level with the <a href="http://www.solspace.com/docs/super_search/results/#smart_excerpt">smart_excerpt</a> parameter.',
 
 
 'enable_fuzzy_searching'					=>
@@ -248,7 +249,7 @@ $lang = $L = array(
 'The search lexicon builds a combined dataset of all the unique terms across your sites. <br/>
 With this data we can enable fuzzy searches, search corrections and better search term handling.<br/>
 The first run may take some time, but only needs to run once.',
-	
+
 'built_just_now' =>
 'Lexicon built just now',
 
@@ -278,7 +279,7 @@ The first run may take some time, but only needs to run once.',
 'Build Spelling Suggestions',
 
 'suggestions_explain' =>
-'We build up a suggestion set for words that have been searched on, but don\'t exist in you leixcon and try and find the most likely variation for these terms. The suggestions are then cached for use in normal searches. <br/><br/> 
+'We build up a suggestion set for words that have been searched on, but don\'t exist in your lexicon and try and find the most likely variation for these terms. The suggestions are then cached for use in normal searches. <br/><br/>
 	Suggestions can automatically be built as needed during searches, but this will incur a delay in the search handling the first time a new unique term is required. <a href="#">Usage ###NEEDS PROPER LINK###</a><br/>
 	 The recommended way to handle search suggestions is to have a cron job hit the a url which will calculate any new suggestions requried. <a href="#">Usage ###NEEDS PROPER LINK###</a>',
 
@@ -557,25 +558,25 @@ The first run may take some time, but only needs to run once.',
 'no_searches_contained' => 
 'No searches contained',
 
-'filtering_terms_like' => 
+'filtering_terms_like' =>
 'Filtering terms like',
 
-'filtering_term' => 
+'filtering_term' =>
 'Filtering Term',
 
-'search_term' => 
+'search_term' =>
 'Search Term',
 
 'searches_over_90' =>
 'Searches including term over last 90 days',
 
-'count' => 
+'count' =>
 'Count',
 
 'first_searched' =>
 'First Searched',
 
-'most_recent_search' => 
+'most_recent_search' =>
 'Most Recent Search',
 
 'term_searches_in_last_90' =>
@@ -584,10 +585,10 @@ The first run may take some time, but only needs to run once.',
 'searches_containing' =>
 'searches containing',
 
-'all_searches' => 
+'all_searches' =>
 'All searches',
 
-'searches' => 
+'searches' =>
 'searches',
 
 'searched_term' =>
@@ -655,13 +656,117 @@ The first run may take some time, but only needs to run once.',
 'last_search_cleared'	=>
 'Your last search has been cleared.',
 
-'site_switcher' => 
+'site_switcher' =>
 'Site Switcher',
 
-'field_group_switcher' => 
+'field_group_switcher' =>
 'Field Group Switcher',
+
+// -------------------------------------
+//	demo install (code pack)
+// -------------------------------------
+
+'demo_description' =>
+'These demonstration templates will help you understand better how the Solspace Super Search Addon works.',
+
+'template_group_prefix' =>
+'Template Group Prefix',
+
+'template_group_prefix_desc' =>
+'Each Template group and global variable installed will be prefixed with this variable in order to prevent collision.',
+
+'groups_and_templates' =>
+"Groups and Templates to be installed",
+
+'groups_and_templates_desc' =>
+"These template groups and their accompanying templates will be installed into your ExpressionEngine site.",
+
+'screenshot' =>
+'Screenshot',
+
+'install_demo_templates' =>
+'Install Demo Templates',
+
+'prefix_error' =>
+'Prefixes, which are used for template groups, may only contain alpha-numeric characters, underscores, and dashes.',
+
+'demo_templates' =>
+'Demo Templates',
+
+//errors
+'ee_not_running'				=>
+'ExpressionEngine 2.x does not appear to be running.',
+
+'invalid_code_pack_path'		=>
+'Invalid Code Pack Path',
+
+'invalid_code_pack_path_exp'	=>
+'No valid codepack found at \'%path%\'.',
+
+'missing_code_pack'				=>
+'Code Pack missing',
+
+'missing_code_pack_exp'			=>
+'You have chosen no code pack to install.',
+
+'missing_prefix'				=>
+'Prefix needed',
+
+'missing_prefix_exp'			=>
+'Please provide a prefix for the sample templates and data that will be created.',
+
+'invalid_prefix'				=>
+'Invalid prefix',
+
+'invalid_prefix_exp'			=>
+'The prefix you provided was not valid.',
+
+'missing_theme_html'			=>
+'Missing folder',
+
+'missing_theme_html_exp'		=>
+'There should be a folder called \'html\' inside your site\'s \'/themes/solspace_themes/code_pack/%code_pack_name%\' folder. Make sure that it is in place and that it contains additional folders that represent the template groups that will be created by this code pack.',
+
+'missing_codepack_legacy'		=>
+'Missing the CodePackLegacy library needed to install this legacy codepack.',
+
+//@deprecated
+'missing_code_pack_theme'		=>
+'Code Pack Theme missing',
+
+'missing_code_pack_theme_exp'	=>
+'There should be at least one theme folder inside the folder \'%code_pack_name%\' located inside \'/themes/code_pack/\'. A theme is required to proceed.',
+
+//conflicts
+'conflicting_group_names'		=>
+'Conflicting template group names',
+
+'conflicting_group_names_exp'	=>
+'The following template group names already exist. Please choose a different prefix in order to avoid conflicts. %conflicting_groups%',
+
+'conflicting_global_var_names'	=>
+'Conflicting global variable names.',
+
+'conflicting_global_var_names_exp' =>
+'There were conflicts between global variables on your site and global variables in this code pack. Consider changing your prefix to resolve the following conflicts. %conflicting_global_vars%',
+
+//success messages
+'global_vars_added'				=>
+'Global variables added',
+
+'global_vars_added_exp'			=>
+'The following global template variables were successfully added. %global_vars%',
+
+'templates_added'				=>
+'Templates were added',
+
+'templates_added_exp'			=>
+'%template_count% templates were successfully added to your site as part of this code pack.',
+
+"home_page"						=>"Home Page",
+"home_page_exp"					=> "View the home page for this code pack here: %link%",
+
 
 /* END */
 ''=>''
 );
-?>
