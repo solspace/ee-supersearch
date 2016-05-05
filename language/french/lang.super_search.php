@@ -1,14 +1,16 @@
 ﻿<?php
 
  /**
- * Solspace - Super Recherche
+ * Super Search - Language
  *
- * @package		Solspace:Super Recherche
+ * @package		Solspace:Super Search
  * @author		Solspace DevTeam
- * @copyright	Copyright (c) 2009-2012, Solspace, Inc.
- * @link		http://www.solspace.com/docs/addon/c/Super_Search/
- * @version		2.1.0
- * @filesource	./system/expressionengine/third_party/super_search/language/english/
+ * @translator		Emmanuel Beauchamps (Put.itin.red studio, Nantes, France)
+ * @copyright	Copyright (c) 2009-2016, Solspace, Inc.
+ * @link		https://solspace.com/expressionengine/super-search
+ * @license		https://solspace.com/software/license-agreement 
+ * @version		2.2.4
+ * @filesource	super_search/language/french/lang.super_search.php
  */
 
 $lang = $L = array(
@@ -58,7 +60,7 @@ $lang = $L = array(
 'Règles de cache',
 
 'search_log'							=>
-'Log de recherche',
+'Journal de recherche',
 
 'search_options'						=>
 'Options',
@@ -136,10 +138,10 @@ $lang = $L = array(
 'Horodatage',
 
 'clear_log'	=>
-'Effacer le log',
+'Effacer le journal',
 
 'search_log_cleared'	=>
-'Le log de recherche a été effacé pour ce site.',
+'Le journal de recherche a été effacé pour ce site.',
 
 
 
@@ -157,7 +159,7 @@ $lang = $L = array(
 'Le cache de recherche a été effacé avec succès.',
 
 //----------------------------------------
-//  Recherche Options
+//  Search Options
 //----------------------------------------
 
 'manage_search_utils'					=>
@@ -194,7 +196,7 @@ $lang = $L = array(
 'Journaliser les recherches du site ?',
 
 'log_site_searches_subtext' 			=>
-'La journalisation des recherches permet de conserver un enregistrement permanent de toutes les recherches sur le site. Tous les enregistrements sont effectués de façon anonyme par souci de confidentialité et de protection de la vie privée. Afin de visualiser les données dans l\'onglet Log de recherche, cette préférence doit être mise à OUI.',
+'La journalisation des recherches permet de conserver un enregistrement permanent de toutes les recherches sur le site. Tous les enregistrements sont effectués de façon anonyme par souci de confidentialité et de protection de la vie privée. Afin de visualiser les données dans l\'onglet Journal de recherche, cette préférence doit être mise à OUI.',
 
 'enable_smart_excerpt'					=>
 'Utiliser des extraits intelligents ?',
@@ -514,7 +516,7 @@ La première exécution peut prendre un certain temps, mais elle ne devra tourne
 
 
 //----------------------------------------
-//	Recherche Log Page
+//	Search Log Page
 //----------------------------------------
 
 'period_year'					=>
@@ -549,7 +551,7 @@ La première exécution peut prendre un certain temps, mais elle ne devra tourne
 'Filtrer les recherches',
 
 'terms'	=>
-'Saisissez un terme de recherche ici ...',
+'Saisissez un terme de recherche ici...',
 
 'filter' =>
 'Filtrer',
@@ -660,6 +662,110 @@ La première exécution peut prendre un certain temps, mais elle ne devra tourne
 
 'field_group_switcher' =>
 'Sélecteur de groupe de champ',
+
+// -------------------------------------
+//	demo install (code pack)
+// -------------------------------------
+
+'demo_description' =>
+'Ces modèles de démonstration vous aideront à mieux comprendre comment l\'Add-On Super Recherche de Solspace fonctionne.',
+
+'template_group_prefix' =>
+'Préfixe de groupe de modèles',
+
+'template_group_prefix_desc' =>
+'Chaque groupe de modèles et variable globale installés seront préfixés avec cette variable afin de prévenir tout phénomène de collision.',
+
+'groups_and_templates' =>
+"Groupes et modèles à installer",
+
+'groups_and_templates_desc' =>
+"Ces groupes de modèles et leurs modèles associés seront installés dans votre installation ExpressionEngine.",
+
+'screenshot' =>
+'Capture écran',
+
+'install_demo_templates' =>
+'Installer les modèles de démo',
+
+'prefix_error' =>
+'Les préfixes, qui sont utilisés pour les groupes de modèles, ne peuvent contenir que des caractères alpha-numériques, des soulignés (underscores) et des tirets.',
+
+'demo_templates' =>
+'Modèles de démo',
+
+//errors
+'ee_not_running'				=>
+'ExpressionEngine 2.x ne semble pas être en cours de fonctionnement.',
+
+'invalid_code_pack_path'		=>
+'Chemin du Code Pack invalide',
+
+'invalid_code_pack_path_exp'	=>
+'Aucun codepack valide trouvé dans \'%path%\'.',
+
+'missing_code_pack'				=>
+'Code Pack absent',
+
+'missing_code_pack_exp'			=>
+'Vous n\'avez choisi aucun code pack à installer.',
+
+'missing_prefix'				=>
+'Préfixe obligatoire',
+
+'missing_prefix_exp'			=>
+'Merci de fournir un préfixe pour les modèles et données \'tests\' qui seront créés.',
+
+'invalid_prefix'				=>
+'Préfixe invalide',
+
+'invalid_prefix_exp'			=>
+'Le préfixe communiqué n\'est pas valide.',
+
+'missing_theme_html'			=>
+'Répertoire absent',
+
+'missing_theme_html_exp'		=>
+'Il devrait y avoir un répertoire \'html\' dans le répertoire \'/themes/solspace_themes/code_pack/%code_pack_name%\' de votre site. Assurez-vous qu\'il est en place et qu\'il contient des répertoires supplémentaires qui reflètent les groupes de modèles qui seront créés par ce code pack.',
+
+'missing_codepack_legacy'		=>
+'La bibliothèque CodePackLegacy nécessaire à l\'installation de ce codepack est absente.',
+
+//@deprecated
+'missing_code_pack_theme'		=>
+'Thème Code Pack absent',
+
+'missing_code_pack_theme_exp'	=>
+'Il devrait y a voir au moins un répertoire \'theme\' dans le répertoire \'%code_pack_name%\' situé dans \'/themes/code_pack/\'. Un thème est obligatoire pour pouvoir continuer.',
+
+//conflicts
+'conflicting_group_names'		=>
+'Noms de groupes de modèles en conflit',
+
+'conflicting_group_names_exp'	=>
+'Les noms des groupes de modèles suivants existent déjà. Merci de choisir un préfixe différent afin d\'éviter les conflits. %conflicting_groups%',
+
+'conflicting_global_var_names'	=>
+'Noms des variables globales en conflit.',
+
+'conflicting_global_var_names_exp' =>
+'Il y a des conflits entre les variables globales définies pour votre site et les variables globales de ce code pack. Merci de choisir un préfixe différent afin d\'éviter les conflits. %conflicting_global_vars%',
+
+//success messages
+'global_vars_added'				=>
+'Variables globales ajoutées',
+
+'global_vars_added_exp'			=>
+'Les variables globales suivantes ont été ajoutées avec succès. %global_vars%',
+
+'templates_added'				=>
+'Modèles ajoutés',
+
+'templates_added_exp'			=>
+'%template_count% modèles issus de ce code pack ont été ajoutés avec succès à votre site.',
+
+"home_page"						=>"Page d\'Accueil",
+"home_page_exp"					=> "Visualiser la page d\'accueil pour ce code pack ici: %link%",
 
 /* END */
 ''=>''
