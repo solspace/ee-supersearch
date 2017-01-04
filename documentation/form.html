@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Form | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>Form</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="curated_results.html">Curated_Results</a></li>
+<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
+<li class="current"><a href="form.html">Form</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="save_search_form.html">Save_Search_Form</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Super_Search:Form template tag</h1>
+
+<p>The <em>Super_Search:Form</em> tag allows you to build a search form. It also handles the parsing and formatting of previously performed search values in the search form fields. By default, the <em>Super_Search:Form</em> tag will always remember the users most recent search, and display that query (if the variables have been placed into the value attribute of the form field(s)).</p>
+
+<p>When used in conjunction with the <a href="save_search_form.html">Super_Search:Save_Search_Form</a> and <a href="history.html">Super_Search:History</a> tags, your users can save search queries and then view them at a later date. What happens is that the <em>Super_Search:Save_Search_Form</em> tag allows the user to save a search query, which remembers each search term, and then gives the search query a unique ID. The <em>Super_Search:History</em> tag displays those search queries, and lets you link back to the <em>Super_Search:Form</em> form with that unique ID. That unique ID gets passed to the <a href="#search_id">search_id</a> parameter and tells Super Search which search query data the variables should parse out.</p>
+
+<p>Super Search also respects the EE member group search settings (<strong>Members</strong> -> <strong>Member Groups</strong> -> Member Group Name). The <em>Access search utility</em> preference needs to be set to <strong>Yes</strong> for member groups / guests to use Super Search.</p>
+
+<pre class="brush: html;">{exp:super_search:form return="supersearch/results"}
+    content
+{/exp:super_search:form}
+</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#form_fields">Form Fields</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#form_attribute">form:attribute</a></li>
+<li><a href="#method">method</a></li>
+<li><a href="#return">return</a></li>
+<li><a href="#search_id">search_id</a></li>
+<li><a href="#secure_action">secure_action</a></li>
+<li><a href="#secure_return">secure_return</a></li>
+</ul>
+
+<p><a name="form"></a></p>
+
+<h3>form:attribute=</h3>
+
+<pre class="brush: html;">form:class="your_class"</pre>
+
+<p>This parameter allows you to control any form attribute for the form in your template. Simply replace attribute with an attribute name such as <strong>id</strong>, <strong>name</strong>, <strong>class</strong>, etc, and specify a value for that attribute. You can specify this parameter multiple times to control as many attributes as necessary. This would normally be done to control your form with Javascript or style it with CSS.</p>
+
+<p><a name="method"></a></p>
+
+<h3>method=</h3>
+
+<pre class="brush: html;">method="get"</pre>
+
+<p>If you wish to use GET method for searches, specify this parameter with a value of <strong>get</strong>. Otherwise, ignore this parameter as the default is POST.</p>
+
+<p><a name="return"></a></p>
+
+<h3>return=</h3>
+
+<pre class="brush: html;">return="template_group/template_name"</pre>
+
+<p>This parameter determines where to send users once they have submitted the form. Specify the path to your <em>Super_Searchs/Results</em> page.</p>
+
+<p><a name="search_id"></a></p>
+
+<h3>search_id=</h3>
+
+<pre class="brush: html;">search_id="{segment_3}"</pre>
+
+<p>This parameter is meant for use with the <a href="history.html">Super_Search:History</a> tag. From that tag, you would link back to the <em>Super_Search:Form</em> page with the unique search query ID. With that ID in the URI and fed to this parameter, this tag will remember the saved search query, and load all of the previous search term values into each search field. If this parameter is empty or omitted, the last search performed by the user is used.</p>
+
+<p><a name="secure_action"></a></p>
+
+<h3>secure_action=</h3>
+
+<pre class="brush: html;">secure_action="yes" </pre>
+
+<p>This parameter allows you to set the action on the form to have <em>https://</em>. Used for securely processing forms with SSL.</p>
+
+<p><a name="secure_return"></a></p>
+
+<h3>secure_return=</h3>
+
+<pre class="brush: html;">secure_return="yes" </pre>
+
+<p>This parameter allows you to set the return on the form to have <em>https://</em>. Used for securely processing forms with SSL.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>All form field names further below on the page can be parsed as variables within the <em>Super_Search:Form</em> tag. All variables are called using the <em>{super_search&#95;</em> prefix.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>Conditionals are available on all variables. Additionally, the following conditional is available for use:</p>
+
+<ul>
+<li><a href="#super_search_field_name_value">super_search_field_name_VALUE</a></li>
+</ul>
+
+<p><a name="super_search_field_name_value"></a></p>
+
+<h3>super_search_field_name_VALUE</h3>
+
+<pre class="brush: html;">{if super_search_body_pants} {/if}</pre>
+
+<p>Since people can submit search multiple arguments using checkboxes or multi-select fields, we need a way to parse them. When a block of checkboxes are all named as a POST array like this: <em>bedrooms[]</em>, you can fetch the submitted values using this special conditional. This syntax applies to <strong>custom fields</strong>, <strong>channels</strong>, <strong>categories</strong>, and <strong>statuses</strong>.</p>
+
+<p>Parsing this conditional on a <strong>custom field</strong> that contains multiple values might look something like this:</p>
+
+<pre class="brush: html;">&lt;input
+    type="checkbox"
+    name="bedrooms[]"
+    value="1"
+    {if super_search_bedrooms_1}checked="checked"{/if}/&gt; 1
+
+&lt;input
+    type="checkbox"
+    name="bedrooms[]"
+    value="2"
+    {if super_search_bedrooms_2}checked="checked"{/if}/&gt; 2
+
+&lt;input
+    type="checkbox"
+    name="bedrooms[]"
+    value="3"
+    {if super_search_bedrooms_3}checked="checked"{/if}/&gt; 3
+</pre>
+
+<p>Or:</p>
+
+<pre class="brush: html;">&lt;input
+    type="checkbox"
+    name="food[]"
+    value="apple"
+    {if super_search_food_apple}checked="checked"{/if} /&gt; Apple
+&lt;input
+    type="checkbox"
+    name="food[]"
+    value="strawberry"
+    {if super_search_food_strawberry}checked="checked"{/if} /&gt; Strawberry
+&lt;input
+    type="checkbox"
+    name="food[]"
+    value="rhubarb"
+    {if super_search_food_rhubarb}checked="checked"{/if} /&gt; Rhubarb
+</pre>
+
+<p>For <strong>channel</strong> searches, it might look something like this:</p>
+
+<pre class="brush: html;">&lt;select name="channel[]" multiple="multiple"&gt;
+    &lt;option
+        value="articles"
+        {if super_search_channel_articles}selected="selected"{/if}&gt;
+        Articles
+    &lt;/option&gt;
+    &lt;option
+        value="products"
+        {if super_search_channel_products}selected="selected"{/if}&gt;
+        Products
+    &lt;/option&gt;
+    &lt;option
+        value="blog"
+        {if super_search_channel_blog}selected="selected"{/if}&gt;
+        Blog
+    &lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>For <strong>category</strong> searches, it might look something like this:</p>
+
+<pre class="brush: html;">&lt;select name="category[]" multiple="multiple"&gt;
+    &lt;option
+        value="shirts"
+        {if super_search_category_shirts}selected="selected"{/if}&gt;
+        Shirts
+    &lt;/option&gt;
+    &lt;option
+        value="pants"
+        {if super_search_category_pants}selected="selected"{/if}&gt;
+        Pants
+    &lt;/option&gt;
+    &lt;option
+        value="jackets"
+        {if super_search_category_jackets}selected="selected"{/if}&gt;
+        Jackets
+    &lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>For <strong>status</strong> searches, it might look something like this:</p>
+
+<pre class="brush: html;">&lt;select name="status[]" multiple="multiple"&gt;
+    &lt;option
+        value="open"
+        {if super_search_status_open}selected="selected"{/if}&gt;
+        Open
+    &lt;/option&gt;
+    &lt;option
+        value="closed"
+        {if super_search_status_closed}selected="selected"{/if}&gt;
+        Closed
+    &lt;/option&gt;
+    &lt;option
+        value="Pending"
+        {if super_search_status_Pending}selected="selected"{/if}&gt;
+        Pending
+    &lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>In the event you wish to dynamically generate a list of categories with the <em>Channel:Categories</em> tag for example, and also allow array searching, there is a special template tag needed for this. The tag is: <em>{exp:super_search:variables}</em>, and it <strong>must</strong> be placed inside the other EE template tag (such as <em>Channel:Categories</em>). Your code might look something like this:</p>
+
+<pre class="brush: html;">{exp:channel:categories
+    style="linear"
+    category_group="1"
+}
+    {exp:super_search:variables}
+        &lt;label for="category_{category_url_title}"&gt;{category_name}&lt;/label&gt;
+        &lt;input
+            type="checkbox"
+            id="category_{category_url_title}"
+            name="category[]"
+            value="{category_url_title}"
+            {if super_search_category_{category_url_title}}
+                checked="checked"
+            {/if}
+        /&gt;
+    {/exp:super_search:variables}
+{/exp:channel:categories}
+</pre>
+
+<p><a name="form_fields"></a></p>
+
+<h2>Form Fields</h2>
+
+<p>The following form fields are available for use in your search form and through the URI:</p>
+
+<p><strong>NOTE</strong>: only fields marked as searchable in the custom fields' settings in the EE CP can be searched upon. For information about <strong>third party add-on support</strong>, please visit <a href="third_party_support.html">this page</a>.</p>
+
+<ul>
+<li><a href="#author">author</a></li>
+<li><a href="#category">category[]</a></li>
+<li><a href="#category-like">category-like</a></li>
+<li><a href="#channel">channel</a></li>
+<li><a href="#customfield">customfield</a></li>
+<li><a href="#customfield-empty">customfield-empty</a></li>
+<li><a href="#customfield-exact">customfield-exact</a></li>
+<li><a href="#customfield-from">customfield-from</a></li>
+<li><a href="#customfield-to">customfield-to</a></li>
+<li><a href="#customdatefield-from">customdatefield-from</a></li>
+<li><a href="#customdatefield-to">customdatefield-to</a></li>
+<li><a href="#entry_date-from">entry_date-from</a></li>
+<li><a href="#entry_date-to">entry_date-to</a></li>
+<li><a href="#expiry_date-from">expiry_date-from</a></li>
+<li><a href="#expiry_date-to">expiry_date-to</a></li>
+<li><a href="#group">group</a></li>
+<li><a href="#inclusive_keywords">inclusive_keywords</a></li>
+<li><a href="#keywords">keywords</a></li>
+<li><a href="#keyword_search_author_name">keyword_search_author_name</a></li>
+<li><a href="#keyword_search_category_name">keyword_search_category_name</a></li>
+<li><a href="#orderby">orderby</a></li>
+<li><a href="#redirect_post">redirect_post</a></li>
+<li><a href="#screen_name">screen_name</a></li>
+<li><a href="#search_in">search_in</a></li>
+<li><a href="#search_words_within_words">search_words_within_words</a></li>
+<li><a href="#site">site</a></li>
+<li><a href="#status">status</a></li>
+<li><a href="#tags">tags</a></li>
+<li><a href="#tags-like">tags-like</a></li>
+<li><a href="#title">title</a></li>
+<li><a href="#url_title">url_title</a></li>
+<li><a href="#where">where</a></li>
+</ul>
+
+<p><a name="author"></a></p>
+
+<h3>author</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="author" value="Bob" /&gt;</pre>
+
+<p>This field allows your users to search for entries by author. It looks for <strong>username</strong> by default, unless overridden by the <em>author_indicator</em> parameter in the <em>Results</em> tag. Alternate options are <strong>screen name</strong> and <strong>member ID</strong>. Must be exact matches. Screen Name search terms should be wrapped with quotes to make sure screen names with spaces are properly recognized. If you wish to allow partial matches, specify <strong>yes</strong> in the <em>partial_author</em> parameter in the <em>Results</em> tag. This field cannot override its matching parameter available in the <em>Results</em> tag.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;author=Bob/</p>
+</blockquote>
+
+<p><a name="category"></a></p>
+
+<h3>category[]</h3>
+
+<pre class="brush: html;">{exp:channel:categories
+    style="linear"
+    category_group="1"
+}
+    {exp:super_search:variables}
+        &lt;label for="category_{category_url_title}"&gt;
+            &lt;span&gt;{category_name}&lt;/span&gt;
+            &lt;input
+                type="checkbox"
+                id="category_{category_url_title}"
+                name="category[]"
+                value="{category_url_title}"
+                {if super_search_category_{category_url_title}}checked="checked"{/if} /&gt;
+        &lt;/label&gt;
+    {/exp:super_search:variables}
+{/exp:channel:categories}
+</pre>
+
+<p>This field allows users to search on categories. Default behaviour is searching on category <strong>names</strong>. To switch this to category ID or URL titles, use the category_indicator parameter in the <em>Results</em> tag. If submitting multiple categories, be sure to name the field <em>category[]</em>. This field cannot override its matching parameter available in the <em>Results</em> tag. The contents of this parameter follow the same syntax as regular Super Search queries in the URI or through POST variables. For
+example:</p>
+
+<ul>
+<li><strong>category="Teeth"</strong> would fetch entries that belonged to the category
+ of <em>Teeth</em>.</li>
+<li><strong>category="Teeth+Gums"</strong> would fetch entries that belonged either to
+ the <em>Teeth</em> category or the <em>Gums</em> category.</li>
+<li><strong>category="Teeth&amp;&amp;Gums"</strong> query would fetch entries that belonged both
+ to the <em>Teeth</em> category and the <em>Gums</em> category inclusively.</li>
+<li><strong>category="-Teeth"</strong> would fetch entries that do not belong to the
+ <em>Teeth</em> category.</li>
+<li><strong>category="-Teeth+-Gums"</strong> would fetch entries that do not belong to
+ the <em>Teeth</em> category or the <em>Gums</em> category.</li>
+</ul>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;category=t_shirts+pants/</p>
+</blockquote>
+
+<p><a name="category-like"></a></p>
+
+<h3>category-like</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="category-like" value="Pants" /&gt;</pre>
+
+<p>This field allows users to perform partial searches on categories. For example, a search for <strong>auto</strong> would turn up results for <strong>automobiles</strong>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;category-like=Pants/</p>
+</blockquote>
+
+<p><a name="channel"></a></p>
+
+<h3>channel</h3>
+
+<pre class="brush: html;">&lt;select name="channel[]" multiple="multiple"&gt;
+    &lt;option value="pants"&gt;Pants&lt;/option&gt;
+    &lt;option value="tshirts"&gt;T-Shirts&lt;/option&gt;
+    &lt;option value="sweats"&gt;Sweats&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>This field allows your users to search on channel names. This field can partially override its matching parameter available in the <em>Results</em> tag, but only further narrowing the results from the values specified in the <em>channel</em> parameter in the <em>Results</em> tag. For example, if you have this parameter set: <strong>channel="products|locations"</strong>, and the channel search query contains: <strong>products</strong> and <strong>blog</strong>, because <strong>blog</strong> was not specified in the <em>channel</em> parameter, it will be ignored, and just results from <strong>products</strong> channel will be searched upon. If submitting multiple channels, be sure to name the field <em>channel[]</em>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;channel=pants+sweats/</p>
+</blockquote>
+
+<p><a name="customfield"></a></p>
+
+<h3>customfield</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="summary" value="Bird is the Word" /&gt;</pre>
+
+<p>You can perform searches on any your custom fields, and on multiple custom fields at the same time. Just be sure that the field is marked as searchable in the custom fields' settings in the EE CP.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;summary=Bird+is+the+Word/</p>
+</blockquote>
+
+<p><a name="customfield-empty"></a></p>
+
+<h3>customfield-empty</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="price-empty" value="n" /&gt;</pre>
+
+<p>You can perform a search based on whether or not an entry's custom field has or doesn't have a value set for it. Specifying <strong>y</strong> means that only entries that have this field empty will be shown. Specifying <strong>n</strong> means that only entries that have a value for this field will be shown.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;price-empty=n/</p>
+</blockquote>
+
+<p><a name="customfield-exact"></a></p>
+
+<h3>customfield-exact</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="summary-exact" value="Bird is the Word" /&gt;</pre>
+
+<p>This field is a field type that behaves with special characteristics. Simply append the word <em>-exact</em> to the name of any of your custom fields and Super Search will return entries that match exactly against the search string. You can search on multiple exact custom fields at a time if you like. A user could search for <strong>Bird is the Word</strong> and see results where the custom field named summary contained that exact string <strong>Bird is the Word</strong>. So, if the field contained <strong>Haven't you heard that the Bird is the Word</strong>, while the phrase is in there, it will not be a match because the field contains <em>more</em> data that searched upon.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;summary-exact=Bird+is+the+Word/</p>
+</blockquote>
+
+<p><a name="customfield-from"></a></p>
+
+<h3>customfield-from</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="price-from" value="20" /&gt;</pre>
+
+<p>This field allows you to search on a range of data. Used in conjunction with the <a href="#customfield-to">customfield-to</a> parameter, you can set a minimum value of where the data range should start from. This is particularly useful on numeric searches, like price ranges. Setting this to a value of <strong>20</strong> would only display entries that have a value of <strong>20 or greater</strong> set for this field. Super Search will ignore things like commas, decimals and dollar signs from the field. When using this on a numerical field, you will want to make sure you've set the fields content settings to <strong>Decimal</strong> so that your range searches take place in a numerical fashion rather than textually.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;price-from=20/</p>
+</blockquote>
+
+<p><a name="customfield-to"></a></p>
+
+<h3>customfield-to</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="price-to" value="100" /&gt;</pre>
+
+<p>This field allows you to search on a range of data. Used in conjunction with the <a href="#customfield-from">customfield-from</a> parameter, you can set a maximum value of where the data range should stop at. This is particularly useful on numeric searches, like price ranges. Setting this to a value of <strong>100</strong> would only display entries that have a value of <strong>100 or less</strong> set for this field. Super Search will ignore things like commas, decimals and dollar signs from the field. When using this on a numerical field, you will want to make sure you've set the fields content settings to <strong>Decimal</strong> so that your range searches take place in a numerical fashion rather than textually.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;price-to=100/</p>
+</blockquote>
+
+<p><a name="customdatefield-from"></a></p>
+
+<h3>customdatefield-from</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="customdatefield-from" value="201106" /&gt;</pre>
+
+<p>This field allows you to create date range searches on custom channel field dates. You construct date ranges from year, down to seconds, as a single number. <strong>2011</strong> will find entries with custom field dates <strong>from 2011 <em>onward</em></strong>. <strong>20110621</strong> will find entries with custom field dates <strong>from June 21, 2011 <em>onward</em></strong>. <strong>20110621082345</strong> will find entries with custom field dates <strong>from June 21, 2011 at 8:23:45 am <em>onward</em></strong>. Used in conjunction with the <a href="#customdatefield-to">customdatefield-to</a> parameter.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;customdatefield-from=201106/</p>
+</blockquote>
+
+<p><a name="customdatefield-to"></a></p>
+
+<h3>customdatefield-to</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="customdatefield-to" value="201107" /&gt;</pre>
+
+<p>This field allows you to create date range searches on custom channel field dates. You construct date ranges from year, down to seconds, as a single number. <strong>2011</strong> will find entries with custom field dates <strong><em>up to</em> 2011</strong>. <strong>20110721</strong> will find entries with custom field dates <strong><em>up to</em> July 21, 2011</strong>. <strong>20110721082345</strong> will find entries with custom field dates <strong><em>up to</em> July 21, 2011 at 8:23:45 am</strong>. Used in conjunction with the
+<a href="#customdatefield-from">customdatefield-from</a> parameter.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;customdatefield-to=201107/</p>
+</blockquote>
+
+<p><a name="expiry_date-from"></a></p>
+
+<h3>expiry_date-from</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="expiry_date-from" value="201106" /&gt;</pre>
+
+<p>This field allows you to create date range searches on channel entry expiry dates. You construct date ranges from year, down to seconds, as a single number. <strong>2011</strong> will find entries with expiry dates <strong>from 2011 <em>onward</em></strong>. <strong>20110621</strong> will find entries with expiry dates <strong>from June 21, 2011 <em>onward</em></strong>. <strong>20110621082345</strong> will find entries with expiry dates <strong>from June 21, 2011 at 8:23:45 am <em>onward</em></strong>. When using this parameter, any entries that do NOT have an expiry date set will be automatically filtered out from the results. Used in conjunction with the <a href="#expiry_date-to">expiry_date-to</a> parameter.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;expiry_date-from=201106/</p>
+</blockquote>
+
+<p><a name="entry_date-to"></a></p>
+
+<h3>entry_date-to</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="entry_date-to" value="201107" /&gt;</pre>
+
+<p>This field allows you to create date range searches on channel entry dates. You construct date ranges from year, down to seconds, as a single number. <strong>2011</strong> will find entries with entry dates <strong><em>up to</em> 2011</strong>. <strong>20110721</strong> will find entries with entry dates <strong><em>up to</em> July 21, 2011</strong>. <strong>20110721082345</strong> will find entries with entry dates <strong><em>up to</em> July 21, 2011 at 8:23:45 am</strong>. Used in conjunction with the
+<a href="#entry_date-from">entry_date-from</a> parameter.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;entry_date-to=201107/</p>
+</blockquote>
+
+<p><a name="expiry_date-from"></a></p>
+
+<h3>expiry_date-from</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="expiry_date-from" value="201106" /&gt;</pre>
+
+<p>This field allows you to create date range searches on channel entry expiry dates. You construct date ranges from year, down to seconds, as a single number. <strong>2011</strong> will find entries with expiry dates <strong>from 2011 <em>onward</em></strong>. <strong>20110621</strong> will find entries with expiry dates <strong>from June 21, 2011 <em>onward</em></strong>. <strong>20110621082345</strong> will find entries with expiry dates <strong>from June 21, 2011 at 8:23:45 am <em>onward</em></strong>. When using this parameter, any entries that do NOT have an expiry date set will be automatically filtered out from the results. Used in conjunction with the <a href="#expiry_date-to">expiry_date-to</a> parameter.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;expiry_date-from=201106/</p>
+</blockquote>
+
+<p><a name="expiry_date-to"></a></p>
+
+<h3>expiry_date-to</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="expiry_date-to" value="201107" /&gt;</pre>
+
+<p>This field allows you to create date range searches on channel entry expiry dates. You construct date ranges from year, down to seconds, as a single number. <strong>2011</strong> will find entries with expiry dates up to <strong>2011</strong>. <strong>20110721</strong> will find entries with expiry dates up to <strong>July 21, 2011</strong>. <strong>20110721082345</strong> will find entries with expiry dates up to <strong>July 21, 2011 at 8:23:45 am</strong>. When using this parameter, any entries that do NOT have an expiry date set will be automatically filtered out from the results. Used in conjunction with the <a href="#expiry_date-from">expiry_date-from</a> parameter.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;expiry_date-to=201107/</p>
+</blockquote>
+
+<p><a name="group"></a></p>
+
+<h3>group</h3>
+
+<pre class="brush: html;">&lt;select name="group"&gt;
+    &lt;option value="Members"&gt;Members&lt;/option&gt;
+    &lt;option value="Editors"&gt;Editors&lt;/option&gt;
+    &lt;option value="Super Admins"&gt;Super Admins&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>This field allows you to filter the results by entries authored by member(s) of a given member group. You can use member group titles or the group ID. This field cannot override its matching parameter available in the <em>Results</em> tag.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;group=Members/</p>
+</blockquote>
+
+<p><a name="inclusive_keywords"></a></p>
+
+<h3>inclusive_keywords</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="inclusive_keywords" value="no" /&gt;
+&lt;label&gt;Results can contain ANY of the words I search on&lt;/label&gt;`
+</pre>
+
+<p>By default, Super Search will look for (and require) ALL terms searched upon when producing results. If you wish to override this, set this field to <strong>no</strong>. Default is <strong>yes</strong>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;keywords=pizza+pie&amp;inclusive_keywords=no/</p>
+</blockquote>
+
+<p><a name="keywords"></a></p>
+
+<h3>keywords</h3>
+
+<p>The keywords field allows your users to perform a search on across all entries on your site. By default, keyword searches look into all searchable custom fields and titles. Please make sure that each custom field is marked as searchable in the custom fields' settings in the EE CP. Search terms are inclusive (so all words searched on must be present in the entry to show up as a valid result), search on words within words (a search for <strong>cat</strong> could return <strong>caterpillar</strong>), and also search into
+<a href="https://solspace.com/software/expressionengine/tag">Solspace Tag</a> add-on tags
+(if installed).</p>
+
+<p>To tell the keyword search to only look into specific custom fields (instead of ALL searchable), see the <a href="#search_in">search_in</a> parameter. To disable the inclusive searching, you can pass the <a href="#inclusive_keywords">inclusive_keywords</a> field with a value of <strong>no</strong>, or call the <em>inclusive_keywords</em> parameter directly within the <em>Results</em> template. To disable word within word searching, you can pass the
+<a href="#search_words_within_words">search_words_within_words</a> parameter with a value of <strong>no</strong>, or call the the <em>search_words_within_words</em> parameter directly within the <em>Results</em> template. To disable Solspace Tag add-on tag searching, call the <em>ignore_tags_in_keywords</em> parameter directly within the <em>Results</em> template.</p>
+
+<p>To include keyword searching on author screen names and/or category names, specify a value of <strong>yes</strong> for the <a href="#keyword_search_author_name">keyword_search_author_name</a> and <a href="#keyword_search_category_name">keyword_search_category_name</a> parameters, respectively.</p>
+
+<p><a name="keyword_search_author_name"></a></p>
+
+<h3>keyword_search_author_name</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="keyword_search_author_name" value="yes" /&gt;</pre>
+
+<p>This field allows you to tell Super Search to also include searching on screen names of authors of entries. Any matches on the author name will show those entries as results. Since searches are inclusive by default, when searching with multiple keywords, only entries with keywords found in the title or searchable fields will be returned, regardless of whether the keywords match against the screen name of an author. You can override this by using the <a href="results.html#inclusive_keywords">inclusive_keywords</a> parameter in the <em>Results</em> tag and specifying a value of <strong>no</strong>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;keywords=pie&amp;keyword_search_author_name=yes/</p>
+</blockquote>
+
+<p><a name="keyword_search_category_name"></a></p>
+
+<h3>keyword_search_category_name</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="keyword_search_category_name" value="yes" /&gt;</pre>
+
+<p>This field allows you to tell Super Search to also include searching on category names of categories assigned to entries. Any matches on the category name will show those entries as results. Since searches are inclusive by default, when searching with multiple keywords, only entries with keywords found in the title or searchable fields will be returned, regardless of whether the keywords match against the category name(s). You can override this by using the <a href="results.html#inclusive_keywords">inclusive_keywords</a> parameter in the <em>Results</em> tag and specifying a value of <strong>no</strong>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;keywords=pie&amp;keyword_search_category_name=yes/</p>
+</blockquote>
+
+<p><a name="orderby"></a></p>
+
+<h3>orderby</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="orderby" value="title+asc+price+desc" /&gt;</pre>
+
+<p>This field controls the order in which entries are retrieved by Super Search. Results can be ordered by:</p>
+
+<ul>
+<li><strong>channel_name</strong>: the short name for channel</li>
+<li><strong>channel_title</strong>: full name for channel</li>
+<li><strong>entry_date</strong> (default)</li>
+<li><strong>title</strong></li>
+<li>any custom channel field</li>
+</ul>
+
+<p>Using this field you can set the default ordering rules of your search results page. To provide multiple ordering types, the syntax is to specify an order type and then the sort direction, and should look something like this: <strong>channel_title+asc+title+asc</strong>. If you forget to succeed a field by an <strong>asc</strong> or <strong>desc</strong> sort order, <strong>asc</strong> will be assumed. This field will override its matching parameter available in the <em>Results</em> tag.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;order=title+asc+price+desc/</p>
+</blockquote>
+
+<p><a name="redirect_post"></a></p>
+
+<h3>redirect_post</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="redirect_post" value="yes" /&gt;</pre>
+
+<p>By default, Super Search will redirect a POST search to contain the search query in the URI on the results page, similar to how it does on Google searches, etc. This allows your users to bookmark search queries, etc. To override this behaviour, specify this field with a value of <strong>no</strong>. Also available as a <a href="results.html#redirect_post">parameter</a> in the <em>Results</em> tag to have it always forced.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;keywords=pie&amp;redirect_post=no/</p>
+</blockquote>
+
+<p><a name="screen_name"></a></p>
+
+<h3>screen_name</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="screen_name" value="mitt" /&gt;</pre>
+
+<p>This field allows your users to search directly on screen names of authors of entries.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;screen_name=mitt/</p>
+</blockquote>
+
+<p><a name="search_in"></a></p>
+
+<h3>search_in</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="search_in" value="title|body" /&gt;</pre>
+
+<p>This parameter allows your users to select which fields they which to search within. This field is paired up with the <a href="#keywords">keywords</a> field, and overrides default behaviour of searching within ALL searchable custom fields. Options are: <strong>title</strong>, <strong>custom_field_name</strong>, <strong>all</strong>, or a combination of <strong>title</strong> and any <strong>custom_field_name</strong>'s, delimited by pipe character (<strong>|</strong>).</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;keywords=pie&amp;search_in=title|body/</p>
+</blockquote>
+
+<p><a name="search_words_within_words"></a></p>
+
+<h3>search_words_within_words</h3>
+
+<pre class="brush: html;">&lt;input type="checkbox" name="search_words_within_words" value="no" /&gt;</pre>
+
+<p>This field allows your users to stop Super Search from searching on words within words. Default value is <strong>yes</strong>. For example, a user might want to perform a search on <strong>cat</strong>, but they don't want to see results for <strong>catalog</strong>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;search_words_within_words=no/</p>
+</blockquote>
+
+<p><a name="site"></a></p>
+
+<h3>site</h3>
+
+<pre class="brush: html;">&lt;select name="site[]" multiple="multiple"&gt;
+    &lt;option value="site_1"&gt;Site 1&lt;/option&gt;
+    &lt;option value="site_2"&gt;Site 2&lt;/option&gt;
+    &lt;option value="site_3"&gt;Site 3&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>This field allows your users to filter the search results by the MSM site short name your entries belong to. This field can partially override its matching parameter available in the <em>Results</em> tag, but only further narrowing the results from the values specified in the site parameter in the <em>Results</em> tag. For example, if you have this parameter set: <strong>site="site_1|site_3"</strong>, and the site search query contains: <strong>site_1</strong> and <strong>site_2</strong>, because <strong>site_2</strong> was not specified in the site parameter, it will be ignored, and just results from <strong>site_1</strong> channel will be searched upon. If submitting multiple site names, be sure to name the field <em>site[]</em>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;site=site_1+site_3/</p>
+</blockquote>
+
+<p><a name="status"></a></p>
+
+<h3>status</h3>
+
+<pre class="brush: html;">&lt;select name="status"&gt;
+    &lt;option value="open"&gt;Open&lt;/option&gt;
+    &lt;option value="closed"&gt;Closed&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>This field allows your users to filter the search results by the status of your entries. This field cannot override its matching parameter available in the <em>Results</em> tag.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;status=open/</p>
+</blockquote>
+
+<p><a name="tags"></a></p>
+
+<h3>tags</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="tags" value="Cheese" /&gt;</pre>
+
+<p>You can search on one or more <a href="https://solspace.com/software/expressionengine/tag">Solspace Tag</a> tags in Super Search. This method looks for tags that EXACTLY match the values you specify. If you're looking for a looser method, use the <a href="#tags-like">tags-like</a> field. You can also negate tags to exclude entries that are tagged with a certain tag. Just precede the tag name with a <em>minus</em> sign: <strong>pie+-cheese</strong> (look for <strong>pie</strong>, but NOT <strong>cheese</strong>). You can also do conjoined tag searching to find entries belonging to all of a given list of tags. Use the ampersand as the separator like this: <strong>pie&amp;&amp;cheese</strong>.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;tags=apples+oranges/</p>
+</blockquote>
+
+<p><a name="tags"></a></p>
+
+<h3>tags-like</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="tags-like" value="car" /&gt;</pre>
+
+<p>This field allows you to perform partial match searches on tags. So if an entry is tagged with <strong>carpet</strong>, a search of <strong>car</strong> will match that.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;tags-like=car/</p>
+</blockquote>
+
+<p><a name="title"></a></p>
+
+<h3>title</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="title" value="To be or not to be" /&gt;</pre>
+
+<p>This field allows your users to search directly on entry titles.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;title=pie/</p>
+</blockquote>
+
+<p>Also available is title-exact (display results by entries that exactly match the keywords specified), <em>title-from</em> and <em>title-to</em> (allows you to perform alphabetical range searches). So for example, you could list all entries that start with <strong>A - C</strong> by using this code:</p>
+
+<pre class="brush: html;">From: &lt;input type="text" name="title-from" /&gt;
+To: &lt;input type="text" name="title-to" /&gt;
+</pre>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;title-from=a&amp;title-to=c/</p>
+</blockquote>
+
+<p><a name="url_title"></a></p>
+
+<h3>url_title</h3>
+
+<pre class="brush: html;">&lt;input type="text" name="url_title" value="hello" /&gt;</pre>
+
+<p>This field allows your users to search directly on entry URL titles.</p>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;url_title=hello/</p>
+</blockquote>
+
+<p><a name="where"></a></p>
+
+<h3>where</h3>
+
+<pre class="brush: html;">&lt;select name="where"&gt;
+    &lt;option value="all"&gt;All&lt;/option&gt;
+    &lt;option value="any"&gt;Any&lt;/option&gt;
+    &lt;option value="exact"&gt;Exact&lt;/option&gt;
+    &lt;option value="word"&gt;Word&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p>This field allows the user to easily specify how they want their keyword search to be performed. Use of this parameter will override <a href="#inclusive_keywords">inclusive_keywords</a> and <a href="#search_words_within_words">search_words_within_words</a> features. Used in conjunction with the <a href="#keywords">keywords</a> field. Options are:</p>
+
+<ul>
+<li><strong>all</strong> - only results containing all of the specified words will be
+returned</li>
+<li><strong>any</strong> - results containing any of the specified words will be returned</li>
+<li><strong>exact</strong> - only results containing the entire matching phrase (case
+sensitive) will be returned</li>
+<li><strong>word</strong> - only results containing the exact phrase specified will be
+returned</li>
+</ul>
+
+<p>The URI version of this search would look like this:</p>
+
+<blockquote>
+  <p>http://www.yoursite.com/search/results/search&amp;keywords=bird+is+the+word&amp;where=all/</p>
+</blockquote>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>The following are a few different examples of how you can use this tag:</p>
+
+<p><a name="basic_search_form"></a></p>
+
+<h3>Basic Search Form</h3>
+
+<p>The following code sample is an example of what a simple search form that populates previous search data might look like:</p>
+
+<pre class="brush: html;">{exp:super_search:form
+    return="supersearch/results"
+    {if segment_2 == "saved"}
+        search_id="{segment_3}"
+    {/if}
+}
+    &lt;h3&gt;Search for Products:&lt;/h3&gt;
+    &lt;p&gt;
+        &lt;label for="keywords"&gt;Keywords:&lt;/label&gt;
+        &lt;input
+            type="text" name="keywords" id="keywords"
+            value="{super_search_keywords}" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="price-from"&gt;Price from:&lt;/label&gt;
+        &lt;input
+            type="text" name="price-from" id="price-from"
+            value="{super_search_price-from}" /&gt;
+        &lt;label for="price-to"&gt;to:&lt;/label&gt;
+        &lt;input
+            type="text" name="price-to" id="price-to"
+            value="{super_search_price-to}" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;&lt;input type="submit" name="submit" value="Search!" /&gt;&lt;/p&gt;
+{/exp:super_search:form}
+</pre>
+
+<p><a name="advanced_search_form"></a></p>
+
+<h3>Advanced Search Form</h3>
+
+<p>The following code sample is a more elaborate example of a search form:</p>
+
+<pre class="brush: html;">{exp:super_search:form
+    return="supersearch/results"
+    {if segment_2 == "saved"}
+        search_id="{segment_3}"
+    {/if}
+}
+    &lt;h3&gt;Search for Products:&lt;/h3&gt;
+    &lt;p&gt;
+        &lt;label for="keywords"&gt;Keywords:&lt;/label&gt;
+        &lt;input
+            type="text" name="keywords" id="keywords"
+            value="{super_search_keywords}" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Category:
+        {exp:channel:categories
+            style="linear"
+            category_group="1"
+        }
+            {exp:super_search:variables}
+                &lt;label for="category_{category_url_title}"&gt;
+                    {category_name}
+                &lt;/label&gt;
+                &lt;input
+                    type="checkbox"
+                    id="category_{category_url_title}" name="category[]"
+                    value="{category_url_title}"
+                    {if super_search_category_{category_url_title}}
+                        checked="checked"
+                    {/if}/&gt;
+            {/exp:super_search:variables}
+        {/exp:channel:categories}
+    &lt;/p&gt;
+    &lt;p&gt;
+        Sizes:
+        &lt;input
+            type="checkbox" name="sizes[]" id="sizes_small"
+            value="small"
+            {if super_search_sizes_small}
+                checked="checked"
+            {/if}/&gt;
+        &lt;label for="sizes_small"&gt;
+            Small
+        &lt;/label&gt;
+        &lt;input
+            type="checkbox" name="sizes[]" id="sizes_medium"
+            value="medium"
+            {if super_search_sizes_medium}
+                checked="checked"
+            {/if}/&gt;
+        &lt;label for="sizes_medium"&gt;
+            Medium
+        &lt;/label&gt;
+        &lt;input
+            type="checkbox" name="sizes[]" id="sizes_large"
+            value="large"
+            {if super_search_sizes_large}
+                checked="checked"
+            {/if}/&gt;
+        &lt;label for="sizes_large"&gt;
+            Large
+        &lt;/label&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="price-from"&gt;
+            Price from:
+        &lt;/label&gt;
+        &lt;input
+            type="text" name="price-from" id="price-from"
+            value="{super_search_price-from}" /&gt;
+        &lt;label for="price-to"&gt;
+            to:
+        &lt;/label&gt;
+        &lt;input
+            type="text" name="price-to" id="price-to"
+            value="{super_search_price-to}" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type="submit" name="submit" value="Search!" /&gt;
+    &lt;/p&gt;
+{/exp:super_search:form}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

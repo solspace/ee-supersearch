@@ -1,0 +1,112 @@
+table td {
+	white-space:normal;
+}
+
+	table td label {
+		font-weight: bold;
+	}
+
+table div.subtext {
+	margin-top		: 10px;
+	font-size		: 87.5%;
+	color			: #666;
+}
+
+.inc-message {
+	margin-bottom: 10px;
+}
+
+	.inc-message .alert.inline {
+		margin:0;
+	}
+
+.version-number {
+	font-size		: 80%;
+	color			: #999;
+	float			: right;
+}
+
+.right-pull-submit input,
+.right-pull-submit button {
+	float			: right;
+}
+
+.ss_clearfix:before,
+.ss_clearfix:after,
+.ss_clearfix_left:before,
+.ss_clearfix_left:after,
+.right-pull-submit:before,
+.right-pull-submit:after {
+	content:	"";
+	display:	table;
+}
+.ss_clearfix:after,
+.right-pull-submit:after {
+	clear:		both;
+}
+
+.ss_clearfix_left:after {
+	clear:		left;
+}
+
+/* This only seems to work as an after element and not directly
+onto the element.*/
+.ico.view:after {
+	color				: #999;
+	content				: '\E052';
+	font-size			: 12px;
+	margin-right		: 5px;
+	position			: relative;
+	top					: 1px;
+	font-weight			: 100;
+	/* loaded in CP automatically by EE*/
+	font-family			: 'Glyphicons Regular'
+}
+
+#lexicon_in_progress {
+	float : left;
+	padding-top: 7px;
+	padding-left: 10px;
+	text-shadow: 1px 1px 2px #fff;
+	color: #2A3940;
+	font-weight: bold;
+}
+
+#lexicon_success:before {
+    color: #577d3b;
+    content: '\e801';
+    margin-left: 5px;
+    position: relative;
+    top: 1px;
+    font-weight: normal;
+    font-family: 'solspace-fa'
+}
+
+.code_pack_box .alert {
+	display:none;
+}
+
+.code_pack_templates tr td {
+	padding-left: 25px;
+}
+.code_pack_templates tr.sub-heading td {
+	padding-left: 10px;
+}
+.code_pack_templates tr td span.icon:after {
+	color: #b5b5b5;
+	content: '\e80b';
+	margin-right: 5px;
+	position: relative;
+	top: 1px;
+	font-weight: normal;
+	font-family: 'solspace-fa'
+}
+.code_pack_templates tr.sub-heading td span.icon:after {
+	color: #77bce6;
+	content: '\e80c';
+	margin-right: 5px;
+	position: relative;
+	top: 1px;
+	font-weight: normal;
+	font-family: 'solspace-fa'
+}

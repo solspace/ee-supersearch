@@ -1,0 +1,10 @@
+{
+	"name"					: "super_search_code_pack",
+	"label"					: "Super Search: Code Pack",
+	"version"				: "2.0",
+	"description"			: "The default Super Search code pack contains the most basic sample templates and data to get you started with Super Search.",
+	"screenshot"			: "resources/screenshot.png",
+	"autoInstallTemplates"	: true,
+	"moveThemes"			: false,
+	"homePage"				: "%prefix%main/index"
+}

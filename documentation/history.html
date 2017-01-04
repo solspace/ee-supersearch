@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>History | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>History</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="curated_results.html">Curated_Results</a></li>
+<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
+<li><a href="form.html">Form</a></li>
+<li class="current"><a href="history.html">History</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="save_search_form.html">Save_Search_Form</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Super_Search:History template tag</h1>
+
+<p>The <em>Super_Search:History</em> method allows your users to view their search history. It displays a list of all saved search queries. A member may only view their own history, and cannot view someone else's history for privacy reasons. Searches must first be saved using the <a href="save_search_form.html">Super_Search:Save_Search_Form</a> function upon completion of a search.</p>
+
+<p>Each search query is saved to the database and given a unique search ID. That ID is then passed over to the <a href="form.html">Super_Search:Form</a> tag, where <em>Super Search</em> will then parse and fill out all search query terms originally supplied for each search field.</p>
+
+<pre class="brush: html;">{exp:super_search:history} content {/exp:super_search:history}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#limit">limit</a></li>
+<li><a href="#orderby">orderby</a></li>
+<li><a href="#saved">saved</a></li>
+<li><a href="#sort">sort</a></li>
+</ul>
+
+<p><a name="limit"></a></p>
+
+<h3>limit=</h3>
+
+<pre class="brush: html;">limit="10"</pre>
+
+<p>This parameter allows you to control how many results will be outputted. The default is <strong>20</strong>.</p>
+
+<p><a name="orderby"></a></p>
+
+<h3>orderby=</h3>
+
+<pre class="brush: html;">orderby="date"</pre>
+
+<p>This parameter allows you to specify whether to order your results by total number of results for the query (<strong>results</strong>) or the date the search was saved (<strong>date</strong>). Use the <a href="#sort">sort</a> parameter to control whether the list is ascending or descending.</p>
+
+<p><a name="saved"></a></p>
+
+<h3>saved=</h3>
+
+<pre class="brush: html;">saved="no"</pre>
+
+<p>If this parameter is set to <strong>yes</strong>, only searches saved in your history will be shown. If set to <strong>no</strong>, only the last search you performed will be shown. Default is <strong>yes</strong>.</p>
+
+<p><a name="sort"></a></p>
+
+<h3>sort=</h3>
+
+<pre class="brush: html;">sort="desc"</pre>
+
+<p>This parameter is used in conjunction with the <a href="#orderby">orderby</a> parameter, and allows you to control whether the list is ascending (<strong>asc</strong>) or descending (<strong>desc</strong>).</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><a href="#super_search_date">super_search_date</a></li>
+<li><a href="#super_search_id">super_search_id</a></li>
+<li><a href="#super_search_name">super_search_name</a></li>
+<li><a href="#super_search_results">super_search_results</a></li>
+<li><a href="#super_search_saved">super_search_saved</a></li>
+<li><a href="#super_search_count">super_search_count</a></li>
+<li><a href="#super_search_total_results">super_search_total_results</a></li>
+</ul>
+
+<p><a name="super_search_date"></a></p>
+
+<h3>super_search_date</h3>
+
+<pre class="brush: html;">{super_search_date format="%l, %F %j, %Y at %g:%i %a"}</pre>
+
+<p>This variable will output the date of when the search was performed.</p>
+
+<p><a name="super_search_id"></a></p>
+
+<h3>super_search_id</h3>
+
+<pre class="brush: html;">{super_search_id}</pre>
+
+<p>This variable will output the ID of the search. This variable will be used to construct a link to your search form, and pass the search query ID to it.</p>
+
+<p><a name="super_search_name"></a></p>
+
+<h3>super_search_name</h3>
+
+<pre class="brush: html;">{super_search_name}</pre>
+
+<p>This variable will output the name given to the search.</p>
+
+<p><a name="super_search_results"></a></p>
+
+<h3>super_search_results</h3>
+
+<pre class="brush: html;">{super_search_results}</pre>
+
+<p>This variable will output the total number of results for the search query.</p>
+
+<p><a name="super_search_saved"></a></p>
+
+<h3>super_search_saved</h3>
+
+<pre class="brush: html;">{super_search_saved}</pre>
+
+<p>This variable will evaluate as <strong>y</strong> or <strong>n</strong>, depending on whether the search query was saved. This would likely be used as a conditional.</p>
+
+<p><a name="super_search_count"></a></p>
+
+<h3>super_search_count</h3>
+
+<pre class="brush: html;">{super_search_count}</pre>
+
+<p>This variable will return the relative position number of the search query within the list of queries.</p>
+
+<p><a name="super_search_total_results"></a></p>
+
+<h3>super_search_total_results</h3>
+
+<pre class="brush: html;">{super_search_total_results}</pre>
+
+<p>This variable will return the total amount of search query history results being displayed. You would typically use this in a conditional statement.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>Conditionals are available on all variables. Additionally, the following conditionals are also available for use:</p>
+
+<ul>
+<li><a href="#super_search_no_results">super_search_no_results</a></li>
+</ul>
+
+<p><a name="super_search_no_results"></a></p>
+
+<h3>super_search_no_results</h3>
+
+<pre class="brush: html;">{if super_search_no_results}
+    Sorry, no results were found.
+{/if}
+</pre>
+
+<p>This conditional displays it's contents when there are no results found.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p>The following code sample is an example of how your Search History list might look:</p>
+
+<pre class="brush: html;">&lt;h3&gt;Your Saved Searches&lt;/h3&gt;
+
+&lt;ul&gt;
+    {exp:super_search:history limit="10"}
+        &lt;li&gt;
+            &lt;a href="{path='supersearch/search'}/{super_search_id}/"&gt;
+                {super_search_name}
+            &lt;/a&gt;:
+            {super_search_results} results
+            (searched on {super_search_date format="%F %j, %Y at %g:%i %a"})
+        &lt;/li&gt;
+        {if super_search_no_results}
+            &lt;li&gt;You have not saved any searches yet.&lt;/li&gt;
+        {/if}
+    {/exp:super_search:history}
+&lt;/ul&gt;
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,149 @@
+{embed="%prefix%inc/index" page_title="Results (keyword search)"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="results"}
+
+		<div class="container">
+
+			<div class="page-header">
+				<h1>Results (keyword search)</h1>
+				<p class="lead">{super_search_total_results} results (+ {super_search_total_curated_results} curated) for the keyword search: "{super_search_keywords}"</p>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					{exp:super_search:curated_results
+						orderby="title+asc"
+						limit="5"
+					}
+						<h3>
+							<span class="label label-warning pull-right">
+								<span class="glyphicon glyphicon-star"></span> Curated
+							</span>
+							<a href="{url_title_path='%prefix%main/entry'}">{title}</a>
+						</h3>
+						<p>
+							{if excerpt}
+								{excerpt}
+							{if:else}
+							<div class="alert alert-warning" role="alert">
+								No <b>excerpt</b> available. Either the channel does not have the except field configured correctly, or the
+								designated field contains no value for this entry.
+							</div>
+							{/if}
+						</p>
+						<hr />
+
+					{if super_search_no_results}
+						<div class="alert alert-info" role="alert">
+							<p>No <strong>curated</strong> entries found for this keyword search.</p>
+						</div>
+					{/if}
+					{/exp:super_search:curated_results}
+					{exp:super_search:results
+						orderby="date+asc"
+						paginate="bottom"
+						limit="10"
+						relevance="title=5+summary=1+body=2"
+						highlight_keywords="mark"
+					}
+						<h3><a href="{url_title_path='%prefix%main/entry'}">{title}</a></h3>
+						<p>
+							{if excerpt}
+								{excerpt}
+							{if:else}
+							<div class="alert alert-warning" role="alert">
+								No <b>excerpt</b> available. Either the channel does not have the except field configured correctly, or the
+								designated field contains no value for this entry.
+							</div>
+							{/if}
+						</p>
+						<hr />
+
+					{if super_search_no_results}
+						<div class="alert alert-warning" role="alert">
+							<p><strong>Sorry, no results matched the search terms you provided.</strong> If you continue to have trouble finding results, make sure that:</p>
+							<ul>
+								<li>Channel entries exist for your site.</li>
+								<li>the field you're searching on (if applicable) exists for your site.</li>
+								<li>the fields you wish to be searched on are marked as <i>searchable</i> for the custom field preference.</li>
+								<li>you are not searching on <i>closed</i> entries, <i>future</i> entries, <i>expired</i> entries, etc. Just like the <i>Channel:Entries</i> loop, Super Search respects those settings as well. Be sure to include the necessary parameters on the <i>Results</i> loop for this template.</li>
+							</ul>
+						</div>
+					{/if}
+
+					{paginate}
+						<ul class="pagination pagination-lg">
+						{pagination_links}
+						{first_page}
+							<li><a href="{pagination_url}">First</a></li>
+						{/first_page}
+						{previous_page}
+							<li><a href="{pagination_url}">&laquo; Previous</a></li>
+						{/previous_page}
+						{page}
+							<li{if current_page} class="active"{/if}><a href="{pagination_url}">{pagination_page_number}</a></li>
+						{/page}
+						{next_page}
+							<li><a href="{pagination_url}">Next &raquo;</a></li>
+						{/next_page}
+						{last_page}
+							<li><a href="{pagination_url}">Last</a></li>
+						{/last_page}
+						{/pagination_links}
+						</ul>
+					{/paginate}
+					{/exp:super_search:results}
+				</div>
+
+				<div class="col-sm-4">				
+					<h2>Refine Search</h2>
+					{exp:super_search:form
+						return="%prefix%main/keyword_results"
+						form:role="form"
+					}
+					<div class="form-group">
+						<label for="keywords">Keywords</label>
+						<input type="text" name="keywords" id="keywords" value="{super_search_keywords}" placeholder="Enter keywords here" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-md btn-success">Search</button>
+					{/exp:super_search:form}
+				
+				<hr />
+				
+					<h2>Save This Search?</h2>
+					{exp:super_search:save_search_form}
+					<p>
+						<input type="text" name="super_search_name" id="save_search" placeholder="Label for search query" class="form-control"style="width:75%;display:inline-block;" />
+						<button type="submit" class="btn btn-success" style="display:inline-block;margin-left:5px;">Save</button>
+					</p>
+					{/exp:super_search:save_search_form}
+				
+				<hr />
+				
+					<h2>Saved Searches</h2>
+					<div class="list-group">
+					{exp:super_search:history limit="10"}
+						<a href="{path="%prefix%main/saved"}/{super_search_id}/" class="list-group-item" title="searched on {super_search_date format="%F %j, %Y"}">{super_search_name} <span class="badge">{super_search_results}</span></a>
+					{if super_search_no_results}
+						You have not saved any searches yet.
+					{/if}
+					{/exp:super_search:history}
+					</div>
+				</div>
+      		</div>
+
+			<div class="well ss-pageinfo">
+				<h2>About This Page</h2>
+				<p>This page makes use of the following tags:</p>
+				<ul>
+					<li><a href="https://solspace.com/expressionengine/super-search/docs/results/">Super_Search:Results</a> to display a list of results from the search query.</li>
+					<li><a href="https://solspace.com/expressionengine/super-search/docs/save_search_form/">Super_Search:Save_Search_Form</a> to allow the user to save their search query and perform that search again at a later date.</li>
+					<li><a href="https://solspace.com/expressionengine/super-search/docs/form/">Super_Search:Form</a> for search form and handle parsing of saved search data in the search forms.</li>
+					<li><a href="https://solspace.com/expressionengine/super-search/docs/history/">Super_Search:History</a> to display a list of recent saved searches for the logged in user.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

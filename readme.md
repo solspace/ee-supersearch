@@ -1,36 +1,26 @@
-##What is this?
+##Overview
 
-This repository contains supplemental files for the related commercial add-on from [Solspace, Inc.](http://solspace.com). This repository does not contain an [ExpressionEngine](http://http://expressionengine.com) add-on.
+Super Search greatly improves search functionality, allowing for powerful and flexible searching on channel entries in ExpressionEngine. It can be used both as a search engine and as a replacement for the *Channel:Entries* tag.
 
-After seeing EllisLab release [ExpressionEngine language files](https://github.com/EllisLab/) publicly to customers to translate and submit pull requests, we wanted to do the same for our add-ons. We are making this data available so that end users may fork, adjust, and submit pull requests containing translations or updates. 
- 
+The architecture of the add-on borrows from Google's model of constructing search queries. Anything you might want to search for... keywords, channels, categories, statuses, authors, custom fields, date ranges, custom field numeric ranges, etc, can be loaded into a single URI segment with the Super Search syntax. This makes pages highly shareable, flexible and versatile. Searches can be performed in a variety and/or *combination* of a few different ways:
 
-##Using the code in this repo
+* Through a POST or GET [search form](https://solspace.com/expressionengine/legacy/super-search/form) (Super Search automatically redirects the POST as a human-readable query in the URI).
+* Visiting a [Results](https://solspace.com/expressionengine/legacy/super-search/results) template with a search query in the URI, whether it be linked from another page, or a bookmarked URL, etc.
+* Hard-coding values for any type of search, including keywords, channels, categories, custom fields, etc.
 
-This repository might contain translations and examples that we did deem necessary to include with our standard add-ons download but wanted to leave available to those who need it.
+Super Search supports [relevance](https://solspace.com/expressionengine/legacy/super-search/relevance_ordering)-based searching, which allows you to create simple or advanced algorithms to control ranking of entries in search results. This is done by using the relevance-related parameters in the [Super_Search:Results](https://solspace.com/expressionengine/legacy/super-search/results) tag.
 
-To add a language file to your add-on from this repo, download the repo as a zip file, unzip it and copy the desired language folder into `./system/expressionengine/third_party/ADDON_NAME/language/`.
+Super Search also supports [Fuzzy Searching](https://solspace.com/expressionengine/legacy/super-search/fuzzy_searching), which basically means that searches can be set to ignore plurals, match up similar words, and suggest other words based on spelling in search terms.
 
-##How to submit translations and updates
+And finally, Super Search includes a [Search Curation](https://solspace.com/expressionengine/legacy/super-search/control-panel/#curation) feature, which is designed to allow manual selection of entry results for keyword searches. This would typically be used as supplemental search results to normal search results, similar to how Google displays sponsored results at the top or side of search results pages.
 
-Fork this repository, clone it to your computer, then make any adjustments and push it back to your github account. When you are satisfied with your adjustments, submit a pull request to us and we will discuss with you pulling the changes into our official repo.
 
-##Pull Request Disclaimer
+##Important Notes
 
-By submitting pull requests with altered or new code to Solspace, Inc., you are agreeing that Solspace, Inc. will retain all copyright to accepted adjustments via pull requests and therefore has permission to redistribute it.
+Super Search by [Solspace, Inc.](http://solspace.com) is a discontinued product and is provided here for free to users that wish to still use it.
+**USE OF SUPER SEARCH FROM THIS REPO COMES WITH NO SUPPORT OR GUARANTEE THAT IT WILL WORK. WE WILL NOT UPDATE THIS REPO OR ACCEPT ANY PULL REQUESTS.**
 
-We realize that this sounds very hard-nosed, but we need a legal disclaimer and protective info to mitigate legal issues for either party involved. We love you guys and want it all to work for the best.
+Last ExpressionEngine versions known to work on is **EE 2.11.x** and **EE 3.4.x**
 
-##Accuracy Disclaimer
-
-For any accepted translation pull request, we can only trust that the language translation is accurate, since we don't speak all the languages of the world. We apologize for any mistranslated items.
-
-##Release Information
-
-The data here-in is copyright &copy; Solspace, Inc., is not open source, and may not be used other than with the accompanying Solspace add-on. You do not have permission to redistribute or sell any of the data in this repository or any adjusted data from a forked version of this repository.
-
-Due to the nature of the translations and them being completed by third parties, we cannot guarantee their accuracy.
-
-##Acknowledgement
-
-We would like to thank our customers and code submitters for their hard work and patronage. Without you we would not be in business. Thank you. ;)
+Documentation can be found here:
+https://solspace.com/expressionengine/legacy/super-search

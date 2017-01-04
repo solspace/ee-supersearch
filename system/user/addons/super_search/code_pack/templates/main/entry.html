@@ -1,0 +1,87 @@
+{embed="%prefix%inc/index" page_title="Entry Details"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="entry"}
+
+		<div class="container">
+
+			<div class="page-header">
+				<h1>Entry Details</h1>
+				<p class="lead"></p>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					{exp:channel:entries require_entry="yes"}
+						<h3>{title}</h3>
+						<p>By <b>{author}</b> on <b>{entry_date format="%F %j, %Y"}</b></p>
+						<p>Category: {categories backspace="2"}<b>{category_name}</b>, {/categories}</p>
+					{if price}
+						<p>Price: <b>${price}</b></p>
+					{/if}
+					{if description}
+						<p>{description}</p>
+					{if:else}
+						<div class="alert alert-warning" role="alert">
+							No <b>description</b> available. Either this channel or site does not have a "description" field or the
+							designated field contains no value for this entry. You'll need to either rename this field to one that exists
+							on your site, or create a new field called 'description'.
+						</div>
+					{/if}
+
+						<hr />
+
+					{if super_search_no_results}
+						<div class="alert alert-warning" role="alert">
+							<p><strong>Sorry, no results matched the search terms you provided.</strong> If you continue to have trouble finding results, make sure that:</p>
+							<ul>
+								<li>Channel entries exist for your site.</li>
+								<li>the field you're searching on (if applicable) exists for your site.</li>
+								<li>the fields you wish to be searched on are marked as <i>searchable</i> for the custom field preference.</li>
+								<li>you are not searching on <i>closed</i> entries, <i>future</i> entries, <i>expired</i> entries, etc. Just like the <i>Channel:Entries</i> loop, Super Search respects those settings as well. Be sure to include the necessary parameters on the <i>Results</i> loop for this template.</li>
+							</ul>
+						</div>
+					{/if}
+					{/exp:channel:entries}
+				</div>
+
+				<div class="col-sm-4">				
+					<h2>Search</h2>
+					{exp:super_search:form
+						return="%prefix%main/keyword_results"
+						form:role="form"
+					}
+					<p>
+						<label for="keywords">Keywords:</label>
+						<input type="text" name="keywords" id="keywords" value="{super_search_keywords}" placeholder="Enter keywords here" class="form-control" />
+					</p>
+					<p><button type="submit" class="btn btn-md btn-success">Search</button></p>
+					{/exp:super_search:form}
+				
+				<hr />
+				
+					<h2>Saved Searches</h2>
+					<div class="list-group">
+					{exp:super_search:history limit="10"}
+						<a href="{path='%prefix%main/saved'}/{super_search_id}/" class="list-group-item" title="searched on {super_search_date format='%F %j, %Y'}">{super_search_name} <span class="badge">{super_search_results}</span></a>
+					{if super_search_no_results}
+						You have not saved any searches yet.
+					{/if}
+					{/exp:super_search:history}
+					</div>
+				</div>
+      		</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>This page makes use of the following tags:</p>
+				<ul>
+					<li><a href="https://docs.expressionengine.com/v3/channel/channel_entries.html">EE Channel:Entries</a> to display info for a channel entry.</li>
+					<li><a href="https://solspace.com/expressionengine/super-search/docs/form/">Super_Search:Form</a> for search form and handle parsing of saved search data in the search forms.</li>
+					<li><a href="https://solspace.com/expressionengine/super-search/docs/history/">Super_Search:History</a> to display a list of recent saved searches for the logged in user.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

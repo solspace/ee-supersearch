@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Save_Search_Form | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>Save_Search_Form</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="curated_results.html">Curated_Results</a></li>
+<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="results.html">Results</a></li>
+<li class="current"><a href="save_search_form.html">Save_Search_Form</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Super_Search:Save_Search_Form template tag</h1>
+
+<p>The <em>Super_Search:Save_Search_Form</em> tag allows your users to save their searches. Once a user has completed a search, they have the option to save the search and give it a name of their choice. These saved searches are then available to see using the <a href="history.html">Super_Search:History</a> tag.</p>
+
+<p>Typically, you would be placing this tag on your search results page (outside of the <a href="results.html">Super_Search:Results</a> loop) to allow users to save their search queries.</p>
+
+<pre class="brush: html;">{exp:super_search:save_search_form} content {/exp:super_search:save_search_form}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>The following parameters are available for use:</p>
+
+<ul>
+<li><a href="#delete_mode">delete_mode</a></li>
+<li><a href="#form_attribute">form:attribute</a></li>
+<li><a href="#onsubmit">onsubmit</a></li>
+<li><a href="#return">return</a></li>
+<li><a href="#search_id">search_id</a></li>
+</ul>
+
+<p><a name="delete_mode"></a></p>
+
+<h3>delete_mode</h3>
+
+<pre class="brush: html;">delete_mode="yes"</pre>
+
+<p>This parameter switches the form to operate in <strong>Delete</strong> mode. When you submit the form in <strong>Delete</strong> mode, the given search identified by the <a href="#search_id">search_id</a> parameter is deleted from your history.</p>
+
+<p><a name="form"></a></p>
+
+<h3>form:attribute=</h3>
+
+<pre class="brush: html;">form:class="your_class"</pre>
+
+<p>This parameter allows you to control any form attribute for the form in your template. Simply replace attribute with an attribute name such as <strong>id</strong>, <strong>name</strong>, <strong>class</strong>, etc, and specify a value for that attribute. You can specify this parameter multiple times to control as many attributes as necessary. This would normally be done to control your form with Javascript or style it with CSS.</p>
+
+<p><a name="onsubmit"></a></p>
+
+<h3>onsubmit=</h3>
+
+<pre class="brush: html;">onsubmit="some_javascript_function();"</pre>
+
+<p>This parameter allows you to indicate an <strong>onsubmit</strong> action for your form.</p>
+
+<p><a name="return"></a></p>
+
+<h3>return</h3>
+
+<pre class="brush: html;">return="template_group/template_name"</pre>
+
+<p>This parameter determines where to send users once they have submitted the form.</p>
+
+<p><a name="search_id"></a></p>
+
+<h3>search_id=</h3>
+
+<pre class="brush: html;">search_id="{segment_3}"</pre>
+
+<p>You can load a search ID into this parameter to allow someone to edit the name they have given to one of their searches. If no search ID is provided in this parameter, the form will fetch the last search the user executed, thus allowing them to provide a name for the search, submit the form, and add that most recent search to their search history. If the current user is NOT a logged in member (Guest), Super Search changes to cookie based identification, and the searches are saved that way.</p>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>The following variables are available for use:</p>
+
+<ul>
+<li><a href="#super_search_date">super_search_date</a></li>
+<li><a href="#super_search_name">super_search_name</a></li>
+<li><a href="#super_search_results">super_search_results</a></li>
+</ul>
+
+<p><a name="super_search_date"></a></p>
+
+<h3>super_search_date</h3>
+
+<pre class="brush: html;">{super_search_date format="%l, %F %j, %Y at %g:%i %a"}</pre>
+
+<p>This variable will output the date of when the search was performed.</p>
+
+<p><a name="super_search_name"></a></p>
+
+<h3>super_search_name</h3>
+
+<pre class="brush: html;">{super_search_name}</pre>
+
+<p>This variable will output the name given to the search. Defaults to <strong>Search</strong> if a name has not yet been given to the search.</p>
+
+<p><a name="super_search_results"></a></p>
+
+<h3>super_search_results</h3>
+
+<pre class="brush: html;">{super_search_results}</pre>
+
+<p>This variable will output the total number of results in the search.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<p><a name="saving_a_search_query"></a></p>
+
+<h3>Saving a Search Query</h3>
+
+<p>The following sample code is a basic example of how your Search Results page might look with the <em>Save_Search_Form</em> tag implemented in order to save searches to a users’ history:</p>
+
+<pre class="brush: html;">{exp:super_search:save_search_form}
+    &lt;p&gt;
+        &lt;label for="super_search_name"&gt;Save this Search?&lt;label&gt;
+        &lt;input
+            type="text"
+            name="super_search_name"
+            id="super_search_name"
+            value="{super_search_name}" /&gt;
+        &lt;input type="submit" name="submit" value="Save!" /&gt;
+    &lt;/p&gt;
+{/exp:super_search:save_search_form}
+
+{exp:super_search:results}
+    &lt;div class="search_result"&gt;
+        &lt;h3&gt;{title}&lt;/h3&gt;
+        &lt;p&gt;Price: ${price}&lt;/p&gt;
+        &lt;p&gt;{excerpt}&lt;/p&gt;
+    &lt;/div&gt;
+    {if super_search_no_results}
+        No results matched your query.
+    {/if}
+{/exp:super_search:results}
+</pre>
+
+<p><a name="edit_a_saved_search_query"></a></p>
+
+<h3>Edit a Saved Search Query</h3>
+
+<p>Below is an example of how you would use the <em>Save_Search_Form</em> tag to edit the names of existing saved searches, assuming you have the search ID in the 3rd segment of the URI:</p>
+
+<pre class="brush: html;">{exp:super_search:save_search_form
+    return="supersearch/save_search_form"
+    search_id="{segment_3}"
+}
+    &lt;h3&gt;Edit this Search?&lt;/h3&gt;
+    &lt;p&gt;&lt;input type="text" name="super_search_name" value="{super_search_name}" /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type="submit" name="submit" value="Save!" /&gt;&lt;/p&gt;
+{/exp:super_search:save_search_form}
+</pre>
+
+<p><a name="delete_a_saved_search_query"></a></p>
+
+<h3>Delete a Saved Search Query</h3>
+
+<p>Below is an example of how you would use the <em>Save_Search_Form</em> tag to delete existing saved searches, assuming you have the search ID in the 3rd segment of the URI:</p>
+
+<pre class="brush: html;">{exp:super_search:save_search_form
+    return="supersearch/history"
+    search_id="{segment_3}"
+    delete_mode="yes"
+}
+    &lt;h3&gt;Are you sure you want to Delete the Search named "{super_search_name}"?&lt;/h3&gt;
+    &lt;p&gt;&lt;input type="submit" name="submit" value="Yes, Delete" /&gt;&lt;/p&gt;
+{/exp:super_search:save_search_form}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

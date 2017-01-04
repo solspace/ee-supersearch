@@ -1,0 +1,237 @@
+.solspace_word_group {
+	margin-top:		10px;
+	line-height:	13px;
+}
+
+/*----------------------
+	current tags
+-----------------------*/
+.solspace_word_group .white_grad {
+	/* background not added here as it's fubar with IE :/. Stupid IE */
+		background-color: 		#ffffff;
+		background-image: 		-webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ededed)); /* Saf4+, Chrome */
+		background-image: 		-webkit-linear-gradient(top, #ffffff, #ededed); /* Chrome 10+, Saf5.1+ */
+		background-image: 		   -moz-linear-gradient(top, #ffffff, #ededed); /* FF3.6 */
+		background-image: 		    -ms-linear-gradient(top, #ffffff, #ededed); /* IE10 */
+		background-image: 		     -o-linear-gradient(top, #ffffff, #ededed); /* Opera 11.10+ */
+		background-image: 		        linear-gradient(top, #ffffff, #ededed);
+
+}
+
+.solspace_word_group.ie7 .white_grad,
+.solspace_word_group.ie8 .white_grad {		          
+	filter: 				progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#ededed'); /* IE6–IE9 */
+}
+
+/*ie9 is so coool! i needs its own special fix because it doesnt support css3
+ gradients, and it doesn't round filter effects when corners are rounded ;D!!!!
+ stupid stupid ie >:|*/
+.solspace_word_group.ie9 .white_grad {
+	background-image: 		url(../images/stupid_ie9.svg);
+    background-size: 		100% 100%;
+    background-repeat: 		repeat-x;
+    background-position:	0 0;
+}
+
+/*----------------------
+	current words
+-----------------------*/
+
+#mainContent .solspace_word_group .empty_ignore_list {
+	margin-top : 17px; 
+	margin-bottom : 5px;
+	font-style: italic;
+}
+
+.solspace_word_group .current_word{
+	display:				inline;
+	zoom:					1;	
+	float:					left;
+	font-weight:			bold;
+	height:					16px;
+	margin:					2px 5px 1px 0;
+	padding:				3px 7px 1px 7px;
+	-moz-border-radius: 	5px; 
+	-webkit-border-radius: 	5px; 
+	border-radius: 			5px;
+	border: 				1px solid #a4a4a4;
+}
+
+
+.solspace_word_group.ie7 .current_word {
+	float:none;
+}
+
+
+/*this dirty trick helps how things break when the screen gets too small*/
+.solspace_word_group .tag_section_name .staticwrap {
+	width:					105px;
+	padding-top:			2px;
+}
+
+.solspace_word_group .tag_section_data {
+	float:					left;
+	width:					80%;
+}
+
+.solspace_word_group .ex {
+	background: 			transparent url('../images/assets.png') 1px -4px no-repeat ;
+	cursor:					pointer;
+	display: 				block;
+	height: 				16px;
+	width: 					16px;
+	float:					right;
+	margin:					-1px -3px 0 3px;	
+}
+
+.solspace_word_group .ingore_list_input { 
+	margin-bottom : 10px; 
+}
+
+.solspace_word_group .current_word:hover,
+.solspace_word_group .current_word:active  {	
+	cursor : pointer;
+}
+
+.solspace_word_group .current_word .ex:hover {
+	background: 			transparent url('../images/assets.png') -29px -4px no-repeat ;
+}
+
+.solspace_word_group .current_word:active {	
+	border: 				1px solid #E11842;
+}
+
+.solspace_word_group .current_word .ex:active {
+	background: 			transparent url('../images/assets.png') -14px -4px no-repeat ;
+}
+
+
+.word_input input { 
+	width : 60%; 
+	margin-left : 5%;
+}
+
+.date_wordy_formatted:hover {
+	cursor : pointer;
+}
+
+.date_formatted, .search_item_more ul {
+	display : none; 
+}
+
+
+
+#lexicon_in_progress { 
+	float : left; 
+	padding-top: 7px;
+	padding-left: 10px;
+	text-shadow: 1px 1px 2px #fff;
+	color: #2A3940;
+	font-weight: bold;
+
+}
+
+.mainTable.searchTable.termsTable tr td {
+	vertical-align : middle;
+}
+
+#search_term { 
+	margin-right : 10px; 
+	width : 30%;
+}
+
+
+tr.view_all td  {
+	text-align : right;
+}
+.super_search_recent_searches .loading_holder { 
+	position : relative;
+}
+.super_search_recent_searches .loading { 
+	width : 17px; 
+	height : 17px;
+	display : block;	
+	position: absolute;
+	right : 7px; 
+	top : 7px;
+}
+
+.super_search_recent_searches ul li {
+	display : inline-block;
+
+}
+
+.super_search_tables h2 {
+	padding : 20px 0 10px;
+}
+
+.super_search_notification .clear { 
+	clear : both; 
+}
+
+#build_lexicon { 
+	margin-left : 10px; 
+}
+
+/* EE 1.x specific tweaks */
+body.super_search_ee1x .super_search_notification .explain { 
+	margin-top : -3px;
+	padding-bottom : 12px;
+}
+
+
+body.super_search_ee1x .tableHeading span.search_term {
+	color : #000 ;
+}
+
+body.super_search_ee1x .tableHeading span.search_term:hover {
+	color : #000 ;
+}
+
+body.super_search_ee1x .searchTable tr.search_term_log_item td {
+	padding: 2px 5px;
+}
+
+body.super_search_ee1x .searchTable {
+	border-bottom : 1px solid #B1B6D2;
+}
+
+body.super_search_ee1x #filterMenu  {
+	margin-bottom : 10px;
+}
+
+body.super_search_ee1x label.item_heading  {
+	font-weight : bold;
+}
+
+body.super_search_ee1x .view_all a {
+	color : #fff;
+	padding-left : 10px;
+}
+
+
+.super_search_notification {
+	padding : 10px 10px 0 10px; 
+	border : 1px solid #fff;
+	margin-bottom : 10px;
+}
+
+h2 span.view_all { font-size : 0.8em; }
+
+td li span.search_term { padding : 0 3px; }
+
+
+
+#mainContent #super_search_top_terms {
+	width:  49%;
+	float : left;
+}
+ 
+#mainContent .super_search_recent_searches {
+	width : 49%; 
+	float : left;
+}
+ 
+#super_search_top_terms {
+	margin-right : 2%;
+}

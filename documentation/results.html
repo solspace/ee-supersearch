@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Results | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>Results</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="curated_results.html">Curated_Results</a></li>
+<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="history.html">History</a></li>
+<li class="current"><a href="results.html">Results</a></li>
+<li><a href="save_search_form.html">Save_Search_Form</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Super_Search:Results template tag</h1>
+
+<p>The <em>Super_Search:Results</em> tag displays the channel entry results from a search query (it only works for searching on channel entries). And since search queries in the URI (and from POST searches) are human-readable (<strong>template_group/template/search&amp;keywords=bird&amp;summary=is+the+word</strong>), users can bookmark result pages, along with many other benefits. Searches can be performed in a variety of ways:</p>
+
+<ul>
+<li>Submitting a standard search form (see <a href="form.html">Super_Search:Form</a> documentation for more information about constructing a search form)</li>
+<li>Reading a search query in the URI that was manually linked to from another page, etc.</li>
+<li>Hardcoding a search query into the Results tag itself.</li>
+</ul>
+
+<pre class="brush: html;">{exp:super_search:results} content {/exp:super_search:results}</pre>
+
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#variable_pairs">Variable Pairs</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+
+<p><a name="parameters"></a></p>
+
+<h2>Parameters</h2>
+
+<p>In addition to most parameters available in the <em>Channel:Entries</em> tag, the following parameters are available for use:</p>
+
+<ul>
+<li><a href="#allow_repeats">allow_repeats</a></li>
+<li><a href="#author">author</a></li>
+<li><a href="#author_indicator">author_indicator</a></li>
+<li><a href="#category">category</a></li>
+<li><a href="#category_indicator">category_indicator</a></li>
+<li><a href="#channel">channel</a></li>
+<li><a href="#dynamic">dynamic</a></li>
+<li><a href="#exclude_entry_ids">exclude_entry_ids</a></li>
+<li><a href="#fuzzy_distance">fuzzy_distance</a></li>
+<li><a href="#fuzzy_weighting">fuzzy_weighting</a></li>
+<li><a href="#group">group</a></li>
+<li><a href="#highlight_keywords">highlight_keywords</a></li>
+<li><a href="#ignore_field">ignore_field</a></li>
+<li><a href="#include_entry_ids">include_entry_ids</a></li>
+<li><a href="#include_uncategorized">include_uncategorized</a></li>
+<li><a href="#inclusive_categories">inclusive_categories</a></li>
+<li><a href="#inclusive_keywords">inclusive_keywords</a></li>
+<li><a href="#keywords">keywords</a></li>
+<li><a href="#keyword_search_author_name">keyword_search_author_name</a></li>
+<li><a href="#keyword_search_category_name">keyword_search_category_name</a></li>
+<li><a href="#limit">limit</a></li>
+<li><a href="#max_limit">max_limit</a></li>
+<li><a href="#offset">offset</a></li>
+<li><a href="#orderby">orderby</a></li>
+<li><a href="#paginate">paginate</a></li>
+<li><a href="#partial_author">partial_author</a></li>
+<li><a href="#redirect_post">redirect_post</a></li>
+<li><a href="#relevance">relevance</a></li>
+<li><a href="#relevance_multiplier">relevance_multiplier</a></li>
+<li><a href="#relevance_proximity">relevance_proximity</a></li>
+<li><a href="#required">required</a></li>
+<li><a href="#search">search</a></li>
+<li><a href="#search_in">search_in</a></li>
+<li><a href="#search_words_within_words">search_words_within_words</a></li>
+<li><a href="#show_expired">show_expired</a></li>
+<li><a href="#show_future_entries">show_future_entries</a></li>
+<li><a href="#site">site</a></li>
+<li><a href="#smart_excerpt">smart_excerpt</a></li>
+<li><a href="#status">status</a></li>
+<li><a href="#tags">tags</a></li>
+<li><a href="#tags-like">tags-like</a></li>
+<li><a href="#use_ignore_word_list">use_ignore_word_list</a></li>
+<li><a href="#where">where</a></li>
+<li><a href="#wildcard_character">wildcard_character</a></li>
+<li><a href="#wildcard_fields">wildcard_fields</a></li>
+</ul>
+
+<p><a name="allow_repeats"></a></p>
+
+<h3>allow_repeats=</h3>
+
+<pre class="brush: html;">allow_repeats="no"</pre>
+
+<p>This parameter allows you to have multiple <em>Super_Search:Results</em> calls in a session and each successive call will exclude previously found entries from it's query so that all entries found in a session are unique. Basically, in the event you're using the <em>Super_Search:Results</em> loop as a full replacement to the Channel:Entries loop, you would typically use this if you were displaying several sets of entries within 1 template, and there being the possibility of a channel entry showing up across all or any of the <em>Results</em> loops. So if <strong>Entry B</strong> shows up in the first <em>Results</em> loop, even if it technically should also show up in a second or third instance of the <em>Results</em> loop, with this parameter set to <strong>no</strong>, it will be excluded. Default is <strong>yes</strong>.</p>
+
+<p><strong>Note:</strong> because EE caches duplicate calls to the same tag in a template, its important to make sure there is at least one minor difference in the opening tag loops if you are using this feature. Something as simple as a parameter or even an EE comment like <strong>{!-- loop 2 --}</strong> will work. Otherwise, this functionality will not work since EE caching will override and just show duplicate results for each loop.</p>
+
+<p><a name="author"></a></p>
+
+<h3>author=</h3>
+
+<pre class="brush: html;">author="jake"</pre>
+
+<p>This parameter allows you to filter entries down by a given author. It looks for <strong>username</strong> by default, unless overridden by the <a href="#author_indicator">author_indicator</a> parameter. Alternate options are <strong>screen name</strong> and <strong>member ID</strong>. Must be exact matches. If you wish to allow partial matches, specify <strong>yes</strong> in the <a href="#partial_author">partial_author</a> parameter. This parameter cannot be overwritten by data sent through POST or URI.</p>
+
+<p><a name="author_indicator"></a></p>
+
+<h3>author_indicator=</h3>
+
+<pre class="brush: html;">author_indicator="screen_name"</pre>
+
+<p>This parameter allows you to override the default value of <em>username</em> for author searches with the <a href="#author">author</a> parameter. To override this, indicate <em>screen_name</em> or <em>member_id</em> in this parameter. If searching on <strong>screen names</strong> in the URI, make sure the value is wrapped with quotes so screen names with spaces are properly recognized.</p>
+
+<p><a name="category"></a></p>
+
+<h3>category=</h3>
+
+<pre class="brush: html;">category="Teeth"</pre>
+
+<p>This parameter allows you to force a category search into the search query. Default behavior is looking for category <strong>names</strong>. To switch this to category ID or URL titles, use the <a href="#category_indicator">category_indicator</a> parameter. The contents of this parameter follow the same syntax as regular Super Search queries in the URI or through POST variables. This parameter <strong>cannot</strong> be overwritten by data sent through POST or URI. For example:</p>
+
+<ul>
+<li><strong>category="Teeth"</strong> would fetch entries that belonged to the category of <em>Teeth</em>.</li>
+<li><strong>category="Teeth+Gums"</strong> would fetch entries that belonged either to the <em>Teeth</em> category or the <em>Gums</em> category.</li>
+<li><strong>category="Teeth&amp;&amp;Gums"</strong> query would fetch entries that belonged both to the <em>Teeth</em> category and the <em>Gums</em> category inclusively.</li>
+<li><strong>category="-Teeth"</strong> would fetch entries that do NOT belong to the <em>Teeth</em> category.</li>
+<li><strong>category="-Teeth+-Gums"</strong> would fetch entries that do NOT belong to the <em>Teeth</em> category or the <em>Gums</em> category.</li>
+</ul>
+
+<p><a name="category_indicator"></a></p>
+
+<h3>category_indicator=</h3>
+
+<pre class="brush: html;">category_indicator="category_url_title"</pre>
+
+<p>This parameter allows you to tell Super Search how you will be providing categories in your search strings. The default behavior is to accept category names (<em>category_name</em>) to allow for better user play, but you can have a more reliable search by providing categories by category URL titles (<em>category_url_title</em>) or ID's (<em>category_id</em>).</p>
+
+<p><a name="channel"></a></p>
+
+<h3>channel=</h3>
+
+<pre class="brush: html;">channel="products|locations"</pre>
+
+<p>This parameter allows you to force a channel search into the search query. This parameter can be overwritten by data sent through POST or URI, but only with channels submitted through POST of the URI that have been provided within the <em>channel</em> parameter. For example, if you have this: <strong>channel="products|locations"</strong>, and the search query contains: <strong>search&amp;channel=products+blog</strong>, because <strong>blog</strong> was not specified in the <em>channel</em> parameter, it will be ignored, and just results from <strong>products</strong> channel will be searched upon. You can provide multiple channels separated by pipe and you can negate the whole set like this <strong>channel="not somechannel|anotherchannel"</strong>.</p>
+
+<p><a name="dynamic"></a></p>
+
+<h3>dynamic=</h3>
+
+<pre class="brush: html;">dynamic="no"</pre>
+
+<p>This parameter is used to have a <em>Results</em> tag ignore any search data passed to the page through POST searches or the URI. So for example, you might want to have a search results page that gets affected by the search query, but you might have an additional <em>Results</em> tag on the page that you don't want affected by the search query.</p>
+
+<p><a name="exclude_entry_ids"></a></p>
+
+<h3>exclude_entry_ids=</h3>
+
+<pre class="brush: html;">exclude_entry_ids="43|45|67"</pre>
+
+<p>This parameter allows you to exclude specific entries from showing in the list of results. Separate multiples with the pipe (<strong>|</strong>) character.</p>
+
+<p><a name="fuzzy_distance"></a></p>
+
+<h3>fuzzy_distance=</h3>
+
+<pre class="brush: html;">fuzzy_distance="2"</pre>
+
+<p>This parameter helps you indicate how close a fuzzy spelling or plural test needs to be to be considered valid. The value of this parameter needs to be an integer. Default is <strong>2</strong>. The lesser the distance, the closer the match is to the given word. For example, <em>detrt</em> has a distance of <strong>2</strong> to <em>detroit</em>.</p>
+
+<p>This is used in conjunction with <a href="fuzzy_searching.html">Fuzzy Searching</a> functionality.</p>
+
+<p><a name="fuzzy_weighting"></a></p>
+
+<h3>fuzzy_weighting=</h3>
+
+<pre class="brush: html;">fuzzy_weighting="yes"</pre>
+
+<p>This parameter allows you to take "fuzzy searching" on keywords into account when calculating relevance. This is used in conjunction with <a href="fuzzy_searching.html">Fuzzy Searching</a> functionality to give more appropriate relevance scores. For example, a search for <strong>pants</strong> would likely return results for <strong>pant</strong>, but you might not want results of <strong>pant</strong> to be given the full relevance score as those with <strong>pants</strong>. By default, this parameter is set to <strong>no</strong>.</p>
+
+<p><a name="group"></a></p>
+
+<h3>group=</h3>
+
+<pre class="brush: html;">group="Members"</pre>
+
+<p>This parameter allows you to filter the results by entries authored by member(s) of a given member group. You can use member group titles or the group ID. Separate multiples with the pipe (<strong>|</strong>) character. This parameter cannot be overwritten by data sent through POST or URI.</p>
+
+<p><a name="highlight_keywords"></a></p>
+
+<h3>highlight_keywords=</h3>
+
+<pre class="brush: html;">highlight_keywords="b"</pre>
+
+<p>This parameter allows Super Search to highlight the keywords found in your search results. This only works on search terms submitted through the <em>keywords</em> field. Options are <strong>em</strong>, <strong>span</strong>, <strong>b</strong>, <strong>i</strong> or <strong>mark</strong> as the value of the parameter and keywords will be wrapped in the specified tag.</p>
+
+<p><a name="ignore_field"></a></p>
+
+<h3>ignore_field=</h3>
+
+<pre class="brush: html;">ignore_field="some_field|some_other_field"</pre>
+
+<p>In the circumstance you need to display submitted value data, but not have Super Search perform a search on it, you would use this feature. Separate multiples with the pipe (<strong>|</strong>) character.</p>
+
+<p><a name="include_entry_ids"></a></p>
+
+<h3>include_entry_ids=</h3>
+
+<pre class="brush: html;">include_entry_ids="17|33|62|79"</pre>
+
+<p>This parameter allows you to display only specific entries in the list of results. Separate multiples with the pipe (<strong>|</strong>) character.</p>
+
+<p><a name="include_uncategorized"></a></p>
+
+<h3>include_uncategorized=</h3>
+
+<pre class="brush: html;">include_uncategorized="no"</pre>
+
+<p>When you perform category searches, by default all entries without categories will be included in the results. This parameter allows you to stop displaying those entries that have NO categories assigned to them when a category search is performed. Default is <strong>yes</strong>.</p>
+
+<p><a name="inclusive_categories"></a></p>
+
+<h3>inclusive_categories=</h3>
+
+<pre class="brush: html;">inclusive_categories="no"</pre>
+
+<p>By default Super Search will find results for <strong>any</strong> of the categories submitted in a search. If you wish to find results that belong to <strong>all</strong> of the submitted categories, set this parameter to <strong>yes</strong>. Works in conjunction with <a href="#category">category</a> searches.</p>
+
+<p><a name="inclusive_keywords"></a></p>
+
+<h3>inclusive_keywords=</h3>
+
+<pre class="brush: html;">inclusive_keywords="no"</pre>
+
+<p>By default, Super Search will look for (and require) ALL terms searched upon when producing results. If you wish to override this, set this parameter to <strong>no</strong>. Default is <strong>yes</strong>.</p>
+
+<p><a name="keywords"></a></p>
+
+<h3>keywords=</h3>
+
+<pre class="brush: html;">keywords="bird+is+the+word"</pre>
+
+<p>This parameter allows you to force a keyword search query into the results.</p>
+
+<p><a name="keyword_search_author_name"></a></p>
+
+<h3>keyword_search_author_name=</h3>
+
+<pre class="brush: html;">keyword_search_author_name="yes"</pre>
+
+<p>This parameter tells Super Search to also test keywords searches against the screen names of authors of entries. If you search for the keyword <strong>Batman Robin</strong> and an entry is authored by <em>Batman</em> or <em>Batman &amp; Robin</em>, that entry will be returned.</p>
+
+<p>Unless you set the <a href="#inclusive_keywords">inclusive_keywords</a> parameter to <strong>no</strong>, a search for <strong>Batman Robin</strong> will return only those entries that have <strong>Batman</strong> and <strong>Robin</strong> in the authors screen name OR <strong>Batman</strong> and <strong>Robin</strong> in the title or searchable custom fields. In other words, a search on <strong>Batman Robin</strong> would NOT return an entry that had <strong>Batman</strong> nowhere in the titles or searchable custom fields, but had <strong>Robin</strong> in the titles or searchable custom fields, and had an author with <strong>Batman</strong> in the screen name, but not <strong>Robin</strong>. Both terms must make a match in either author screen name OR titles and searchable custom fields.</p>
+
+<p>Further, setting the <em>keyword_search_author_name</em> parameter to <strong>yes</strong> and <a href="#inclusive_keywords">inclusive_keywords</a> parameter to <strong>no</strong> will cast the widest search net. Entries with <strong>Batman</strong> OR <strong>Robin</strong> anywhere in the title, searchable custom fields or author name will be returned. This parameter cannot be overwritten by data sent through POST or URI.</p>
+
+<p><a name="keyword_search_category_name"></a></p>
+
+<h3>keyword_search_category_name=</h3>
+
+<pre class="brush: html;">keyword_search_category_name="yes"</pre>
+
+<p>This parameter tells Super Search to also test keywords searches against the names of categories assigned to entries. If you search for the keyword <strong>jacket</strong> and an entry has a category of <em>Jacket</em> or <em>Winter Jacket</em> assigned, that entry will be returned.</p>
+
+<p>Unless you set the <a href="#inclusive_keywords">inclusive_keywords</a> parameter to <strong>no</strong>, a search for <strong>winter jacket</strong> will return only those entries that have <strong>winter</strong> and <strong>jacket</strong> in a category name OR <strong>winter</strong> and <strong>jacket</strong> in the title or searchable custom fields. In other words, a search on <strong>winter jacket</strong> would NOT return an entry that had <strong>winter</strong> nowhere in the titles or searchable custom fields, but had <strong>jacket</strong> in the titles or searchable custom fields, and had a category assigned with <strong>jacket</strong> in the category name, but not <strong>winter</strong>. Both terms must make a match in either category name OR titles and searchable custom fields.</p>
+
+<p>Further, setting the <em>keyword_search_category_name</em> parameter to <em>yes</em> and <a href="#inclusive_keywords">inclusive_keywords</a> parameter to <strong>no</strong> will cast the widest search net. Entries with <strong>winter</strong> OR <strong>jacket</strong> anywhere in the title, searchable custom fields or category names will be returned. This parameter cannot be overwritten by data sent through POST or URI.</p>
+
+<p><a name="limit"></a></p>
+
+<h3>limit=</h3>
+
+<pre class="brush: html;">limit="50"</pre>
+
+<p>This parameter controls how many entries show up on your results page. Use this parameter to set the default limit of entries to be shown. If the <em>limit</em> parameter is sent through POST or URI, it will override the template level parameter.</p>
+
+<p><a name="max_limit"></a></p>
+
+<h3>max_limit=</h3>
+
+<pre class="brush: html;">max_limit="200"</pre>
+
+<p>Because the <a href="#limit">limit</a> parameter can be overridded in the URI by users, this parameter is available as a security/performance feature. You may want to allow users to control their own limits as they please, but may very well not want a user setting the limit to <strong>5000000</strong> (on the same page!). Super Search has a very generous built in max value of <strong>10000</strong>. If you wish for it to be something smaller, use this parameter and specify a value of your choice.</p>
+
+<p><a name="offset"></a></p>
+
+<h3>offset=</h3>
+
+<pre class="brush: html;">offset="100"</pre>
+
+<p>This parameter allows you to skip a specified amount of results. You can hardcode an amount of results to skip, or when using the <em>offset</em> parameter in the URI (or sent through POST), you can dynamically skip a specified amount of results. If this parameter is sent through POST or URI, the template level parameter will be overridden.</p>
+
+<p><a name="orderby"></a></p>
+
+<h3>orderby=</h3>
+
+<pre class="brush: html;">orderby="entry_date+desc+title+asc"</pre>
+
+<p>This parameter controls the order in which entries are retrieved by Super Search. Results can be ordered by:</p>
+
+<ul>
+<li><strong>channel_name</strong>: the short name for channel</li>
+<li><strong>channel_title</strong>: full name for channel</li>
+<li><strong>entry_date</strong> (default)</li>
+<li><strong>title</strong></li>
+<li>any custom channel field</li>
+<li><a href="third_party_support.html#solspace_rating">Solspace Rating add-on fields</a></li>
+</ul>
+
+<p>Using this parameter you can set the default ordering rules of your search results page. If an order directive is sent through POST or URI though, this parameter will be overridden. To provide multiple ordering types, the syntax is to specify an order type and then the sort direction, and should look something like this: <strong>channel+asc+title+asc</strong>. To rank your results by relevance to search terms, see the <a href="#relevance">relevance</a> parameter. If you specify the <a href="#relevance">relevance</a> parameter, your results will primarily be ordered by their relevance ranking score. However, if any entries have the same relevance score, they will then be ordered by what is specified in the <em>orderby</em> parameter.</p>
+
+<p>Additionally, in the event the order of your results is arbitrary, you can apply custom ordering to the results. For example, if you have a channel for a school class and a custom field named <em>grade</em>, and you'd like to order the results by grades, values could be <strong>A+</strong>, <strong>A</strong>, <strong>A-</strong>, <strong>B+</strong>, etc, which would not order correctly by default. Supply this format in the URI: <strong>search&amp;orderby=grade+custom+'A+,A,A-,B+,B,B-,C+,C,C-'</strong> OR <strong>search&amp;orderby=grade+custom+%22A+,A,A-,B+,B,B-,C+,C,C-%22</strong> OR use this in the <em>orderby</em> parameter: <strong>orderby="grade+custom+'A+,A,A-,B+,B,B-,C+,C,C-'"</strong>. You could also use this for ordering by channels: <strong>orderby="channel_name+custom+'featured,news_articles'"</strong>. Remember to put quotes around the string that controls the order. This feature checks for complete/exact matches, so you would usually apply this to a field with short values. Also, when using this feature, you can only use ONE order method. So for example, if you want to perform a custom order on your <em>grade</em> field, you cannot supply any additional order methods like <em>title</em> or <em>date</em>, etc.</p>
+
+<p><a name="paginate"></a></p>
+
+<h3>paginate=</h3>
+
+<pre class="brush: html;">paginate="both"</pre>
+
+<p>Pagination works just like it does in the Channel:Entries tag. When specified, and used in conjunction with the <a href="#paginate_vp">paginate</a> variable pair, pagination will display. Refer to <a href="https://docs.expressionengine.com/v3/channel/channel_entries.html#pagination">Channel:Entries</a> tag documentation for more information.</p>
+
+<p><a name="partial_author"></a></p>
+
+<h3>partial_author=</h3>
+
+<pre class="brush: html;">partial_author="yes"</pre>
+
+<p>This parameter allows you to let partial searches of author names to happen. So a search for <strong>ste</strong> would return entries authored by <em>Steven</em> and <em>Stephen</em>. This respects the <a href="#author_indicator">author_indicator</a> parameter, so this applies to screen name or username (not member ID). Defaults to <strong>no</strong>.</p>
+
+<p><a name="redirect_post"></a></p>
+
+<h3>redirect_post=</h3>
+
+<pre class="brush: html;">redirect_post="no"</pre>
+
+<p>By default, Super Search will redirect a POST search to contain the search query in the URI on the results page, similar to how it does on Google searches, etc. This allows your users to bookmark search queries, etc. To override this behaviour, specify this parameter with a value of <strong>no</strong>.</p>
+
+<p><a name="relevance"></a></p>
+
+<h3>relevance=</h3>
+
+<pre class="brush: html;">relevance="title=5+summary=1+body=2"</pre>
+
+<p>This parameter allows you to apply relevance rank to entries based on keyword matches in titles and/or custom fields. See <a href="relevance_ordering.html">Relevance Ordering</a> documentation for full explanation.</p>
+
+<p>To have the relevance feature also search on words within words (ex: count search of <strong>cat</strong> within the word <strong>caterpillar</strong>), add <em>+count_words_within_words</em> to the end of your values in the <em>relevance</em> parameter.</p>
+
+<pre class="brush: html;">relevance="title=1+summary=2+body=1+count_words_within_words"</pre>
+
+<p>If you specify the <em>relevance</em> parameter, your results will primarily be ordered by their relevance ranking score. However, if any entries have the same relevance score, they will then be ordered by what is specified in the <a href="#orderby">orderby</a> parameter.</p>
+
+<p><a name="relevance_multiplier"></a></p>
+
+<h3>relevance_multiplier=</h3>
+
+<pre class="brush: html;">relevance_multiplier="weighting_field"</pre>
+
+<p>This parameter allows you to increase the relevance rank of entries based on a value in a custom field. Used in conjunction with the <a href="#relevance">relevance</a> parameter. See <a href="relevance_ordering.html">Relevance Ordering</a> documentation for full explanation.</p>
+
+<p><a name="relevance_proximity"></a></p>
+
+<h3>relevance_proximity=</h3>
+
+<pre class="brush: html;">relevance_proximity="yes"</pre>
+
+<p>Relevance proximity only gets used when there are multiple keywords searched upon (ex: <strong>blue sweater</strong>). When it’s enabled and multiple keywords are passed, it takes into account how far apart the keywords are in the entry text (ex: <strong>i like my blue sweater</strong> is ranked higher than <strong>the sky is blue, and I’m wearing a sweater</strong>). The intention being that multi-word searches are more relevant when the search terms are closer together. To enable relevance proximity, specify a value of <strong>yes</strong> (default value of <strong>1.3</strong>), or you can specify your own numeric value. The value you specify should be higher than <strong>1</strong>, as the extra points are applied to entries with closer proximity keyword matches. By default, this parameter is set to <strong>no</strong>. This must be used in conjunction with the <a href="#relevance">relevance</a> parameter.</p>
+
+<p><a name="required"></a></p>
+
+<h3>required=</h3>
+
+<pre class="brush: html;">required="keywords|state|country"</pre>
+
+<p>This parameter allows you to specify which form fields must be searched on. If any of the specified fields are not searched on, the <a href="#super_search_missing_required_fields">super_search_missing_required_fields</a> conditional will display its contents. Because of this approach, it's still possible to continue to display search results anyway, or you can hide the results from showing. Separate multiples with the pipe character. See <a href="#required_example">code example</a> for more information.</p>
+
+<p><a name="search"></a></p>
+
+<h3>search=</h3>
+
+<pre class="brush: html;">search="keywords=green&amp;channel=products&amp;category=pants+shirts&amp;status=-closed&amp;orderby=title+asc&amp;limit=100"</pre>
+
+<p>The <em>Results</em> tag doesn't always have to be used as a results landing page. You can also use it is a full replacement to the <a href="http://ellislab.com/expressionengine/user-guide/modules/channel/channel_entries.html">Channel:Entries</a> tag. In addition to using standard <em>Channel:Entries</em> parameters, you can build a complex search query hardcoded as a parameter in the <em>Results</em> tag with the <em>search</em> parameter.</p>
+
+<p>This method will override any Super Search query through POST as well as any query through the URI. The example above will fetch 100 entries whose title or searchable custom fields contain the word <em>green</em>, from the channel whose short name is <em>products</em>. It will further filter and fetch entries that belong to either the <em>pants</em> or <em>shirts</em> categories. Entries belonging to any status but <em>closed</em> will be retrieved. The results will be ordered by <em>title</em> in <em>ascending</em> order.</p>
+
+<p><a name="search_in"></a></p>
+
+<h3>search_in=</h3>
+
+<pre class="brush: html;">search_in="title|body"</pre>
+
+<p>This parameter allows you to select which fields you want searches to search within. This field is paired up with the <a href="#keywords">keywords</a> field, and when specified, overrides default behaviour of searching within ALL searchable custom fields. Options are: <strong>title</strong>, <strong>custom_field_name</strong>, <strong>all</strong>, or a combination of <strong>title</strong> and any <strong>custom_field_name</strong>'s, delimited by pipe character (<strong>|</strong>). This parameter cannot be overwritten by data sent through POST or URI.</p>
+
+<p><a name="search_words_within_words"></a></p>
+
+<h3>search_words_within_words=</h3>
+
+<pre class="brush: html;">search_words_within_words="no"</pre>
+
+<p>This parameter allows you to stop Super Search from searching on words within words. Default value is <strong>yes</strong>. For example, a user might want to perform a search on <strong>cat</strong>, but they don't want to see results for <strong>catalog</strong>. This parameter cannot be overwritten by data sent through POST or URI.</p>
+
+<p><a name="show_expired"></a></p>
+
+<h3>show_expired=</h3>
+
+<pre class="brush: html;">show_expired="yes"</pre>
+
+<p>This parameter works just like it does for the <em>Channel:Entries</em> tag. Specify this parameter with a value of <strong>yes</strong> to display entries that have expired.</p>
+
+<p><a name="show_future_entries"></a></p>
+
+<h3>show_future_entries=</h3>
+
+<pre class="brush: html;">show_future_entries="yes"</pre>
+
+<p>This parameter works just like it does for the <em>Channel:Entries</em> tag. Specify this parameter with a value of <strong>yes</strong> to display entries that have an entry date in the future.</p>
+
+<p><a name="site"></a></p>
+
+<h3>site=</h3>
+
+<pre class="brush: html;">site="site_one|site_two"</pre>
+
+<p>This parameter allows you to filter down the results by MSM sites (if Multiple Site Manager is installed). You can specify 1 or more MSM site short names in this parameter. Refer to <a href="http://ellislab.com/expressionengine/user-guide/cp/sites/code.html#parameter">Multiple Site Manager</a> documentation for more information.</p>
+
+<p><a name="smart_excerpt"></a></p>
+
+<h3>smart_excerpt=</h3>
+
+<pre class="brush: html;">smart_excerpt="no"</pre>
+
+<p>Based on the <em>Enable Smart Excerpts?</em> preference in the Super Search control panel, if set to <strong>Yes</strong>, Super Search attempts to find the first occurrence of a search term match within the excerpt field, and start the excerpt snippet at that point (similar behaviour to what you see in search results like Google). This gives the appearance of more relevant results to the user. If no search term matches are found, the excerpt will go back to default behaviour and start at the beginning of the excerpt fields' value. The <em>Results</em> tag respects the setting in the Super Search control panel by default, but this parameter overrides it. Used in conjunction with <a href="#excerpt">excerpt</a> variable.</p>
+
+<p><a name="status"></a></p>
+
+<h3>status=</h3>
+
+<pre class="brush: html;">status="not closed|pending"</pre>
+
+<p>This parameter allows you to hardcode status(es) for the search query. Separate multiples with the pipe (<strong>|</strong>) character. This parameter <strong>cannot</strong> be overwritten by data sent through POST or URI.</p>
+
+<p><a name="tags"></a></p>
+
+<h3>tags</h3>
+
+<pre class="brush: html;">tags="cheese"</pre>
+
+<p>You can search on one or more <a href="http://www.solspace.com/software/detail/tag/">Solspace Tag</a> tags in Super Search. This method looks for tags that EXACTLY match the values you specify. If you're looking for a looser method, use the <a href="#tags-like">tags-like</a> field. You can also negate tags to exclude entries that are tagged with a certain tag. Just precede the tag name with a <em>minus</em> sign: <strong>pie+-cheese</strong> (look for <strong>pie</strong>, but NOT <strong>cheese</strong>). You can also do conjoined tag searching to find entries belonging to all of a given list of tags. Use the ampersand as the separator like this: <strong>pie&amp;&amp;cheese</strong>.</p>
+
+<p><a name="tags"></a></p>
+
+<h3>tags-like</h3>
+
+<pre class="brush: html;">tags-like="car"</pre>
+
+<p>This parameter allows you to perform partial match searches on tags. So if
+an entry is tagged with <strong>carpet</strong>, a search of <strong>car</strong> will match that.</p>
+
+<p><a name="use_ignore_word_list"></a></p>
+
+<h3>use_ignore_word_list=</h3>
+
+<pre class="brush: html;">use_ignore_word_list="no"</pre>
+
+<p>This parameter allows you to override the <em>Ignore Wordlist</em> preference in the Super Search control panel. If set to <strong>yes</strong>, it will ignore any search terms in a <em>keywords</em> search that match words contained in the Ignore Wordlist. If set to <strong>no</strong>, no search terms will be ignored. Default behaviour (if this parameter is not specified) is to respect the preference in the control panel.</p>
+
+<p><a name="where"></a></p>
+
+<h3>where=</h3>
+
+<pre class="brush: html;">where="all"</pre>
+
+<p>This parameter lets you specify how you want users' keyword search to be performed. Use of this parameter will override <a href="#inclusive_keywords">inclusive_keywords</a> and <a href="#search_words_within_words">search_words_within_words</a> features. Used in conjunction with the <a href="#keywords">keywords</a> field. This parameter cannot be overwritten by data sent through POST or URI. Options are:</p>
+
+<ul>
+<li><em>all</em> - only results containing all of the specified words will be returned</li>
+<li><em>any</em> - results containing any of the specified words will be returned</li>
+<li><em>exact</em> - only results containing the entire matching phrase (case sensitive) will be returned</li>
+<li><em>word</em> - only results containing the exact phrase specified will be returned</li>
+</ul>
+
+<p><a name="wildcard_character"></a></p>
+
+<h3>wildcard_character=</h3>
+
+<pre class="brush: html;">wildcard_character="*"</pre>
+
+<p>This parameter allows you to customize what the wildcard character will be for the search query. Default value is an asterisk (<strong>&#42;</strong>). This parameter must be used in conjunction with the <a href="#wildcard_fields">wildcard_fields</a> parameter.</p>
+
+<p><a name="wildcard_fields"></a></p>
+
+<h3>wildcard_fields=</h3>
+
+<pre class="brush: html;">wildcard_fields="title|body|extended"</pre>
+
+<p>Calling this parameter allows your users to use a wildcard character on their searches. Wildcard searching only works on <em>keywords</em> searches (within that: <strong>title</strong> and <strong>custom field</strong>). For example, a search of <strong>cat&#42;</strong> would return results for <strong>caterpillar</strong> and <strong>catalog</strong>. Or a search for <strong>g&#42;se</strong> would return results for <strong>goose</strong> and <strong>geese</strong>. You can customize the wildcard character with the <a href="#wildcard_character">wildcard_character</a> parameter. To use, specify the field names you wish to have the keyword search in, separated by the pipe character. This feature is OFF by default. To allow on all custom fields except specific ones, you can prepend the set of field names with <strong>not</strong>. Ex:</p>
+
+<pre class="brush: html;">wildcard_fields="not summary|price"</pre>
+
+<p><a name="variables"></a></p>
+
+<h2>Variables</h2>
+
+<p>In addition to most variables available in the <em>Channel:Entries</em> tag, the following variables are available for use <strong>inside</strong> <em>Super_Search:Results</em> tag:</p>
+
+<ul>
+<li><a href="#excerpt">excerpt</a></li>
+<li><a href="#relevance_count">relevance_count</a></li>
+<li><a href="#super_search_current_title_letter">super_search_current_title_letter</a></li>
+<li><a href="#super_search_previous_title_letter">super_search_previous_title_letter</a></li>
+<li><a href="#super_search_keywords">super_search_keywords</a></li>
+<li><a href="#super_search_total_results">super_search_total_results</a></li>
+</ul>
+
+<p>Available <strong>outside</strong> of <em>Super_Search:Results</em> tag (anywhere on page):</p>
+
+<ul>
+<li><a href="#super_search_entry_date-from">super_search_entry_date-from</a></li>
+<li><a href="#super_search_entry_date-to">super_search_entry_date-to</a></li>
+<li><a href="#super_search_expiry_date-from">super_search_expiry_date-from</a></li>
+<li><a href="#super_search_expiry_date-to">super_search_expiry_date-to</a></li>
+<li><a href="#super_search_keywords">super_search_keywords</a></li>
+<li><a href="#super_search_total_results">super_search_total_results</a></li>
+<li><a href="#super_search_your_custom_field">super_search_YOUR_CUSTOM_FIELD</a></li>
+</ul>
+
+<p><a name="excerpt"></a></p>
+
+<h3>excerpt</h3>
+
+<pre class="brush: html;">{excerpt}</pre>
+
+<p>This variable will behave just like it does in the native EE Search module. It will strip HTML and other things. If <strong>smart excerpts</strong> preference in Super Search control panel is set to <strong>Yes</strong> (or <a href="#smart_excerpt">smart_excerpt</a> parameter is set to <strong>yes</strong>), Super Search will attempt to find the first occurrence of a search term match within the excerpt field, and start the excerpt snippet at that point (similar behaviour to what you see in search results like Google). This gives the appearance of more relevant results to the user. If no search term matches are found, the excerpt will go back to default behaviour and start at the beginning of the excerpt fields' value. The <em>Results</em> tag respects the setting in the Super Search control panel by default, but this parameter overrides it. Used <strong>inside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="relevance_count"></a></p>
+
+<h3>relevance_count</h3>
+
+<pre class="brush: html;">{relevance_count}</pre>
+
+<p>When using the <a href="#relevance">relevance</a> parameter, this variable will output the total relevance score for each result based on the matches and point values you've provided. See <a href="relevance_ordering.html">Relevance Ordering</a> documentation for more information. Used <strong>inside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_current_title_letter"></a></p>
+
+<h3>super_search_current_title_letter</h3>
+
+<pre class="brush: html;">{super_search_current_title_letter}</pre>
+
+<p>This variable will parse as the first letter of the current entry in the results. For example, if the entry was titled <em>Bird is the Word</em>, this variable would parse as <em>B</em>. The key purpose of this variable is to help create alphabet headers for your results when ordering by title. This is to be used in conjunction with the <a href="#super_search_previous_title_letter">super_search_previous_title_letter</a> variable, and a conditional can be used to create the alphabet header:</p>
+
+<pre class="brush: html;">{if super_search_current_title_letter != super_search_previous_title_letter}
+    &lt;h2&gt;{super_search_current_title_letter}&lt;/h2&gt;
+{/if}
+</pre>
+
+<p>Would return something like this:</p>
+
+<p><strong>A</strong></p>
+
+<ul>
+<li>Aramex</li>
+<li>Avon</li>
+</ul>
+
+<hr />
+
+<p><strong>C</strong></p>
+
+<ul>
+<li>Carlsberg</li>
+<li>Coca-Cola Company</li>
+</ul>
+
+<hr />
+
+<p><a name="super_search_previous_title_letter"></a></p>
+
+<h3>super_search_previous_title_letter</h3>
+
+<pre class="brush: html;">{super_search_previous_title_letter}</pre>
+
+<p>This variable will parse as the first letter of the previous entry in the results. For example, if the entry result before the current entry was titled <em>Sunshine, Lollipops and Rainbows</em>, this variable would parse as <em>S</em>. The key purpose of this variable is to help create alphabet headers for your results when ordering by title. This is to be used in conjunction with the <a href="#super_search_current_title_letter">super_search_current_title_letter</a> variable, and a conditional can be used to create the alphabet header:</p>
+
+<pre class="brush: html;">{if super_search_current_title_letter != super_search_previous_title_letter}
+    &lt;h2&gt;{super_search_current_title_letter}&lt;/h2&gt;
+{/if}
+</pre>
+
+<p>Would return something like this:</p>
+
+<p><strong>A</strong></p>
+
+<ul>
+<li>Aramex</li>
+<li>Avon</li>
+</ul>
+
+<hr />
+
+<p><strong>C</strong></p>
+
+<ul>
+<li>Carlsberg</li>
+<li>Coca-Cola Company</li>
+</ul>
+
+<hr />
+
+<p><a name="super_search_entry_date-from"></a></p>
+
+<h3>super_search_entry_date-from</h3>
+
+<pre class="brush: html;">{super_search_entry_date-from format="%Y-%m-%d"}</pre>
+
+<p>This variable will display the value searched for in the <em>entry_date-from</em> field. To apply date formatting to the value, just specify usual date formatting syntax. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_entry_date-to"></a></p>
+
+<h3>super_search_entry_date-to</h3>
+
+<pre class="brush: html;">{super_search_entry_date-to format="%Y-%m-%d"}</pre>
+
+<p>This variable will display the value searched for in the <em>entry_date-to</em> field. To apply date formatting to the value, just specify usual date formatting syntax. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_expiry_date-from"></a></p>
+
+<h3>super_search_expiry_date-from</h3>
+
+<pre class="brush: html;">{super_search_expiry_date-from format="%Y-%m-%d"}</pre>
+
+<p>This variable will display the value searched for in the <em>expiry_date-from</em> field. To apply date formatting to the value, just specify usual date formatting syntax. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_expiry_date-to"></a></p>
+
+<h3>super_search_expiry_date-to</h3>
+
+<pre class="brush: html;">{super_search_expiry_date-to format="%Y-%m-%d"}</pre>
+
+<p>This variable will display the value searched for in the <em>expiry_date-to</em> field. To apply date formatting to the value, just specify usual date formatting syntax. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_keywords"></a></p>
+
+<h3>super_search_keywords</h3>
+
+<pre class="brush: html;">{super_search_keywords}</pre>
+
+<p>This variable will display the search terms specified in a keyword search (using the <em>keywords</em> form name in a search form, or in the URI). Can be used both inside or <strong>outside</strong> of the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_total_results"></a></p>
+
+<h3>super_search_total_results</h3>
+
+<pre class="brush: html;">{super_search_total_results}</pre>
+
+<p>This variable will output the total number of results for the given search query. Can be used both inside or <strong>outside</strong> of the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_your_custom_field"></a></p>
+
+<h3>super_search_YOUR_CUSTOM_FIELD</h3>
+
+<pre class="brush: html;">{super_search_YOUR_CUSTOM_FIELD}</pre>
+
+<p>For each custom field you search on, you can display the value that was searched upon. Just prepend each variable with <em>super_search_</em>. So if you have a custom field named <em>product_description</em>, you'd call that search term in your template as <strong>{super_search_product_description}</strong>. In the event you're using <em>-exact</em>, <em>-empty</em>, <em>-from</em>, and/or <em>-to</em> types for your field searches, remember to include that in the variable name as well. For example, a range (from/to) search on a field called <em>price</em> would look like this:</p>
+
+<pre class="brush: html;">Products priced from "{super_search_price-from}" to "{super_search_price-to}"</pre>
+
+<p>Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="variable_pairs"></a></p>
+
+<h2>Variable Pairs</h2>
+
+<p>In addition to most variable pairs available in the <em>Channel:Entries</em> tag, the following variable pair is available for use:</p>
+
+<ul>
+<li><a href="#paginate_vp">paginate</a></li>
+<li><a href="#super_search_required_fields">super_search_required_fields</a></li>
+</ul>
+
+<p><a name="paginate_vp"></a></p>
+
+<h3>paginate</h3>
+
+<pre class="brush: html;">{paginate}
+    &lt;li&gt;
+        Page {current_page} of
+        {total_pages} pages &amp;nbsp;
+        {pagination_links}
+    &lt;/li&gt;
+{/paginate}
+</pre>
+
+<p>OR</p>
+
+<pre class="brush: html;">{paginate}
+&lt;ul class="pagination"&gt;
+    {pagination_links}
+        {first_page}
+            &lt;li&gt;&lt;a href="{pagination_url}"&gt;First&lt;/a&gt;&lt;/li&gt;
+        {/first_page}
+        {previous_page}
+            &lt;li&gt;&lt;a href="{pagination_url}"&gt;&amp;laquo; Previous&lt;/a&gt;&lt;/li&gt;
+        {/previous_page}
+        {page}
+            &lt;li{if current_page} class="active"{/if}&gt;&lt;a href="{pagination_url}"&gt;{pagination_page_number}&lt;/a&gt;&lt;/li&gt;
+        {/page}
+        {next_page}
+            &lt;li&gt;&lt;a href="{pagination_url}"&gt;Next &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+        {/next_page}
+        {last_page}
+            &lt;li&gt;&lt;a href="{pagination_url}"&gt;Last&lt;/a&gt;&lt;/li&gt;
+        {/last_page}
+    {/pagination_links}
+&lt;/ul&gt;
+{/paginate}
+</pre>
+
+<p>Pagination is available for this tag and works just like regular EE pagination. Used in conjunction with the <a href="#paginate">paginate</a> parameter.</p>
+
+<p><a name="super_search_required_fields"></a></p>
+
+<h3>super_search_required_fields</h3>
+
+<pre class="brush: html;">&lt;ul&gt;
+{super_search_required_fields}
+    &lt;li&gt;{super_search_name} or {super_search_label}&lt;/li&gt;
+{/super_search_required_fields}
+&lt;/ul&gt;
+</pre>
+
+<p>This variable pair becomes available for use within the <a href="#super_search_missing_required_fields">super_search_missing_required_fields</a> conditional, to help with parsing of error message. You would typically use this to parse a list of fields that were specified in the <a href="#required">required</a> and NOT searched upon. Inside of this variable pair, <em>{super_search_name}</em> and <em>{super_search_label}</em> variables are available for use. The <em>super_search_name</em> variable will display the short name of the custom field, while <em>super_search_label</em> will display the label of the custom field. See <a href="#required_example">code example</a> for more information.</p>
+
+<p><a name="conditionals"></a></p>
+
+<h2>Conditionals</h2>
+
+<p>In addition to most conditionals available in the <em>Channel:Entries</em> tag, the following conditionals are available for use:</p>
+
+<ul>
+<li><a href="#next_page">next_page</a></li>
+<li><a href="#previous_page">previous_page</a></li>
+<li><a href="#super_search_category">super_search_category</a></li>
+<li><a href="#super_search_channel">super_search_channel</a></li>
+<li><a href="#super_search_status">super_search_status</a></li>
+<li><a href="#super_search_no_results">super_search_no_results</a></li>
+<li><a href="#super_search_missing_required_fields">super_search_missing_required_fields</a></li>
+</ul>
+
+<p><a name="next_page"></a></p>
+
+<h3>next_page</h3>
+
+<pre class="brush: html;">{if next_page}{/if}</pre>
+
+<p>Just like in <em>Channel:Entries</em> pagination, this conditional allows you create a custom <strong>Next</strong> page link.</p>
+
+<p><a name="previous_page"></a></p>
+
+<h3>previous_page</h3>
+
+<pre class="brush: html;">{if previous_page}{/if}</pre>
+
+<p>Just like in <em>Channel:Entries</em> pagination, this conditional allows you create a custom <strong>Previous</strong> page link.</p>
+
+<p><a name="super_search_category"></a></p>
+
+<h3>super_search_category</h3>
+
+<pre class="brush: html;">{if super_search_category_candy}
+    Candy
+{/if}
+{if super_search_category_not_candy}
+    Something Else
+{/if} `
+</pre>
+
+<p>This conditional allows you to evaluate a POST search and/or the URI to see if a specific category was or wasn't searched upon. Syntax works like this: <em>{if super_search_category</em> + <strong>your_category_url_title</strong> + <strong>}</strong> or in <em>NOT</em> searches: <em>{if super_search_category_not</em> + <strong>your_category_url_title</strong> + <strong>}</strong>. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_channel"></a></p>
+
+<h3>super_search_channel</h3>
+
+<pre class="brush: html;">{if super_search_channel_articles}
+    Articles
+{/if}
+{if super_search_channel_not_articles}
+    Something Else
+{/if}
+</pre>
+
+<p>This conditional allows you to evaluate a POST search and/or the URI to see if a specific channel was or wasn't searched upon. Syntax works like this: <em>{if super_search_channel</em> + <strong>your_channel_short_name</strong> + <strong>}</strong> or in NOT searches: <em>{if super_search_channel_not</em> + <strong>your_channel_short_name</strong> + <strong>}</strong>. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_status"></a></p>
+
+<h3>super_search_status</h3>
+
+<pre class="brush: html;">{if super_search_status_open}
+    Open
+{/if}
+{if super_search_status_not_closed}
+    Not Closed
+{/if} `
+</pre>
+
+<p>This conditional allows you to evaluate a POST search and/or the URI to see if a specific status was or wasn't searched upon. Syntax works like this: <em>{if super_search_status</em> + <strong>your_status_name</strong> + <strong>}</strong> or in NOT searches: <em>{if super_search_status_not</em> + <strong>your_status_name</strong> + <strong>}</strong>. Used <strong>outside</strong> the <em>Super_Search:Results</em> tag.</p>
+
+<p><a name="super_search_no_results"></a></p>
+
+<h3>super_search_no_results</h3>
+
+<pre class="brush: html;">{if super_search_no_results}
+    Sorry, no results were found.
+{/if}
+</pre>
+
+<p>This conditional displays it's contents when there are no results found.</p>
+
+<p><a name="super_search_missing_required_fields"></a></p>
+
+<h3>super_search_missing_required_fields</h3>
+
+<pre class="brush: html;">{if super_search_missing_required_fields} {/if}</pre>
+
+<p>This conditional works similar to the way <a href="#super_search_no_results">super_search_no_results</a> does, but displays it's contents when specified fields in the <a href="#required">required</a> parameter are NOT searched on. Because of this approach, it's still possible to continue to display search results anyway, or you can hide the results from showing. Within this conditional, the <a href="#super_search_required_fields">super_search_required_fields</a> variable pair becomes available to help with parsing error message. See <a href="#required_example">code example</a> for more information.</p>
+
+<p><a name="examples"></a></p>
+
+<h2>Examples</h2>
+
+<h3>Basic Results Page</h3>
+
+<p>The following sample code is a basic example of how your Search Results page might look:</p>
+
+<pre class="brush: html;">&lt;h2&gt;
+    {super_search_total_results}
+    results for the keyword search:
+    "{super_search_keywords}"
+&lt;/h2&gt;
+
+{exp:super_search:results
+    channel="articles"
+    paginate="both"
+    limit="10"
+}
+    &lt;div class="search_result"&gt;
+        &lt;h3&gt;{title}&lt;/h3&gt;
+        &lt;p&gt;Price: ${price}&lt;/p&gt;
+        &lt;p&gt;{excerpt}&lt;/p&gt;
+    &lt;/div&gt;
+    {if super_search_no_results}
+        &lt;p&gt;No results matched your query.&lt;/p&gt;
+    {/if}
+    {paginate}
+        &lt;p&gt;Page {current_page} of {total_pages} pages. {pagination_links}&lt;/p&gt;
+    {/paginate}
+{/exp:super_search:results}
+</pre>
+
+<h3>Results with Option to Save Search Query</h3>
+
+<p>The following sample code is a basic example of how your Search Results page might look with the <a href="#super_search_save_search_form">super_search_save_search_form</a> variable pair implemented in order to save searches to a users' history:</p>
+
+<pre class="brush: html;">{exp:super_search:save_search_form}
+    &lt;p&gt;
+        &lt;label for="super_search_name"&gt;Save this Search?&lt;label&gt;
+        &lt;input type="text" name="super_search_name" id="super_search_name" value="{super_search_name}" /&gt;
+        &lt;input type="submit" name="submit" value="Save!" /&gt;
+    &lt;/p&gt;
+{/exp:super_search:save_search_form}
+
+{exp:super_search:results
+    channel="articles"
+    paginate="both"
+    limit="10"
+}
+    &lt;div class="search_result"&gt;
+        &lt;h3&gt;{title}&lt;/h3&gt;
+        &lt;p&gt;Price: ${price}&lt;/p&gt;
+        &lt;p&gt;{excerpt}&lt;/p&gt;
+    &lt;/div&gt;
+    {if super_search_no_results}
+        &lt;p&gt;No results matched your query.&lt;/p&gt;
+    {/if}
+    {paginate}
+        &lt;p&gt;Page {current_page} of {total_pages} pages. {pagination_links}&lt;/p&gt;
+    {/paginate}
+{/exp:super_search:results}
+</pre>
+
+<h3>Results Page with Search Form</h3>
+
+<p>The following sample code is how your results page might look with a search form integrated to allow the user to search again and/or refine their existing search:</p>
+
+<pre class="brush: html;">&lt;h1&gt;
+    {super_search_total_results}
+    results for the keyword search:
+    "{super_search_keywords}"
+&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;h2&gt;Refine your Search?&lt;/h2&gt;
+{exp:super_search:form
+    return="supersearch/results"
+}
+    &lt;h3&gt;Search for Products:&lt;/h3&gt;
+    &lt;p&gt;
+        &lt;label for="keywords"&gt;Keywords:&lt;/label&gt;
+        &lt;input type="text" name="keywords" id="keywords" value="{super_search_keywords}" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label for="price-from"&gt;Price from:&lt;/label&gt;
+        &lt;input type="text" name="price-from" id="price-from" value="{super_search_price-from}" /&gt;
+        &lt;label for="price-to"&gt;to:&lt;/label&gt;
+        &lt;input type="text" name="price-to" id="price-to" value="{super_search_price-to}" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type="submit" name="submit" value="Search Again!" /&gt;
+    &lt;/p&gt;
+{/exp:super_search:form}
+
+&lt;hr /&gt;
+
+{exp:super_search:results
+    channel="articles"
+    paginate="both"
+    limit="10"
+}
+    &lt;div class="search_result"&gt;
+        &lt;h3&gt;{title}&lt;/h3&gt;
+        &lt;p&gt;Price: ${price}&lt;/p&gt;
+        &lt;p&gt;{excerpt}&lt;/p&gt;
+    &lt;/div&gt;
+    {if super_search_no_results}
+        &lt;p&gt;No results matched your query.&lt;/p&gt;
+    {/if}
+    {paginate}
+        &lt;p&gt;Page {current_page} of {total_pages} pages. {pagination_links}&lt;/p&gt;
+    {/paginate}
+{/exp:super_search:results}
+</pre>
+
+<p><a name="required_example"></a></p>
+
+<h3>Results Page with "<em>Required</em>" Fields</h3>
+
+<p>The following sample code is a basic example of how your Search Results page might look with the <a href="#required">required</a> parameter and <a href="#super_search_missing_required_fields">super_search_missing_required_fields</a> conditional in place:</p>
+
+<pre class="brush: html;">{exp:super_search:results
+    channel="articles"
+    paginate="both"
+    limit="10"
+    required="keywords|state|country"
+}
+    {if super_search_missing_required_fields}
+        &lt;p&gt;Error! The following fields are required:&lt;/p&gt;
+        &lt;ul&gt;
+        {super_search_required_fields}
+            &lt;li&gt;{super_search_label}&lt;/li&gt;
+        {/super_search_required_fields}
+        &lt;/ul&gt;
+    {if:else}
+        &lt;div class="search_result"&gt;
+            &lt;h3&gt;{title}&lt;/h3&gt;
+            &lt;p&gt;Price: ${price}&lt;/p&gt;
+            &lt;p&gt;{excerpt}&lt;/p&gt;
+        &lt;/div&gt;
+    {/if}
+    {if super_search_no_results}
+        &lt;p&gt;No results matched your query.&lt;/p&gt;
+    {/if}
+    {paginate}
+        &lt;p&gt;Page {current_page} of {total_pages} pages. {pagination_links}&lt;/p&gt;
+    {/paginate}
+{/exp:super_search:results}
+</pre>
+
+<h3><em>Super_Search:Results</em> behaving like <em>Channel:Entries</em></h3>
+
+<p>The following sample code shows how you can use the <em>Super_Search:Results</em> tag to behave like the <em>Channel:Entries</em> tag (without submitting a search query to this page):</p>
+
+<pre class="brush: html;">&lt;ul&gt;
+{exp:super_search:results
+    channel="articles"
+    orderby="title"
+    limit="10"
+}
+    &lt;li&gt;&lt;a href="{url_title_path='articles/entry'}"&gt;{title}&lt;/a&gt;&lt;/li&gt;
+{/exp:super_search:results}
+&lt;/ul&gt;
+</pre>
+
+<p>The following sample code shows how you can use the <em>Super_Search:Results</em> tag to behave like the <em>Channel:Entries</em> tag, and hardcode a search query (without submitting a search query to this page):</p>
+
+<pre class="brush: html;">&lt;ul&gt;
+{exp:super_search:results
+    search="keywords=green&amp;channel=products&amp;category=pants+shirts&amp;status=-closed&amp;orderby=title+asc&amp;limit=20"
+}
+    &lt;li&gt;&lt;a href="{url_title_path='products/entry'}"&gt;{title}&lt;/a&gt;&lt;/li&gt;
+{/exp:super_search:results}
+&lt;/ul&gt;
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

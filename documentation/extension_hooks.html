@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Extension Hooks | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>Extension Hooks</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="curated_results.html">Curated_Results</a></li>
+<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="save_search_form.html">Save_Search_Form</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Extension Hooks</h1>
+
+<ul>
+<li><a href="#super_search_extra_basic_fields">super_search_extra_basic_fields</a></li>
+<li><a href="#super_search_alter_search">super_search_alter_search</a></li>
+<li><a href="#super_search_alter_ids">super_search_alter_ids</a></li>
+<li><a href="#super_search_entries_row_inject">super_search_entries_row_inject</a></li>
+<li><a href="#super_search_parse_uri_end">super_search_parse_uri_end</a></li>
+<li><a href="#super_search_prep_fuzzy_keywords_start">super_search_prep_fuzzy_keywords_start</a></li>
+<li><a href="#super_search_prep_fuzzy_keywords_end">super_search_prep_fuzzy_keywords_end</a></li>
+<li><a href="#super_search_prep_order">super_search_prep_order</a></li>
+<li><a href="#super_search_do_search_and_array">super_search_do_search_and_array</a></li>
+<li><a href="#super_search_table_columns">super_search_table_columns</a></li>
+<li><a href="#super_search_array_variables">super_search_array_variables</a></li>
+</ul>
+
+<p><a name="super_search_extra_basic_fields"></a></p>
+
+<h2>super_search_extra_basic_fields</h2>
+
+<p>This hook fires in <em>mod.super_search.php</em> inside the <strong>do_search()</strong> method. It fires right as Super Search is deciding what to look for in the URL. Passed through the hook is <strong>$this</strong> which contains a ton of the architecture and brain of Super Search. An extension running on this hook can return an array of additional arguments to look for in the URL or POST. For example, the <em>Tag</em> module adds '<strong>tags'</strong> and <strong>'tags-like'</strong> to the array of things Super Search tries to find in the URL. Once those arguments are found, other extension hooks can fire from third party add-ons and utilize the data captured from the URL.</p>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_extra_basic_fields') === TRUE)
+{
+    $basic_fields = ee()-&gt;extensions-&gt;call('super_search_extra_basic_fields', $this);
+
+    foreach ( $basic_fields as $bf )
+    {
+        if ( isset( $q[ $bf ] ) === TRUE )
+        {
+            $this-&gt;sess['search']['q'][ $bf ]   = $this-&gt;_prep_keywords( $q[ $bf ] );
+        }
+    }
+}
+</pre>
+
+<p><a name="super_search_alter_search"></a></p>
+
+<h2>super_search_alter_search</h2>
+
+<p>This hook fires in <em>mod.super_search.php</em> inside <strong>do_search()</strong>. Pass through it is <strong>$this</strong> which contains most of everything relevant that Super Search cares about during a search routine. An extension running on this hook can alter the contents of the EE session classes cache array. Inside that array is a multi-dimensional array named <strong>cache['modules']['super_search']</strong>. In that is everything Super Search does throughout its search routine. Search arguments found in the URL or post can be altered here before the search runs against the DB.</p>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_alter_search') === TRUE)
+{
+    $edata = ee()-&gt;extensions-&gt;call('super_search_alter_search', $this);
+    if (ee()-&gt;extensions-&gt;end_script === TRUE)
+    {
+        $this-&gt;_cache( $this-&gt;sess( 'uri' ), '', 0 );
+        return FALSE;
+    }
+}
+</pre>
+
+<p><a name="super_search_alter_ids"></a></p>
+
+<h2>super_search_alter_ids</h2>
+
+<p>This hook fires in <em>mod.super_search.php</em> inside <strong>do_search()</strong>. It allows a developer to alter the final list of entry ID's that were returned once Super Search hit the DB with the search arguments. That list of ID's is what is passed to the parsing routines to handle page output. The return for an extension running on this hook can override the list of ID's found in the DB.</p>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_alter_ids') === TRUE )
+{
+    $ext_ids = ee()-&gt;extensions-&gt;call( 'super_search_alter_ids', $ids, $this );
+
+    //double bag it
+    if (is_array($ext_ids))
+    {
+        $ids = $ext_ids;
+    }
+
+    if (ee()-&gt;extensions-&gt;end_script === TRUE)
+    {
+        $this-&gt;_cache( $this-&gt;sess( 'uri' ), '', 0 );
+        return FALSE;
+    }
+
+    if ( ! empty( $this-&gt;sess['search']['q']['include_entry_ids'] ) )
+    {
+        $ids    = array_intersect( $ids, $this-&gt;sess['search']['q']['include_entry_ids'] );
+
+        if ( empty( $ids ) )
+        {
+            $this-&gt;_cache( $this-&gt;sess( 'uri' ), '', 0 );
+            return FALSE;
+        }
+    }
+}
+</pre>
+
+<p><a name="super_search_entries_row_inject"></a></p>
+
+<h2>super_search_entries_row_inject</h2>
+
+<p>As Super Search parses results into a template, it runs through each result. This hook allows a developer to alter the variables inside each row. Passed through the hook are <strong>$this</strong> and <strong>$row</strong>, in that order. An extension can return the <strong>$row</strong> altered as they see fit.</p>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_entries_row_inject') === TRUE)
+{
+    $row    = ee()-&gt;extensions-&gt;call( 'super_search_entries_row_inject', $this, $row );
+}
+</pre>
+
+<p><a name="super_search_parse_uri_end"></a></p>
+
+<h2>super_search_parse_uri_end</h2>
+
+<p>The URI gets parsed by Super Search into an array. That array is alterable through this hook. This hook passes <strong>$this</strong> and <strong>$q</strong>.</p>
+
+<ul>
+<li><strong>$q</strong> is the array containing the search arguments found in the URI.</li>
+</ul>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_parse_uri_end') === TRUE)
+{
+    $q  = ee()-&gt;extensions-&gt;call( 'super_search_parse_uri_end', $this, $q );
+}
+</pre>
+
+<p><a name="super_search_prep_fuzzy_keywords_start"></a></p>
+
+<h2>super_search_prep_fuzzy_keywords_start</h2>
+
+<p>As the fuzzy keywords method starts running, to sniff and smartly replace mistyped keywords, this extension fires. It sends <strong>$this</strong> and <strong>$arr</strong>.</p>
+
+<ul>
+<li><strong>$arr</strong> is the list of keywords. It returns <strong>$arr</strong> which an extension can alter with whatever better versions of keywords it deems fit.</li>
+</ul>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_prep_fuzzy_keywords_start') === TRUE )
+{
+    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_prep_fuzzy_keywords_start', $this, $arr );
+}
+</pre>
+
+<p><a name="super_search_prep_fuzzy_keywords_end"></a></p>
+
+<h2>super_search_prep_fuzzy_keywords_end</h2>
+
+<p>Once fuzzy keywords has run, this hook fires to send and receive the list of corrected keywords. <strong>$this</strong> and <strong>$arr</strong> are passed.</p>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_prep_fuzzy_keywords_end') === TRUE )
+{
+    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_prep_fuzzy_keywords_end', $this, $arr );
+}
+</pre>
+
+<p><a name="super_search_prep_order"></a></p>
+
+<h2>super_search_prep_order</h2>
+
+<p>The <em>Rating</em> module uses this hook to sniff for an order directive like <strong>order=rating</strong>. When it sees that, it runs its own routine to order the list of known entry ID's by Bayesian rating. The <em>Rating</em> module returns a forced order list of entry ID's as part of the order directive that Super Search will later use against the DB. Another extension could behave similarly and force the order of entries as it sees fit. <strong>$this</strong>, <strong>$arr</strong> and <strong>$ord</strong> are passed. <strong>$arr</strong> is returned.</p>
+
+<ul>
+<li><strong>$arr</strong> is the array of order directives.</li>
+<li><strong>$ord</strong> is the list of <strong>ASC</strong> / <strong>DESC</strong> switches per order directive.</li>
+</ul>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_prep_order') === TRUE )
+{
+    $failsafe   = $arr;
+
+    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_prep_order', $this, $arr, $ord );
+
+    $arr    = ( is_null( $arr )) ? $failsafe: $arr;
+}
+</pre>
+
+<p><a name="super_search_do_search_and_array"></a></p>
+
+<h2>super_search_do_search_and_array</h2>
+
+<p>This is a more granular way to alter the search arguments before they hit the DB. <strong>$this</strong> and <strong>$arr</strong> are passed. <strong>$arr</strong> is complicated. It contains several arrays. Some background on Super Search is helpful here.</p>
+
+<p>Super Search divides a search into several arrays:</p>
+
+<ul>
+<li><strong>$from</strong> is a list of DB tables that should be queried. It's basically the list of tables to join for a search. Advanced programming skill is required to grok this one.</li>
+<li><strong>$and</strong> is a complex list of conjoined search conditions that must all be met to return a result.</li>
+<li><strong>$not</strong> is an array of search terms upon which no results should match.</li>
+<li><strong>$or</strong> is where most of the work is done as it contains a list of conditions, any of which when satisfied return results.</li>
+<li><strong>$subids</strong> is a straight up list of entry ID's to find no matter what. An extension could run on this hook and alter one or more of these important arrays to force Super Search to search for stuff it might not otherwise want to search for.</li>
+</ul>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_do_search_and_array') === TRUE)
+{
+    $arr    = array( 'from' =&gt; $this-&gt;sess['search']['from'], 'and' =&gt; $and, 'not' =&gt; $not, 'or' =&gt; $or, 'subids' =&gt; $subids );
+
+    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_do_search_and_array', $this, $arr);
+
+    if (ee()-&gt;extensions-&gt;end_script === TRUE)
+    {
+        return FALSE;
+    }
+
+    $this-&gt;sess['search']['from']   = ( empty( $arr['from'] ) ) ? $this-&gt;sess['search']['from']: $arr['from'];
+    $and    = ( empty( $arr['and'] ) ) ? $and: $arr['and'];
+    $not    = ( empty( $arr['not'] ) ) ? $not: $arr['not'];
+    $or     = ( empty( $arr['or'] ) ) ? $or: $arr['or'];
+    $subids = ( empty( $arr['subids'] ) ) ? $subids: $arr['subids'];
+}
+</pre>
+
+<p><a name="super_search_table_columns"></a></p>
+
+<h2>super_search_table_columns</h2>
+
+<p>Super Search searches DB tables for specific columns. Some columns it doesn't care about. This hook lets a developer alter what is searched for. The hook passes <strong>$this</strong> and <strong>$fields</strong>.</p>
+
+<ul>
+<li><strong>$fields</strong> is a multi-dimensional array containing an array for each table we gather data from. Out of the box, Super Search gathers from <strong>exp_channel_titles</strong> and <strong>exp_members</strong>. The hook returns <strong>$fields</strong>.</li>
+</ul>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_table_columns') === TRUE)
+{
+    $fields = ee()-&gt;extensions-&gt;call( 'super_search_table_columns', $this, $fields );
+}
+</pre>
+
+<p><a name="super_search_array_variables"></a></p>
+
+<h2>super_search_array_variables</h2>
+
+<p>When you run a search, the arguments you searched for become available in the template as variables. This hook passes <strong>$this</strong>, <strong>$parse</strong> and <strong>$p</strong>.</p>
+
+<ul>
+<li><strong>$parse</strong> contains the current list of parsable variables that Super Search is planning to turn into variables in a template.</li>
+<li><strong>$p</strong> is the parsing prefix like <strong>'syper_search_'</strong>. The hook returns the <strong>$parse</strong> array.</li>
+</ul>
+
+<h4>Hook Code:</h4>
+
+<pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_array_variables') === TRUE )
+{
+    $parse  = ee()-&gt;extensions-&gt;call( 'super_search_array_variables', $this, $parse, $p );
+}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

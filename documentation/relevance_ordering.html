@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Relevance Ordering | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>Relevance Ordering</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><h3>Setup</h3>
+
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="updates.html">Updates</a></li>
+</ul></li>
+<li><h3>Getting Started</h3>
+
+<ul>
+<li><a href="introduction.html">Introduction</a></li>
+<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li class="current"><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+</ul></li>
+<li><h3>Templating</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="curated_results.html">Curated_Results</a></li>
+<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
+<li><a href="form.html">Form</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="save_search_form.html">Save_Search_Form</a></li>
+</ul></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<h1>Relevance Ordering</h1>
+
+<p>Super Search allows you to create simple and advanced algorithms to control ranking of entries in search results. This is done by using the <strong>relevance</strong>-related parameters in the <a href="results.html">Super_Search:Results</a> tag. First and foremost, the <strong>relevance</strong> functionality only works on Keyword searches, and all <strong>relevance</strong>-related parameters mentioned below refer to usage in the <a href="results.html">Super_Search:Results</a> tag. This page serves as a detailed explanation for how to implement this in your site.</p>
+
+<ul>
+<li><a href="#ordering_by_relevance">Ordering by Relevance</a></li>
+<li><a href="#advanced_algorithms">Advanced Relevance Algorithms</a></li>
+<li><a href="#going_deeper">Going Deeper</a></li>
+<li><a href="#showing_relevance_scores">Showing Relevance Scores</a></li>
+<li><a href="#examples">Code Examples</a></li>
+</ul>
+
+<p><a name="ordering_by_relevance"></a></p>
+
+<h2>Ordering by Relevance</h2>
+
+<p>The <em>relevance</em> parameter tells Super Search to rank entry results in order of their relevance. The relevance algorithm is fairly simple in that it merely counts the frequency your keywords appear in the fields you indicate in the parameter. An entry where your keywords occur more frequently ranks higher than entries with lesser keyword frequency.</p>
+
+<p>Because relevance ranking is slower than normal searching, it is turned off in Super Search by default. Turn it on, simply by providing the <em>relevance</em> parameter with field names and numeric weights as the value of the parameter. You can indicate <em>title</em> field and all custom fields for relevance searching.</p>
+
+<pre class="brush: html;">relevance="title=5+summary=1+body=2"</pre>
+
+<p>In the above example, entries will be ranked by relevance where the title, summary and body fields are considered. Keywords appearing in the <em>title</em> field will get a <strong>5</strong> points awarded for each term match, <strong>1</strong> point for each term match in <em>summary</em>, and <strong>2</strong> points for each term match in <em>body</em>.</p>
+
+<p>For example, if you have an entry with the following data:</p>
+
+<blockquote>
+  <p><strong>Title</strong>: The Bird Is The Word</p>
+  
+  <p><strong>Summary</strong>: A-well everybody's heard about the bird. Bird bird bird,
+  b-bird's the word.</p>
+  
+  <p><strong>Body</strong>: Well don't you know about the bird? Well everybody knows
+  that the bird is the word! A-well-a bird bird, b-bird's the word.</p>
+</blockquote>
+
+<p>With the above relevance algorithm, and a search of Bird, points would be awarded as following:</p>
+
+<blockquote>
+  <p><strong>Title</strong>: The <em>Bird (5)</em> Is The Word</p>
+  
+  <p><strong>Summary</strong>: A-well everybody's heard about the bird <em>(1)</em>. <em>Bird
+  (1)</em> <em>bird (1)</em> <em>bird (1)</em>, b-bird's the word.</p>
+  
+  <p><strong>Body</strong>: Well don't you know about the <em>bird (2)</em>? Well everybody
+  knows that the <em>bird (2)</em> is the word! A-well-a <em>bird (2)</em> <em>bird (2)</em>,
+  b-bird's the word.</p>
+</blockquote>
+
+<p>Add that all up and this entry's total relevance score would be: <strong>17</strong>.</p>
+
+<p>You probably noticed that in the above example, <strong>b-bird's</strong> was excluded from the count. This is because by default, the relevance parameter does NOT look for keywords that exist within other words. For example, if an entry contains the word <strong>caterpillar</strong>, and the user searches for <strong>cat</strong>, it will not be counted as a relevance match. To change this behavior, you can add <em>+count_words_within_words</em> to the end of your values in the relevance parameter. Example:</p>
+
+<pre class="brush: html;">relevance="title=5+summary=1+body=2+count_words_within_words"</pre>
+
+<p>With the above relevance algorithm, and a search of Bird, points would be awarded as following:</p>
+
+<blockquote>
+  <p><strong>Title</strong>: The <em>Bird (5)</em> Is The Word</p>
+  
+  <p><strong>Summary</strong>: A-well everybody's heard about the <em>bird (1)</em>. <em>Bird
+  (1)</em> <em>bird (1)</em> <em>bird (1)</em>, b-<em>bird</em>'s <em>(1)</em> the word.</p>
+  
+  <p><strong>Body</strong>: Well don't you know about the <em>bird (2)</em>? Well everybody
+  knows that the <em>bird (2)</em> is the word! A-well-a <em>bird (2)</em> <em>bird (2)</em>,
+  b-<em>bird</em>'s <em>(2)</em> the word.</p>
+</blockquote>
+
+<p>Add that all up and this entry's total relevance score would be: <strong>20</strong>.</p>
+
+<p><a name="advanced_algorithms"></a></p>
+
+<h2>Advanced Relevance Algorithms</h2>
+
+<p>You might, for example, have a classifieds site. Within that context, you might have two different types of listings - those that are posted as a premium account member, and ones posted as a free account member. It's very likely that you would want to provide your premium account members the advantage of their listings always showing up above listings posted by free account members.</p>
+
+<p>Super Search has a special <em>relevance_multiplier</em> parameter that lets you adjust the relevance ranking. It allows you to increase the relevance rank of entries based on a value in a custom field. What you can do is have an additional custom field that stores a numeric value. Let's say that field is named <em>account_type</em>. You could have that field store a value of <strong>1</strong> for listings (channel entries) created by free member accounts, and a value of <strong>10</strong> for listings created by premium member accounts. You would then specify this parameter (in conjunction with <em>relevance</em> parameter):</p>
+
+<pre class="brush: html;">relevance_multiplier="account_type"</pre>
+
+<p>Whatever the relevance value becomes based on the search query, will then be multiplied by the value in the <em>account_type</em> multiplier field. So if a listing posted from a free account gets a score of <strong>9</strong>, it will stay at <strong>9</strong> (9 x 1 = 9), and the if the entry posted from a premium account gets a score of <strong>4</strong>, it will turn into <strong>40</strong> (4 x 10 = 40), and actually end up being ranked higher. Multiple weighting fields can be specified for this parameter. Separate multiples with the plus character (<strong>+</strong>). Example:</p>
+
+<pre class="brush: html;">relevance_multiplier="account_type+another_weighting_field+yet_another"</pre>
+
+<p>If you wish to take relevance proximity into account, the relevance_proximity parameter is available for use in the <em>Results</em> tag. Relevance proximity only gets used when there are multiple keywords searched upon (ex: <strong>blue sweater</strong>). When it’s enabled and multiple keywords are passed, it takes into account how far apart the keywords are in the entry text (ex: <strong>i like my blue sweater</strong> is ranked higher than <strong>the sky is blue</strong>, and <strong>I’m wearing a sweater</strong>). The intention being that multi-word searches are more relevant when the search terms are closer together. To enable relevance proximity, specify a value of <strong>yes</strong> (default value of <strong>1.3</strong>), or you can specify your own numeric value. The value you specify should be higher than <strong>1</strong>, as the extra points are applied to entries with closer proximity keyword matches. By default, this parameter is set to <strong>no</strong>. This must be used in conjunction with the <em>relevance</em> parameter.</p>
+
+<p><a name="going_deeper"></a></p>
+
+<h2>Going Deeper</h2>
+
+<p>If that's not enough for you, it's also possible to set an override multiplier onto a weighting field multiplier. So going off of the example above, if you set the parameter like this:</p>
+
+<pre class="brush: html;">relevance_multiplier="account_type=0.2"</pre>
+
+<p>The value in the custom field holding the multiplier value would be multiplied by the value in the <em>relevance_multiplier</em> parameter. So if an entry posted from a free account gets a score of <strong>9</strong>, it will be reduced to <strong>1.8</strong> (9 x (1 x 0.2 = 0.2) = 1.8), and the if the entry posted from a premium account gets a score of <strong>4</strong>, it will turn into <strong>8</strong> (4 x (10 x 0.2 = 2) = 8).</p>
+
+<p>This is a very special use-case, and only really makes sense when you're creating a complex weighting algorithm for your results. You would likely be working with several weighting fields, and you would be trying to scale values to be in line with each other. For example, if you wanted to base relevance multiplying on a field that contained an account type value (such as <strong>premium</strong>, etc) with numbers anywhere between <strong>1 and 10</strong>, and also set ranking on product price with numbers anywhere between <strong>100 and 500</strong>, you might want to bring the price multiplier more in line with the account type field value. In that case, you might multiply the <em>account_type</em> field by <strong>2</strong>, and multiply the price field by <strong>0.1</strong>. That would bring a price value of <strong>$200</strong> down to only multiplying the relevance score by <strong>20</strong>, and an account type of <strong>10</strong> up to multiplying the relevance score by <strong>20</strong>. The parameter would look like this:</p>
+
+<pre class="brush: html;">relevance_multiplier="account_type=2+price=0.2"</pre>
+
+<p>And lastly, you also reduce an entry's relevance score by using a negative multiplier. You might want to do this to lower the positioning/rank of an entry based on a higher number it contains in the weighting field. The parameter might end up looking like this:</p>
+
+<pre class="brush: html;">relevance_multiplier="weighting_field=-3"</pre>
+
+<p>So if an entry had a relevance score of <strong>12</strong>, and the weighting field contained a value of <strong>10</strong>, the entry would actually end up with a relevance score of <strong>-360</strong> (12 x (10 x -3 = -30) = -360).</p>
+
+<p><a name="showing_relevance_scores"></a></p>
+
+<h2>Showing Relevance Scores</h2>
+
+<p>Your entries will already be re-ordered within the search results page, based on their relevance score. If you wish to display the actual total relevance score for each entry, you can use the <em>relevance_count</em> variable within the <em>Super_Search:Results</em> loop:</p>
+
+<pre class="brush: html;">{relevance_count}</pre>
+
+<p><a name="examples"></a></p>
+
+<h2>Code Examples</h2>
+
+<p>Using the basic relevance functionality, your <em>Super_Search:Results</em> loop might look something like this:</p>
+
+<pre class="brush: html;">{exp:super_search:results
+    channel="listings"
+    status="open"
+    paginate="both"
+    limit="20"
+    relevance="title=5+summary=1+body=2+count_words_within_words"
+}
+
+&lt;div class="search_result"&gt;
+    &lt;h3&gt;{title}&lt;/h3&gt;
+    &lt;p&gt;{body}&lt;/p&gt;
+    &lt;p&gt;Relevance Score: {relevance_count}&lt;/p&gt;
+&lt;/div&gt;
+
+{paginate}
+    &lt;p&gt;
+        Page {current_page} of
+        {total_pages} pages
+        {pagination_links}
+    &lt;/p&gt;
+{/paginate}
+
+{if super_search_no_results}
+    &lt;p&gt;No results matched your query.&lt;/p&gt;
+{/if}
+
+{/exp:super_search:results}
+</pre>
+
+<p>Using the some advanced relevance multiplier functionality, your <em>Super_Search:Results</em> loop might look something like this:</p>
+
+<pre class="brush: html;">{exp:super_search:results
+    channel="listings"
+    status="open"
+    paginate="both"
+    limit="20"
+    relevance="title=5+summary=1+body=2+count_words_within_words"
+    relevance_multiplier="account_type=2+price=0.2"
+}
+
+&lt;div class="search_result"&gt;
+    &lt;h3&gt;{title}&lt;/h3&gt;
+    &lt;p&gt;Price: ${price}&lt;/p&gt;
+    &lt;p&gt;{body}&lt;/p&gt;
+    &lt;p&gt;Relevance Score: {relevance_count}&lt;/p&gt;
+&lt;/div&gt;
+
+{paginate}
+    &lt;p&gt;
+        Page {current_page} of
+        {total_pages} pages
+        {pagination_links}
+    &lt;/p&gt;
+{/paginate}
+
+{if super_search_no_results}
+    &lt;p&gt;No results matched your query.&lt;/p&gt;
+{/if}
+
+{/exp:super_search:results}
+</pre>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
