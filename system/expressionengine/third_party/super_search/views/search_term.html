@@ -1,0 +1,216 @@
+<?php echo $this->view('header.html'); ?>
+
+<?php if( $total_results == 0 AND !isset( $terms ) ) : ?>
+
+	<div class="super_search_notification">
+		<p><?=$no_searches_recorded?></p>
+	</div>
+
+<?php else : ?>
+
+<div id="filterMenu">
+	<fieldset style="width:98%">
+		<legend><?=lang('filter_searches')?></legend>
+
+		<form action="<?=$form_url?>" method="POST">
+
+			<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+			<input type="hidden" name="filter" value="yes"/>
+
+			<label for="search_term">
+				<span class="js_hide"><?=lang('terms')?></span>
+				<input type="text" name="search_term" placeholder="<?=lang('terms'); ?>" id="search_term"
+					<?php if( isset( $search_term ) !== FALSE ) : ?>value="<?=$search_term?>"<?php endif; ?>/>
+			</label>
+
+			<input type="submit" class="submit" value="<?=lang('filter')?>" name="submit" id="search_button" />
+		</form>
+	</fieldset>
+</div>
+
+
+<?php if( isset( $no_results ) !== FALSE AND $no_results === TRUE ) : ?>
+
+	<div class="super_search_notification">
+		<p><?=lang('no_searches_contained')?> : <strong><?php if( isset( $search_terms ) ) : ?><?=implode("</strong>, <strong>",$search_terms)?>
+					<?php elseif( isset( $search_single_term ) ) : ?><?=$search_single_term?>
+					<?php endif; ?></strong></p>
+	</div>
+
+<?php else : ?>
+
+
+
+	<?php if( isset( $terms ) !== FALSE AND $terms !== FALSE ) : ?>
+
+		<?php if( isset( $search_terms ) ) : ?>
+
+			<h3><?=lang('filtering_terms_like')?> : <span class='search_term'><?=implode("</span> <span class='search_term'>",$search_terms)?></span></h3>
+
+		<?php elseif( isset( $search_single_term ) ) : ?>
+
+			<h3><?=lang('filtering_term')?> : <span class='search_term'><?=$search_single_term?></span></h3>
+
+		<?php endif; ?>
+		<table id="entries" class="mainTable padTable searchTable termsTable" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th style="width:30%"><?=lang('search_term')?></th>
+					<th style="width:30%"><?=lang('searches_over_90')?></th>
+					<th style="width:10%"><?=lang('count')?></th>
+					<th><?=lang('first_searched')?></th>
+					<th><?=lang('most_recent_search')?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach( $terms as $term ) : ?>
+
+				<tr class="<?=($i % 2 ? 'odd' : 'even')?>">
+
+					<td>
+						<span class="search_term"><a href="<?=$term_link_base?><?=$term['term_id']?>"><?=$term['term']?></span></a>
+					</td>
+					<td>
+
+						<img src="http://chart.apis.google.com/chart?cht=lc&
+								chs=210x30&
+								chd=t:<?=$term['sparkline']?>&
+								chco=336699&
+								chls=1,1,0&
+								chm=o,990000,0,100,4&
+								chxt=r,x,y&
+								chxs=0,990000,11,0,_|1,990000,1,0,_|2,990000,1,0,_&
+								chxl=0:||1:||2:||&
+								chxp=0,20&
+								chf=bg,s,00000000" title="<?=lang('term_searches_in_last_90')?>"/>
+
+					</td>
+					<td><?=$term['count']?></td>
+					<td class="date_wordy_formatted">
+						<span class="date_wordy"><?=$term['first_seen_wordy']?></span>
+						<span class="date_formatted"><?=$term['first_seen_formatted']?></span>
+					</td>
+					<td class="date_wordy_formatted">
+						<span class="date_wordy"><?=$term['last_seen_wordy']?></span>
+						<span class="date_formatted"><?=$term['last_seen_formatted']?></span>
+					</td>
+				</tr>
+
+				<?php $i++;
+					 endforeach; ?>
+			</tbody>
+		</table>
+
+	<?php endif; ?>
+
+	<?php if( isset( $log ) ) : ?>
+
+		<?php if( $type == 'term_id' ) : ?>
+
+			<h3><?=$total_results?> <?=lang('searches_containing')?> : <span class="search_term"><?=$search_single_term?></span></h3>
+
+		<?php elseif( $type == 'terms' OR $type == 'search' ) : ?>
+
+			<h3><?=$total_results?> <?=lang('searches_containing')?>  : <span class="search_term"><?php echo( implode("</span> <span class='search_term'>",$search_terms) ); ?></span></h3>
+
+		<?php else : ?>
+
+			<h3><?=lang('all_searches')?> : <?=$total_results?> <?=lang('searches')?></h3>
+
+		<?php endif; ?>
+
+	<?php $i = 1; ?>
+
+
+
+
+	<table class="mainTable padTable searchTable" border="0" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th style="width:10%;"><?=lang('date')?></th>
+				<th style="width:20%;"><?=lang('searched_term')?></th>
+				<?php if( $multiple_sites_enabled == 'y' ) : ?>
+					<th style="width:2%;"><?=lang('site')?></th>
+				<?php endif; ?>
+				<th style="width:70%;"><?=lang('more')?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach( $log as $log_item ) : ?>
+
+			<tr class="<?=($i % 2 ? 'odd' : 'even')?> search_term_log_item">
+
+				<td class="date_wordy_formatted search_date">
+					<span class="date_wordy"><?=$log_item['search_date_wordy']?></span>
+					<span class="date_formatted"><?=$log_item['search_date_formatted']?></span>
+				</td>
+				<td>
+					<a href="<?=$log_item['term_view_url']?>">
+						<span class="search_term"><?=$log_item['term']?></span>
+					</a>
+				</td>
+				<?php if( $multiple_sites_enabled == 'y' ) : ?><td><?=$log_item['site_id']?></td><?php endif; ?>
+				<td class="search_item_more">
+					<?php
+					$first = TRUE;
+					foreach( $log_item['extra'] as $extra => $val ) :
+						if( !$first )
+						{
+							echo( ', ' );
+						}
+						else
+						{
+							$first = FALSE;
+						}
+
+						echo( '<strong>' .$extra . '</strong>:');
+
+						if( is_array($val) )
+						{
+							foreach( $val as $subkey => $subval )
+							{
+								if( is_array( $subval ) )
+								{
+									if( !empty( $subval ) )
+									{
+										echo('['.$subkey.']='.implode( '|', $subval ) .' ' );
+									}
+								}
+								else
+								{
+									echo(' '.$subval.' ');
+								}
+							}
+						}
+						else
+						{
+							echo($val);
+						}
+					endforeach; ?>
+				</td>
+
+			</tr>
+
+			<?php $i++;
+				endforeach; ?>
+		</tbody>
+	</table>
+
+
+	<?=$pagination?>
+	<span class="pagination" id="filter_pagination"></span>
+	<form action="<?=$form_url?>" method="POST">
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type="hidden" name="clear_log" value="y" />
+		<p><input style="float:right;"
+					type="submit" name="submit"
+					value="<?=lang('clear_log')?>" class="submit"  /></p>
+	</form>
+
+	<?php endif; ?>
+
+<?php endif; ?>
+
+<?php endif; ?>
+
+<?php echo $this->view('footer.html'); ?>

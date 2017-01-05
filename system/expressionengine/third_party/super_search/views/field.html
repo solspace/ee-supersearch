@@ -1,0 +1,78 @@
+<?php echo $this->view('header.html');?>
+
+	<form action="<?php echo $caller->output($base_uri.'&method=edit_field_confirm');?>" method="post" id="edit_field_form">
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type="hidden" name="field_id" value="<?=$field_id; ?>" />
+		<table class="mainTable padTable" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+			<thead>
+				<tr>
+					<th colspan="3"><?=$field_label; ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="odd">
+					<td colspan="3"><?=lang('field_explanation'); ?></td>
+				</tr>
+				<tr class="even">
+					<td style="width:20%;">
+						<strong><?=lang('name'); ?></strong>
+					</td>
+					<td style="width:20%;">
+						<input dir="ltr" style="width:100%" type="text" name="field_name" id="field_name" value="<?=$field_name; ?>" size="35" maxlength="150" class="input" readonly />
+					</td>
+					<td style="width:60%;">&nbsp;</td>
+				</tr>
+				<tr class="odd">
+					<td>
+						<strong><?=lang('label'); ?></strong>
+					</td>
+					<td>
+						<input  dir="ltr"  style="width:100%" type="text" name="field_label" id="field_label" value="<?=$field_label; ?>" size="35" maxlength="150" class="input" readonly />
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr class="even">
+					<td>
+						<strong><?=lang('type'); ?></strong>
+					</td>
+					<td>
+							<select id="type" name="type">
+<?php
+foreach ( array( 'character', 'decimal', 'float', 'integer', 'small integer', 'text', 'tiny integer', 'varchar' ) as $val ) :
+	$selected = ( $val == $type ) ? 'selected="selected"': '';
+?>
+								<option value="<?=$val; ?>" <?=$selected; ?>><?=ucfirst( $val ); ?></option>
+<?php endforeach; ?>
+							</select>
+					</td>
+					<td><div id="type_explanation"></div></td>
+				</tr>
+				<tr id="length" class="odd">
+					<td>
+						<strong><?=lang('length'); ?></strong>
+					</td>
+					<td>
+						<input  dir="ltr"  style="width:25%" type="text" name="length" id="length" value="<?=$length; ?>" size="35" maxlength="7" class="input" />
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr id="precision" class="even">
+					<td>
+						<strong><?=lang('precision'); ?></strong>
+					</td>
+					<td>
+						<select name="precision">
+							<option value=""></option>
+<?php foreach ( array( '0', '1', '2', '3', '4', '5' ) as $val ) : $selected = ( $val == $precision ) ? 'selected="selected"': ''; ?>
+							<option value="<?=$val; ?>" <?=$selected; ?>><?=$val; ?></option>
+<?php endforeach; ?>
+						</select>
+					</td>
+					<td><?=lang('precision_explanation'); ?></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="itemWrapperTop"><input  type="submit" class="submit" value="<?=lang('update'); ?>" /></div>
+	</form>
+
+<?php echo $this->view('footer.html'); ?>

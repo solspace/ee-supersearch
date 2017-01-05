@@ -1,0 +1,114 @@
+<?php echo $this->view('header.html'); ?>
+
+<style type="text/css">
+	.template-table {
+		border-collapse:	separate !important;
+		border-spacing:		0 !important;
+		border-top:			1px solid #d0d7df;
+	}
+
+		.template-table .subtext {
+			margin-top: 10px;
+		}
+
+		.template-table tbody tr td:first-child {
+			vertical-align: top;
+		}
+
+		.template-table .sub-ul > li {
+			margin-top: 10px;
+		}
+
+			.template-table .sub-ul > li:first-child {
+				margin-top: 0;
+			}
+
+			.template-table .sub-ul li ul {
+				margin-left: 20px;
+			}
+	#prefix-error {
+		display:none;
+	}
+</style>
+
+<h4 style="margin-bottom:10px;"><?=lang('demo_description')?></h4>
+
+<form method="post" action="<?=$form_url?>">
+<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+
+<table class="mainTable padTable template-table">
+	<tbody>
+		<tr class="odd">
+			<td style="width:30%">
+				<label><?=lang('template_group_prefix')?></label>
+				<div class="subtext"><?=lang('template_group_prefix_desc')?></div>
+			</td>
+			<td>
+				<input type="text" name="prefix" value="<?=$prefix?>" style="width:25%;" />
+				<div id="prefix-error" class="notice"><?=lang('prefix_error')?></div>
+			</td>
+		</tr>
+		<tr class="even">
+			<td>
+				<label><?=lang('groups_and_templates')?></label>
+				<div class="subtext"><?=lang('groups_and_templates_desc')?></div>
+			</td>
+			<td>
+			<ul class='sub-ul'>
+	<?php foreach($code_pack_templates as $group => $template_array):?>
+				<li>
+					<label class="template-group" data-group="<?=$group?>"><?=$prefix?><?=$group?></label>
+					<ul>
+		<?php foreach($template_array as $template):?>
+						<li><?=$template?></li>
+		<?php endforeach;?>
+					</ul>
+				</li>
+	<?php endforeach;?>
+			</ul>
+			</td>
+		</tr>
+		<tr class="odd">
+			<td><label><?=lang('screenshot')?><label></td>
+			<td>
+				<img src="<?=$screenshot?>" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+<input name="submit" type="submit" class="submit" id="submit" value="<?=lang('install_demo_templates')?>" />
+</p>
+
+</form>
+
+<script type='text/javascript'>
+	jQuery(function($){
+		var $prefix			= $('input[name="prefix"]');
+		var $tGroups		= $('.template-group');
+		var $prefixError	= $('#prefix-error');
+		var $submit			= $('#submit');
+
+		//keyup, change template group names
+		$prefix.keyup(function(){
+			$tGroups.each(function(){
+				var $that = $(this);
+
+				$that.html($prefix.val() + $that.attr('data-group'));
+			});
+
+			if ($prefix.val().match(/[^a-z0-9\-\_]/g))
+			{
+				$prefixError.show();
+				$submit.attr('disabled', 'disabled').addClass('disabled-btn');
+			}
+			else
+			{
+				$prefixError.hide();
+				$submit.attr('disabled', false).removeClass('disabled-btn');
+			}
+		});
+	});
+</script>
+<?php echo $this->view('footer.html'); ?>

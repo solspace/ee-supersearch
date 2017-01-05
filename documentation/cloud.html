@@ -41,47 +41,55 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li class="current"><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Super_Search:Cloud template tag</h1>
+				<p>This function allows you to display a list or "cloud" of all terms
+searched upon over time. It will show all popular search terms and if
+desired, let you show a weighted cloud, where more popular search terms
+appear larger than less popular search terms.</p>
 
-<p>This function allows you to display a list or "cloud" of all terms searched upon over time. It will show all popular search terms and if desired, let you show a weighted cloud, where more popular search terms appear larger than less popular search terms.</p>
-
-<p>If you wish to use the weighted cloud method: the number of times the most popular search term is used establishes the top of the scale, with <strong>0</strong> as the bottom. You can specify the number of groups into which your search terms will be sorted. Each of your search terms will be evaluated as to which group they belong in. They will be given a numerical ranking based on this. CSS styling is then used to convert that number value into a font size.</p>
+<p>If you wish to use the weighted cloud method: the number of times the
+most popular search term is used establishes the top of the scale, with
+0 as the bottom. You can specify the number of groups into which your
+search terms will be sorted. Each of your search terms will be evaluated
+as to which group they belong in. They will be given a numerical ranking
+based on this. CSS styling is then used to convert that number value
+into a font size.</p>
 
 <p>For example, imagine you have 3 terms that were searched upon on your site: <strong>apple</strong>, <strong>orange</strong> and <strong>pie</strong>. You specify that you want to show a cloud with 3 groups. If <strong>apple</strong> was searched 12 times, <strong>orange</strong> 7 times, and <strong>pie</strong> 1 time, the top of your scale will be 12. <strong>apple</strong> will get the highest rank and the largest font size. <strong>pie</strong> will get the smallest ranking and font size. <strong>orange</strong> will get the middle font because it falls into the middle grouping. The range for falling into the lowest group would be <strong>0-4</strong>. For the middle, <strong>5-8</strong>. And for the top, <strong>9-12</strong>.</p>
 
-<pre class="brush: html;">{exp:super_search:cloud} content {/exp:super_search:cloud}</pre>
+<pre class="brush: html;">{exp:super_search:cloud} content {/exp:super_search:cloud} </pre>
 
 <ul>
 <li><a href="#parameters">Parameters</a></li>
@@ -123,131 +131,172 @@
 
 <h3>groups=</h3>
 
-<pre class="brush: html;">groups="5"</pre>
+<pre class="brush: html;">groups="5" </pre>
 
-<p>This parameter tells the search cloud how many groups to divide your search terms into. For example, if you specify <strong>5</strong>, it will create 5 groups and place the search terms into the appropriate group based on their popularity. This will determine the font size for each tag. Defaults to <strong>5</strong>.</p>
+<p>This parameter tells the search cloud how many groups to divide your
+search terms into. For example, if you specify <strong>5</strong>, it will create 5
+groups and place the search terms into the appropriate group based on
+their popularity. This will determine the font size for each tag.
+Defaults to <strong>5</strong>.</p>
 
 <p><a name="start"></a></p>
 
 <h3>start=</h3>
 
-<pre class="brush: html;">start="10"</pre>
+<pre class="brush: html;">start="10" </pre>
 
-<p>This parameter controls which integer of font size to start counting. This affects the size variable which sets the font size of each search term in your cloud. Defaults to <strong>10</strong>.</p>
+<p>This parameter controls which integer of font size to start counting.
+This affects the size variable which sets the font size of each search
+term in your cloud. Defaults to <strong>10</strong>.</p>
 
 <p><a name="step"></a></p>
 
 <h3>step=</h3>
 
-<pre class="brush: html;">step="2"</pre>
+<pre class="brush: html;">step="2" </pre>
 
-<p>This parameter controls the amount to increment the size variable. This allows you to create greater differences in font sizes between search term popularity groups. Defaults to 2.</p>
+<p>This parameter controls the amount to increment the size variable. This
+allows you to create greater differences in font sizes between search
+term popularity groups. Defaults to 2.</p>
 
 <p><a name="day_limit"></a></p>
 
 <h3>day_limit=</h3>
 
-<pre class="brush: html;">day_limit="5"</pre>
+<pre class="brush: html;">day_limit="5" </pre>
 
-<p>Using this parameter, you can filter your list of search terms by those which have been searched upon within the last number of days. Defaults to <strong>none</strong>.</p>
+<p>Using this parameter, you can filter your list of search terms by those
+which have been searched upon within the last number of days. Defaults
+to <strong>none</strong>.</p>
 
 <p><a name="start_on"></a></p>
 
 <h3>start_on=</h3>
 
-<pre class="brush: html;">start_on="2011-12-20 14:00"</pre>
+<pre class="brush: html;">start_on="2011-12-20 14:00" </pre>
 
-<p>Using this parameter, you can filter your list of search terms by those which have been searched upon within the specified date range. The date/time must use this format: <strong>YYYY-MM-DD HH:MM</strong>. Used in conjunction with the <a href="#stop_on">stop_on</a> parameter. Defaults to <strong>none</strong>.</p>
+<p>Using this parameter, you can filter your list of search terms by those
+which have been searched upon within the specified date range. The
+date/time must use this format: <strong>YYYY-MM-DD HH:MM</strong>. Used in conjunction
+with the <a href="#stop_on">stop_on</a> parameter. Defaults to <strong>none</strong>.</p>
 
 <p><a name="stop_on"></a></p>
 
 <h3>stop_on=</h3>
 
-<pre class="brush: html;">stop_on="2012-01-20 14:00"</pre>
+<pre class="brush: html;">stop_on="2012-01-20 14:00" </pre>
 
-<p>Using this parameter, you can filter your list of search terms by those which have been searched upon within the specified date range. The date/time must use this format: <strong>YYYY-MM-DD HH:MM</strong>. Used in conjunction with the <a href="#start_on">start_on</a> parameter. Defaults to <strong>none</strong>.</p>
+<p>Using this parameter, you can filter your list of search terms by those
+which have been searched upon within the specified date range. The
+date/time must use this format: <strong>YYYY-MM-DD HH:MM</strong>. Used in conjunction
+with the <a href="#start_on">start_on</a> parameter. Defaults to <strong>none</strong>.</p>
 
 <p><a name="site_id"></a></p>
 
 <h3>site_id=</h3>
 
-<pre class="brush: html;">site_id="3"</pre>
+<pre class="brush: html;">site_id="3" </pre>
 
-<p>The parameter allows you to filter the list of search terms and their popularity by MSM sites the terms were searched upon. Separate multiples with the pipe character (<strong>|</strong>), or specify all to look across all sites. Defaults to current site.</p>
+<p>The parameter allows you to filter the list of search terms and their
+popularity by MSM sites the terms were searched upon. Separate multiples
+with the pipe character (<strong>|</strong>), or specify all to look across all sites.
+Defaults to current site.</p>
 
 <p><a name="fixed_order"></a></p>
 
 <h3>fixed_order=</h3>
 
-<pre class="brush: html;">fixed_order="81|17|26|43"</pre>
+<pre class="brush: html;">fixed_order="81|17|26|43" </pre>
 
-<p>This parameter allows you to optionally override the results and set them into a fixed order by specifying term ID's. Separate multiples with the pipe character (<strong>|</strong>).</p>
+<p>This parameter allows you to optionally override the results and set
+them into a fixed order by specifying term ID's. Separate multiples with
+the pipe character (<strong>|</strong>).</p>
 
 <p><a name="term"></a></p>
 
 <h3>term=</h3>
 
-<pre class="brush: html;">term="cheese|pie|corn"</pre>
+<pre class="brush: html;">term="cheese|pie|corn" </pre>
 
-<p>This parameter allows you to filter down your list of search terms results by specifying search terms. Separate multiples with the pipe character (<strong>|</strong>).</p>
+<p>This parameter allows you to filter down your list of search terms
+results by specifying search terms. Separate multiples with the pipe
+character (<strong>|</strong>).</p>
 
 <p><a name="term_id"></a></p>
 
 <h3>term_id=</h3>
 
-<pre class="brush: html;">term_id="12|82|48"</pre>
+<pre class="brush: html;">term_id="12|82|48" </pre>
 
-<p>This parameter allows you to filter down your list of search terms results by specifying ID's of search terms. Separate multiples with the pipe character (<strong>|</strong>).</p>
+<p>This parameter allows you to filter down your list of search terms
+results by specifying ID's of search terms. Separate multiples with the
+pipe character (<strong>|</strong>).</p>
 
 <p><a name="exclude_term"></a></p>
 
 <h3>exclude_term=</h3>
 
-<pre class="brush: html;">exclude_term="burger|hammy|pimpkins"</pre>
+<pre class="brush: html;">exclude_term="burger|hammy|pimpkins" </pre>
 
-<p>This parameter allows you to exclude specific search terms from your results, using the search term. Separate multiples with the pipe character (<strong>|</strong>).</p>
+<p>This parameter allows you to exclude specific search terms from your
+results, using the search term. Separate multiples with the pipe
+character (<strong>|</strong>).</p>
 
 <p><a name="exclude_term_id"></a></p>
 
 <h3>exclude_term_id=</h3>
 
-<pre class="brush: html;">exclude_term_id="34|234|89"</pre>
+<pre class="brush: html;">exclude_term_id="34|234|89" </pre>
 
-<p>This parameter allows you to exclude specific search terms from your results, using the search term ID. Separate multiples with the pipe character (<strong>|</strong>).</p>
+<p>This parameter allows you to exclude specific search terms from your
+results, using the search term ID. Separate multiples with the pipe
+character (<strong>|</strong>).</p>
 
 <p><a name="limit"></a></p>
 
 <h3>limit=</h3>
 
-<pre class="brush: html;">limit="20"</pre>
+<pre class="brush: html;">limit="20" </pre>
 
-<p>This parameter is available to limit the amount of results in the cloud. Defaults to <strong>20</strong>.</p>
+<p>This parameter is available to limit the amount of results in the cloud.
+Defaults to <strong>20</strong>.</p>
 
 <p><a name="most_popular"></a></p>
 
 <h3>most_popular=</h3>
 
-<pre class="brush: html;">most_popular="no"</pre>
+<pre class="brush: html;">most_popular="no" </pre>
 
-<p>By default, the results in the cloud/list are filtered to contain the most popular search terms, when used in conjunction with the <a href="#limit">limit</a> parameter. So for example, if you have 50 search terms, and you have a <em>limit</em> set to <strong>20</strong>, the top 20 most popular search terms will be displayed, and then ordered by the value in the
-<a href="#orderby">orderby</a> parameter. This is more beneficial when ordering your results by anything other than count. To disable this behaviour, call this parameter and specify a value of <strong>no</strong>. Defaults to <strong>yes</strong>.</p>
+<p>By default, the results in the cloud/list are filtered to contain the
+most popular search terms, when used in conjunction with the
+<a href="#limit">limit</a> parameter. So for example, if you have 50 search terms,
+and you have a <em>limit</em> set to <strong>20</strong>, the top 20 most popular search terms
+will be displayed, and then ordered by the value in the
+<a href="#orderby">orderby</a> parameter. This is more beneficial when ordering
+your results by anything other than count. To disable this behaviour,
+call this parameter and specify a value of <strong>no</strong>. Defaults to <strong>yes</strong>.</p>
 
 <p><a name="paginate"></a></p>
 
 <h3>paginate=</h3>
 
-<pre class="brush: html;">paginate="both"</pre>
+<pre class="brush: html;">paginate="both" </pre>
 
-<p>Pagination works just like it does in the <em>Channel:Entries</em> tag. When specified, and used in conjunction with the <a href="#super_search_paginate">super_search_paginate</a> variable pair, pagination will display. Options are <strong>top</strong>, <strong>bottom</strong>, or <strong>both</strong>. Refer to
-<a href="https://docs.expressionengine.com/v3/channel/channel_entries.html#pagination">Channel:Entries</a> tag documentation for more information.</p>
+<p>Pagination works just like it does in the <em>Channel:Entries</em> tag. When
+specified, and used in conjunction with the
+<a href="#super_search_paginate">super_search_paginate</a> variable pair,
+pagination will display. Refer to
+<a href="http://ellislab.com/expressionengine/user-guide/modules/channel/channel_entries.html#pagination">Channel:Entries</a>
+tag documentation for more information.</p>
 
 <p><a name="orderby"></a></p>
 
 <h3>orderby=</h3>
 
-<pre class="brush: html;">orderby="term"</pre>
+<pre class="brush: html;">orderby="term" </pre>
 
-<p>This parameter allows you to order your search terms by the method you wish. Default method is <strong>count</strong>. Available methods are:</p>
+<p>This parameter allows you to order your search terms by the method you
+wish. Default method is <strong>count</strong>. Available methods are:</p>
 
 <ul>
 <li><em>term</em> - alphabetical</li>
@@ -262,25 +311,33 @@
 
 <h3>sort=</h3>
 
-<pre class="brush: html;">sort="asc"</pre>
+<pre class="brush: html;">sort="asc" </pre>
 
-<p>This parameter allows you to sort search terms by ascending (<strong>asc</strong>) or descending (<strong>desc</strong>) order. Default is <strong>desc</strong>.</p>
+<p>This parameter allows you to sort search terms by ascending (<strong>asc</strong>) or
+descending (<strong>desc</strong>) order. Default is <strong>desc</strong>.</p>
 
 <p><a name="backspace"></a></p>
 
 <h3>backspace=</h3>
 
-<pre class="brush: html;">backspace="2"</pre>
+<pre class="brush: html;">backspace="2" </pre>
 
-<p>In the event you wish to trim the last few characters from the results, you would specify this parameter. For example, if you have a comma-seperated list of search terms, you would have <strong>,[space]</strong> formatting within the template tag. If you specify <strong>2</strong> in the <em>backspace</em> parameter, it will trim off the last <strong>,[space]</strong> when the template parses.</p>
+<p>In the event you wish to trim the last few characters from the results,
+you would specify this parameter. For example, if you have a
+comma-seperated list of search terms, you would have <strong>,[space]</strong> formatting
+within the template tag. If you specify <strong>2</strong> in the <em>backspace</em> parameter, it
+will trim off the last <strong>,[space]</strong> when the template parses.</p>
 
 <p><a name="searched_only"></a></p>
 
 <h3>searched_only=</h3>
 
-<pre class="brush: html;">searched_only="no"</pre>
+<pre class="brush: html;">searched_only="no" </pre>
 
-<p>This parameter lets you choose whether you want words that have NOT been searched upon yet show up in the results. By default, the <em>Cloud</em> tag will not show words not searched on. To display these words, specify this parameter with a value of <strong>no</strong>.</p>
+<p>This parameter lets you choose whether you want words that have NOT been
+searched upon yet show up in the results. By default, the <em>Cloud</em> tag
+will not show words not searched on. To display these words, specify
+this parameter with a value of <strong>no</strong>.</p>
 
 <p><a name="variables"></a></p>
 
@@ -308,7 +365,7 @@
 
 <h3>super_search_term</h3>
 
-<pre class="brush: html;">{super_search_term}</pre>
+<pre class="brush: html;">{super_search_term} </pre>
 
 <p>This variable returns the search term.</p>
 
@@ -316,7 +373,7 @@
 
 <h3>super_search_term_id</h3>
 
-<pre class="brush: html;">{super_search_term_id}</pre>
+<pre class="brush: html;">{super_search_term_id} </pre>
 
 <p>This variable returns the ID of the search term.</p>
 
@@ -324,89 +381,106 @@
 
 <h3>super_search_total_searches</h3>
 
-<pre class="brush: html;">{super_search_total_searches}</pre>
+<pre class="brush: html;">{super_search_total_searches} </pre>
 
-<p>This variable will return the total number of times the given term has been searched upon.</p>
+<p>This variable will return the total number of times the given term has
+been searched upon.</p>
 
 <p><a name="super_search_first_seen"></a></p>
 
 <h3>super_search_first_seen</h3>
 
-<pre class="brush: html;">{super_search_first_seen format="%F %j, %Y"}</pre>
+<pre class="brush: html;">{super_search_first_seen format="%F %j, %Y"} </pre>
 
-<p>This variable returns the date of when the given term was first searched by someone. Use <a href="https://docs.expressionengine.com/v3/templates/date_variable_formatting.html">standard date variable formatting</a> for this variable.</p>
+<p>This variable returns the date of when the given term was first searched
+by someone. Use <a href="http://ellislab.com/expressionengine/user-guide/templates/date_variable_formatting.html">standard date variable
+formatting</a> for this variable.</p>
 
 <p><a name="super_search_last_seen"></a></p>
 
 <h3>super_search_last_seen</h3>
 
-<pre class="brush: html;">{super_search_last_seen format="%F %j, %Y"}</pre>
+<pre class="brush: html;">{super_search_last_seen format="%F %j, %Y"} </pre>
 
-<p>This variable returns the date of when the given term was most recently searched by someone. Use <a href="https://docs.expressionengine.com/v3/templates/date_variable_formatting.html">standard date variable formatting</a> for this variable.</p>
+<p>This variable returns the date of when the given term was most recently
+searched by someone. Use <a href="http://ellislab.com/expressionengine/user-guide/templates/date_variable_formatting.html">standard date variable
+formatting</a> for this variable.</p>
 
 <p><a name="super_search_site_id"></a></p>
 
 <h3>super_search_site_id</h3>
 
-<pre class="brush: html;">{super_search_site_id}</pre>
+<pre class="brush: html;">{super_search_site_id} </pre>
 
-<p>This variable will display the MSM site(s) that had this term searched upon.</p>
+<p>This variable will display the MSM site(s) that had this term searched
+upon.</p>
 
 <p><a name="super_search_size"></a></p>
 
 <h3>super_search_size</h3>
 
-<pre class="brush: html;">{super_search_size}</pre>
+<pre class="brush: html;">{super_search_size} </pre>
 
-<p>This variable will return the group number the search term is part on, based on the popularity of the search term (determined by the <a href="#groups">groups</a> parameter).</p>
+<p>This variable will return the group number the search term is part on,
+based on the popularity of the search term (determined by the
+<a href="#groups">groups</a> parameter).</p>
 
 <p><a name="super_search_step"></a></p>
 
 <h3>super_search_step</h3>
 
-<pre class="brush: html;">{super_search_step}</pre>
+<pre class="brush: html;">{super_search_step} </pre>
 
-<p>This variable relates to the <a href="#step">step</a> parameter. It helps you represent the breakpoints between groups of search terms by their popularity. The usual usage for this is to set different font sizes of the search terms to create the "cloud" effect.</p>
+<p>This variable relates to the <a href="#step">step</a> parameter. It helps you
+represent the breakpoints between groups of search terms by their
+popularity. The usual usage for this is to set different font sizes of
+the search terms to create the "cloud" effect.</p>
 
 <p><a name="super_search_count"></a></p>
 
 <h3>super_search_count</h3>
 
-<pre class="brush: html;">{super_search_count}</pre>
+<pre class="brush: html;">{super_search_count} </pre>
 
-<p>This variable will return the relative position number of the search term within the list of results.</p>
+<p>This variable will return the relative position number of the search
+term within the list of results.</p>
 
 <p><a name="super_search_absolute_count"></a></p>
 
 <h3>super_search_absolute_count</h3>
 
-<pre class="brush: html;">{super_search_absolute_count}</pre>
+<pre class="brush: html;">{super_search_absolute_count} </pre>
 
-<p>This variable will return the absolute position number of the search term across all pages of results.</p>
+<p>This variable will return the absolute position number of the search
+term across all pages of results.</p>
 
 <p><a name="super_search_total_results"></a></p>
 
 <h3>super_search_total_results</h3>
 
-<pre class="brush: html;">{super_search_total_results}</pre>
+<pre class="brush: html;">{super_search_total_results} </pre>
 
-<p>This variable will return the total amount of search term results being displayed in the results of the cloud on the current page. You would typically use this in a conditional statement.</p>
+<p>This variable will return the total amount of search term results being
+displayed in the results of the cloud on the current page. You would
+typically use this in a conditional statement.</p>
 
 <p><a name="super_search_absolute_results"></a></p>
 
 <h3>super_search_absolute_results</h3>
 
-<pre class="brush: html;">{super_search_absolute_results}</pre>
+<pre class="brush: html;">{super_search_absolute_results} </pre>
 
-<p>This variable will return the total amount of search term results across all pages in the results of the cloud on the current page.</p>
+<p>This variable will return the total amount of search term results across
+all pages in the results of the cloud on the current page.</p>
 
 <p><a name="super_search_switch"></a></p>
 
 <h3>super_search_switch</h3>
 
-<pre class="brush: html;">{super_search_switch="style_1|style_2"}</pre>
+<pre class="brush: html;">{super_search_switch="style_1|style_2"} </pre>
 
-<p>This variable will alternately output each of the multiple values you provide. You would typically use this with CSS.</p>
+<p>This variable will alternately output each of the multiple values you
+provide. You would typically use this with CSS.</p>
 
 <p><a name="variable_pairs"></a></p>
 
@@ -423,46 +497,24 @@
 <h3>super_search_paginate</h3>
 
 <pre class="brush: html;">{super_search_paginate}
-    &lt;li&gt;
-        Page {super_search_current_page} of
-        {super_search_total_pages} pages &amp;nbsp;
-        {super_search_pagination_links}
-    &lt;/li&gt;
+    Page {super_search_current_page}
+    of {super_search_total_pages} pages
+    &amp;nbsp; {super_search_pagination_links}
 {/super_search_paginate}
 </pre>
 
-<p>OR</p>
-
-<pre class="brush: html;">{super_search_paginate}
-&lt;ul class="pagination"&gt;
-    {super_search_pagination_links}
-        {first_page}
-            &lt;li&gt;&lt;a href="{pagination_url}"&gt;First&lt;/a&gt;&lt;/li&gt;
-        {/first_page}
-        {previous_page}
-            &lt;li&gt;&lt;a href="{pagination_url}"&gt;&amp;laquo; Previous&lt;/a&gt;&lt;/li&gt;
-        {/previous_page}
-        {page}
-            &lt;li{if current_page} class="active"{/if}&gt;&lt;a href="{pagination_url}"&gt;{pagination_page_number}&lt;/a&gt;&lt;/li&gt;
-        {/page}
-        {next_page}
-            &lt;li&gt;&lt;a href="{pagination_url}"&gt;Next &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-        {/next_page}
-        {last_page}
-            &lt;li&gt;&lt;a href="{pagination_url}"&gt;Last&lt;/a&gt;&lt;/li&gt;
-        {/last_page}
-    {/super_search_pagination_links}
-&lt;/ul&gt;
-{/super_search_paginate}
-</pre>
-
-<p>Pagination is available for this tag and works just like regular EE pagination, but each variable/variable pair is prepended with <em>super_search_</em> (except for any variables/variable pairs inside of the <strong>super_search_pagination_links</strong> variable pair). Used in conjunction with the <a href="#paginate">paginate</a> parameter.</p>
+<p>Pagination is available for this tag and works just like regular EE
+pagination, but each variable/variable pair is prepended with
+<em>super_search_</em> (except for any variables/variable pairs inside of the
+super_search_pagination_links variable pair). Used in
+conjunction with the <a href="#paginate">paginate</a> parameter.</p>
 
 <p><a name="conditionals"></a></p>
 
 <h2>Conditionals</h2>
 
-<p>Most of the variables above are available for use as conditionals. Additionally, the following conditional is available for use:</p>
+<p>Most of the variables above are available for use as conditionals.
+Additionally, the following conditional is available for use:</p>
 
 <ul>
 <li><a href="#super_search_no_results">super_search_no_results</a></li>
@@ -472,8 +524,8 @@
 
 <h3>super_search_no_results</h3>
 
-<pre class="brush: html;">{if super_search_no_results}
-    Sorry, no results were found.
+<pre class="brush: html;">{if super_search_no_results}
+    Sorry, no results were found.
 {/if}
 </pre>
 
@@ -512,7 +564,9 @@
 
 <h3>Popular Search Terms List</h3>
 
-<p>You could also display your search term results in list form if you wish. You can also keep font size weighting in place, but is removed from the example below:</p>
+<p>You could also display your search term results in list form if you
+wish. You can also keep font size weighting in place, but is removed
+from the example below:</p>
 
 <pre class="brush: html;">&lt;ul&gt;
     {exp:super_search:cloud
@@ -529,27 +583,11 @@
             &lt;li&gt;Sorry, no results were found.&lt;/li&gt;
         {/if}
         {super_search_paginate}
-        &lt;li&gt;
-            &lt;ul class="pagination"&gt;
-            {super_search_pagination_links}
-                {first_page}
-                    &lt;li&gt;&lt;a href="{pagination_url}"&gt;First&lt;/a&gt;&lt;/li&gt;
-                {/first_page}
-                {previous_page}
-                    &lt;li&gt;&lt;a href="{pagination_url}"&gt;&amp;laquo; Previous&lt;/a&gt;&lt;/li&gt;
-                {/previous_page}
-                {page}
-                    &lt;li{if current_page} class="active"{/if}&gt;&lt;a href="{pagination_url}"&gt;{pagination_page_number}&lt;/a&gt;&lt;/li&gt;
-                {/page}
-                {next_page}
-                    &lt;li&gt;&lt;a href="{pagination_url}"&gt;Next &amp;raquo;&lt;/a&gt;&lt;/li&gt;
-                {/next_page}
-                {last_page}
-                    &lt;li&gt;&lt;a href="{pagination_url}"&gt;Last&lt;/a&gt;&lt;/li&gt;
-                {/last_page}
-            {/super_search_pagination_links}
-            &lt;/ul&gt;
-        &lt;/li&gt;
+            &lt;li&gt;
+                Page {super_search_current_page} of
+                {super_search_total_pages} pages &amp;nbsp;
+                {super_search_pagination_links}
+            &lt;/li&gt;
         {/super_search_paginate}
     {/exp:super_search:cloud}
 &lt;/ul&gt;

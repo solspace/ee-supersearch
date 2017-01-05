@@ -41,45 +41,52 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li class="current"><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Super_Search:History template tag</h1>
+				<p>The <em>Super_Search:History</em> method allows your users to view their
+search history. It displays a list of all saved search queries. A member
+may only view their own history, and cannot view someone else's history
+for privacy reasons. Searches must first be saved using the
+<a href="save_search_form.html">Super_Search:Save_Search_Form</a>
+function upon completion of a search.</p>
 
-<p>The <em>Super_Search:History</em> method allows your users to view their search history. It displays a list of all saved search queries. A member may only view their own history, and cannot view someone else's history for privacy reasons. Searches must first be saved using the <a href="save_search_form.html">Super_Search:Save_Search_Form</a> function upon completion of a search.</p>
+<p>Each search query is saved to the database and given a unique search ID.
+That ID is then passed over to the <a href="search.html">Super_Search:Search</a>
+tag, where <em>Search</em> will then parse and fill out all search query terms
+originally supplied for each search field.</p>
 
-<p>Each search query is saved to the database and given a unique search ID. That ID is then passed over to the <a href="form.html">Super_Search:Form</a> tag, where <em>Super Search</em> will then parse and fill out all search query terms originally supplied for each search field.</p>
-
-<pre class="brush: html;">{exp:super_search:history} content {/exp:super_search:history}</pre>
+<pre class="brush: html;">{exp:super_search:history} content {/exp:super_search:history} </pre>
 
 <ul>
 <li><a href="#parameters">Parameters</a></li>
@@ -105,33 +112,41 @@
 
 <h3>limit=</h3>
 
-<pre class="brush: html;">limit="10"</pre>
+<pre class="brush: html;">limit="10" </pre>
 
-<p>This parameter allows you to control how many results will be outputted. The default is <strong>20</strong>.</p>
+<p>This parameter allows you to control how many results will be outputted.
+The default is <strong>20</strong>.</p>
 
 <p><a name="orderby"></a></p>
 
 <h3>orderby=</h3>
 
-<pre class="brush: html;">orderby="date"</pre>
+<pre class="brush: html;">orderby="date" </pre>
 
-<p>This parameter allows you to specify whether to order your results by total number of results for the query (<strong>results</strong>) or the date the search was saved (<strong>date</strong>). Use the <a href="#sort">sort</a> parameter to control whether the list is ascending or descending.</p>
+<p>This parameter allows you to specify whether to order your results by
+total number of results for the query (<strong>results</strong>) or the date the search
+was saved (<strong>date</strong>). Use the <a href="#sort">sort</a> parameter to control whether the
+list is ascending or descending.</p>
 
 <p><a name="saved"></a></p>
 
 <h3>saved=</h3>
 
-<pre class="brush: html;">saved="no"</pre>
+<pre class="brush: html;">saved="no" </pre>
 
-<p>If this parameter is set to <strong>yes</strong>, only searches saved in your history will be shown. If set to <strong>no</strong>, only the last search you performed will be shown. Default is <strong>yes</strong>.</p>
+<p>If this parameter is set to <strong>yes</strong>, only searches saved in your history
+will be shown. If set to <strong>no</strong>, only the last search you performed will be
+shown. Default is <strong>yes</strong>.</p>
 
 <p><a name="sort"></a></p>
 
 <h3>sort=</h3>
 
-<pre class="brush: html;">sort="desc"</pre>
+<pre class="brush: html;">sort="desc" </pre>
 
-<p>This parameter is used in conjunction with the <a href="#orderby">orderby</a> parameter, and allows you to control whether the list is ascending (<strong>asc</strong>) or descending (<strong>desc</strong>).</p>
+<p>This parameter is used in conjunction with the <a href="#orderby">orderby</a>
+parameter, and allows you to control whether the list is ascending (<strong>asc</strong>)
+or descending (<strong>desc</strong>).</p>
 
 <p><a name="variables"></a></p>
 
@@ -153,7 +168,7 @@
 
 <h3>super_search_date</h3>
 
-<pre class="brush: html;">{super_search_date format="%l, %F %j, %Y at %g:%i %a"}</pre>
+<pre class="brush: html;">{super_search_date format="%l, %F %j, %Y at %g:%i %a"} </pre>
 
 <p>This variable will output the date of when the search was performed.</p>
 
@@ -161,15 +176,17 @@
 
 <h3>super_search_id</h3>
 
-<pre class="brush: html;">{super_search_id}</pre>
+<pre class="brush: html;">{super_search_id} </pre>
 
-<p>This variable will output the ID of the search. This variable will be used to construct a link to your search form, and pass the search query ID to it.</p>
+<p>This variable will output the ID of the search. This variable will be
+used to construct a link to your Search form, and pass the search query
+ID to it.</p>
 
 <p><a name="super_search_name"></a></p>
 
 <h3>super_search_name</h3>
 
-<pre class="brush: html;">{super_search_name}</pre>
+<pre class="brush: html;">{super_search_name} </pre>
 
 <p>This variable will output the name given to the search.</p>
 
@@ -177,39 +194,45 @@
 
 <h3>super_search_results</h3>
 
-<pre class="brush: html;">{super_search_results}</pre>
+<pre class="brush: html;">{super_search_results} </pre>
 
-<p>This variable will output the total number of results for the search query.</p>
+<p>This variable will output the total number of results for the search
+query.</p>
 
 <p><a name="super_search_saved"></a></p>
 
 <h3>super_search_saved</h3>
 
-<pre class="brush: html;">{super_search_saved}</pre>
+<pre class="brush: html;">{super_search_saved} </pre>
 
-<p>This variable will evaluate as <strong>y</strong> or <strong>n</strong>, depending on whether the search query was saved. This would likely be used as a conditional.</p>
+<p>This variable will evaluate as <strong>y</strong> or <strong>n</strong>, depending on whether the search
+query was saved. This would likely be used as a conditional.</p>
 
 <p><a name="super_search_count"></a></p>
 
 <h3>super_search_count</h3>
 
-<pre class="brush: html;">{super_search_count}</pre>
+<pre class="brush: html;">{super_search_count} </pre>
 
-<p>This variable will return the relative position number of the search query within the list of queries.</p>
+<p>This variable will return the relative position number of the search
+query within the list of queries.</p>
 
 <p><a name="super_search_total_results"></a></p>
 
 <h3>super_search_total_results</h3>
 
-<pre class="brush: html;">{super_search_total_results}</pre>
+<pre class="brush: html;">{super_search_total_results} </pre>
 
-<p>This variable will return the total amount of search query history results being displayed. You would typically use this in a conditional statement.</p>
+<p>This variable will return the total amount of search query history
+results being displayed. You would typically use this in a conditional
+statement.</p>
 
 <p><a name="conditionals"></a></p>
 
 <h2>Conditionals</h2>
 
-<p>Conditionals are available on all variables. Additionally, the following conditionals are also available for use:</p>
+<p>Conditionals are available on all variables. Additionally, the following
+conditionals are also available for use:</p>
 
 <ul>
 <li><a href="#super_search_no_results">super_search_no_results</a></li>
@@ -219,8 +242,8 @@
 
 <h3>super_search_no_results</h3>
 
-<pre class="brush: html;">{if super_search_no_results}
-    Sorry, no results were found.
+<pre class="brush: html;">{if super_search_no_results}
+    Sorry, no results were found.
 {/if}
 </pre>
 
@@ -230,7 +253,8 @@
 
 <h2>Examples</h2>
 
-<p>The following code sample is an example of how your Search History list might look:</p>
+<p>The following code sample is an example of how your Search History list
+might look:</p>
 
 <pre class="brush: html;">&lt;h3&gt;Your Saved Searches&lt;/h3&gt;
 

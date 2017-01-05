@@ -41,41 +41,43 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li class="current"><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Search Syntax</h1>
-
-<p>Super Search makes use of some advanced syntax in the URI to allow for much more flexible and powerful searches. You can search on any combination of fields, categories, channels, statuses, etc. This page serves as a detailed explanation on how to use the Super Search syntax.</p>
+				<p>Super Search makes use of some advanced syntax in the URI to allow for
+much more flexible and powerful searches. You can search on any
+combination of fields, categories, channels, statuses, etc. This page
+serves as a detailed explanation on how to use the Super Search syntax.</p>
 
 <ul>
 <li><a href="#requirements">Requirements</a></li>
@@ -84,7 +86,6 @@
 <li><a href="#channels">Channels</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#custom_fields">Custom Fields</a></li>
-<li><a href="#date_ranges">Date Ranges</a></li>
 <li><a href="#relationship_fields">Relationship Fields</a></li>
 <li><a href="#grid_fields">Grid Fields</a></li>
 <li><a href="#ordering_sorting">Ordering &amp; Sorting</a></li>
@@ -94,7 +95,8 @@
 
 <h2>Requirements</h2>
 
-<p>When generating a search query in the URI, the query must follow this structure:</p>
+<p>When generating a search query in the URI, the query must follow this
+structure:</p>
 
 <ul>
 <li>A search segment must always begin with <em>search&amp;</em></li>
@@ -103,7 +105,8 @@
 <li>Separate multiple terms using <em>+</em></li>
 </ul>
 
-<p>So to summarize, a typical search query in the URI might look something like this:</p>
+<p>So to summarize, a typical search query in the URI might look something
+like this:</p>
 
 <blockquote>
   <p>/search&amp;keywords=bird+is+the+word&amp;channel=songs&amp;orderby=title+asc</p>
@@ -113,7 +116,9 @@
 
 <h2>Keywords</h2>
 
-<p>When performing keyword searches (searches that check through all custom fields marked as searchable) with the keywords field, syntax works like this:</p>
+<p>When performing keyword searches (searches that check through all custom
+fields marked as searchable) with the keywords field, syntax works like
+this:</p>
 
 <ul>
 <li><p><strong>Single Keyword</strong>:</p>
@@ -135,17 +140,16 @@ specify the <em>search_words_within_words</em> parameter with a value of
 </blockquote>
 
 <p>This query will find entries that contain both <strong>pickles</strong> and <strong>burgers</strong>
-in the title or searchable custom fields. You can adjust this behaviour by
-specifying the <em>inclusive_keywords</em> parameter with a value of <strong>no</strong> in the
-<em>Results</em> tag.</p></li>
+in the title or searchable custom fields. You can adjust
+this behaviour by specifying the <em>inclusive_keywords</em> parameter with
+a value of <strong>no</strong> in the <em>Results</em> tag.</p></li>
 <li><p><strong>Negated Keywords</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles+-burgers</p>
 </blockquote>
 
-<p>This query will find entries that contain <strong>pickles</strong> but NOT <strong>burgers</strong>
-in the title or searchable custom fields.</p></li>
+<p>This query will find entries that contain <strong>pickles</strong> but NOT <strong>burgers</strong> in the title or searchable custom fields.</p></li>
 </ul>
 
 <p><a name="categories"></a></p>
@@ -161,56 +165,50 @@ in the title or searchable custom fields.</p></li>
   <p>/search&amp;keywords=pickles&amp;category="Fast+Food"</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries are assigned to the <strong>Fast Food</strong>
-category. By default, category searching is done on category names. If you
-wish to change this behaviour to category URL titles or ID's, you can
-specify the <em>category_indicator</em> parameter in the <em>Results</em> tag.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries are assigned
+to the <strong>Fast Food</strong> category. By default, category searching is done on
+category names. If you wish to change this behaviour to category URL
+titles or ID's, you can specify the <em>category_indicator</em> parameter in
+the <em>Results</em> tag.</p></li>
 <li><p><strong>Negated Category</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;category=-"Fast+Food"</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries are NOT assigned to the <strong>Fast Food</strong>
-category.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries are NOT assigned to the <strong>Fast Food</strong> category.</p></li>
 <li><p><strong>Conjoined Category</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;category="Fast+Food"&amp;&amp;Healthy</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries are assigned to BOTH the <strong>Fast Food</strong>
-and <strong>Healthy</strong> category.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries are assigned
+to BOTH the <strong>Fast Food</strong> and <strong>Healthy</strong> category.</p></li>
 <li><p><strong>Multiple Categories</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;category="Fast+Food"+Healthy</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries are assigned to EITHER the
-<strong>Fast Food</strong> or <strong>Healthy</strong> category.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries are assigned
+to EITHER the <strong>Fast Food</strong> or <strong>Healthy</strong> category.</p></li>
 <li><p><strong>Loose Category</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;category-like=fast"</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries are assigned to ANY categories with
-<strong>fast</strong> in the name.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries are assigned
+to ANY categories with <strong>fast</strong> in the name.</p></li>
 <li><p><strong>Loose Negated Category</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;category-like=-fast"</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries are NOT assigned to ANY categories
-with <strong>fast</strong> in the name.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries are NOT
+assigned to ANY categories with <strong>fast</strong> in the name.</p></li>
 </ul>
 
 <p><a name="channels"></a></p>
@@ -226,9 +224,9 @@ with <strong>fast</strong> in the name.</p></li>
   <p>/search&amp;keywords=pickles&amp;channel=articles</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries belong to the <strong>Articles</strong> channel.
-The channel name should be designated using the channel short name.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries belong to the
+<strong>Articles</strong> channel. The channel name should be designated using the
+channel short name.</p></li>
 </ul>
 
 <p><a name="status"></a></p>
@@ -244,32 +242,33 @@ The channel name should be designated using the channel short name.</p></li>
   <p>/search&amp;keywords=pickles&amp;status=open</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries have a <em>status</em> of <strong>open</strong>.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries have a <em>status</em>
+of <strong>open</strong>.</p></li>
 <li><p><strong>Negated Status</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;status=-closed</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries do NOT have a <em>status</em> of <strong>closed</strong>.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries do NOT have a
+<em>status</em> of <strong>closed</strong>.</p></li>
 <li><p><strong>Multiple Statuses</strong>:</p>
 
 <blockquote>
   <p>/search&amp;keywords=pickles&amp;status=open+closed</p>
 </blockquote>
 
-<p>This query will find entries with <strong>pickles</strong> in the title or searchable
-custom fields as long as those entries have a <em>status</em> of either <strong>open</strong>
-or <strong>closed</strong>.</p></li>
+<p>This query will find entries with <strong>pickles</strong> in the title or searchable custom fields as long as those entries have a <em>status</em>
+of either <strong>open</strong> or <strong>closed</strong>.</p></li>
 </ul>
 
 <p><a name="custom_fields"></a></p>
 
 <h2>Custom Fields</h2>
 
-<p>You can search directly into searchable custom fields (only, or in addition to keywords search). When performing custom field searches, syntax works like this:</p>
+<p>You can search directly into searchable custom fields (only, or in
+addition to keywords search). When performing custom field searches,
+syntax works like this:</p>
 
 <ul>
 <li><p><strong>Value in a Specific Field</strong>:</p>
@@ -302,8 +301,9 @@ contain the word <strong>pickles</strong>.</p></li>
   <p>/search&amp;summary=pickles+cheese&amp;body=burger</p>
 </blockquote>
 
-<p>This query will find entries where the summary field contains EITHER the word
-<strong>pickles</strong> or <strong>cheese</strong>, AND the <em>body</em> field contains the word <strong>burger</strong>.</p></li>
+<p>This query will find entries where the summary field contains EITHER
+the word <strong>pickles</strong> or <strong>cheese</strong>, AND the <em>body</em> field contains the word
+<strong>burger</strong>.</p></li>
 <li><p><strong>Exact Value(s) in a Specific Field</strong>:</p>
 
 <blockquote>
@@ -363,107 +363,11 @@ the <em>region</em> field is empty.</p>
 the region field is NOT empty.</p></li>
 </ul>
 
-<p><a name="date_ranges"></a></p>
-
-<h2>Date Ranges</h2>
-
-<p>You can search on date ranges in entry dates, expiration dates and custom date fields. To do this, just append <em>-from</em> (minimum) or <em>-to</em> (maximum) to <strong>entry_date</strong>, <strong>expiry_date</strong> or the name of the custom date field.</p>
-
-<p>Date ranges are constructed from <em>year</em> (<strong>2016</strong>), all the way down to <em>seconds</em> (<strong>20160721082345</strong>), as a single number.</p>
-
-<ul>
-<li><strong>2016</strong> will find entries with dates <strong>from 2016 (January 1) <em>onward</em></strong>.</li>
-<li><strong>20160621</strong> will find entries with dates <strong>from June 21, 2016 <em>onward</em></strong>.</li>
-<li><strong>20160621082345</strong> will find entries with dates <strong>from June 21, 2016 at 8:23:45 am <em>onward</em></strong>.</li>
-</ul>
-
-<p>When performing date range searches, syntax works like this:</p>
-
-<ul>
-<li><p><strong>Date range from Entry date</strong>:</p>
-
-<p>Simply append append <em>-from</em> (minimum) or <em>-to</em> (maximum) to <strong>entry_date</strong>:</p>
-
-<blockquote>
-  <p>/search&amp;entry_date-from=201601</p>
-</blockquote>
-
-<p>This query will find all entries with an entry date
-<strong>on or after January 1, 2016</strong>.</p>
-
-<blockquote>
-  <p>/search&amp;entry_date-to=20160615</p>
-</blockquote>
-
-<p>This query will find all entries with an entry date
-<strong>on or before June 15, 2016</strong>.</p>
-
-<blockquote>
-  <p>/search&amp;entry_date-from=201601=20&amp;entry_date-to=20160615</p>
-</blockquote>
-
-<p>This query will find all entries with an entry date
-<strong>on or after January 1, 2016</strong>, AND <strong>on or before June 15, 2016</strong>.</p></li>
-<li><p><strong>Date range from Expiry date</strong>:</p>
-
-<p>Simply append append <em>-from</em> (minimum) or <em>-to</em> (maximum) to <strong>expiry_date</strong>:</p>
-
-<ul>
-<li><strong>NOTE:</strong> EE uses <strong>expiration_date</strong> for the variable name in the <em>Channel:Entries</em> tag, but Super Search uses <strong>expiry_date</strong>.</li>
-<li><strong>NOTE:</strong> Any entries that do NOT have an expiry date set will be automatically filtered out from the results.</li>
-</ul>
-
-<blockquote>
-  <p>/search&amp;expiry_date-from=201601</p>
-</blockquote>
-
-<p>This query will find all entries with an expiry date
-<strong>on or after January 1, 2016</strong>.</p>
-
-<blockquote>
-  <p>/search&amp;expiry_date-to=20160615</p>
-</blockquote>
-
-<p>This query will find all entries with an expiry date
-<strong>on or before June 15, 2016</strong>.</p>
-
-<blockquote>
-  <p>/search&amp;expiry_date-from=201601&amp;expiry_date-to=20160615</p>
-</blockquote>
-
-<p>This query will find all entries with an expiry date
-<strong>on or after January 1, 2016</strong>, AND <strong>on or before June 15, 2016</strong>.</p></li>
-<li><p><strong>Date range from Custom Date fields</strong>:</p>
-
-<p>Simply append append <em>-from</em> (minimum) or <em>-to</em> (maximum) to the short name of the <strong>custom date field</strong> name (and make sure it's set to searchable).:</p>
-
-<blockquote>
-  <p>/search&amp;my_date_field-from=201601</p>
-</blockquote>
-
-<p>This query will find all entries with a date in the <em>my_date_field</em> date field
-<strong>on or after January 1, 2016</strong>.</p>
-
-<blockquote>
-  <p>/search&amp;my_date_field-to=20160615</p>
-</blockquote>
-
-<p>This query will find all entries with a date in the <em>my_cdate_field</em> date field
-<strong>on or before June 15, 2016</strong>.</p>
-
-<blockquote>
-  <p>/search&amp;my_date_field-from=201601&amp;my_custom_date_field-to=20160615</p>
-</blockquote>
-
-<p>This query will find all entries with a date in the <em>my_cdate_field</em> date field
-<strong>on or after January 1, 2016</strong>, AND <strong>on or before June 15, 2016</strong>.</p></li>
-</ul>
-
 <p><a name="relationship_fields"></a></p>
 
 <h2>Relationship Fields</h2>
 
-<p>Super Search supports the native ExpressionEngine <a href="https://docs.expressionengine.com/v3/fieldtypes/relationships.html">Relationship</a> fieldtype.</p>
+<p>Super Search supports the native ExpressionEngine <a href="http://ellislab.com/expressionengine/user-guide/add-ons/channel/relationships.html">Relationship</a> fieldtype.</p>
 
 <p>In brief, you can search on specific relationship fields using loose or exact searching. Broad keyword searching is ignored across relationship fields due to the performance problems and confusion that would be experienced.</p>
 
@@ -476,26 +380,21 @@ the region field is NOT empty.</p></li>
   <p>/search&amp;related_news=pick</p>
 </blockquote>
 
-<p>This query will find entries where the <em>related_news</em> relationship field contains
-at least 1 related child entry with a title that contains the word <strong>pick</strong>.</p></li>
+<p>This query will find entries where the <em>related_news</em> relationship field contains at least 1 related child entry with a title that contains the word <strong>pick</strong>.</p></li>
 <li><p><strong>Exact Value(s) in a Specific Relationship Field Title</strong>:</p>
 
 <blockquote>
   <p>/search&amp;related_news-exact=pickles</p>
 </blockquote>
 
-<p>To perform an exact relationship field search, append <em>-exact</em> to the name of
-the field. This query will find entries where the <em>related_news</em> relationship
-field contains at least 1 related child entry with a title that exactly contains
-the word <strong>pickles</strong>. If the title for example, contains <strong>Dill Pickles</strong>, it
-will not be a valid match.</p></li>
+<p>To perform an exact relationship field search, append <em>-exact</em> to the name of the field. This query will find entries where the <em>related_news</em> relationship field contains at least 1 related child entry with a title that exactly contains the word <strong>pickles</strong>. If the title for example, contains <strong>Dill Pickles</strong>, it will not be a valid match.</p></li>
 </ul>
 
 <p><a name="grid_fields"></a></p>
 
 <h2>Grid Fields</h2>
 
-<p>Super Search supports the native ExpressionEngine <a href="https://docs.expressionengine.com/v3/fieldtypes/grid.html">Grid</a> fieldtype. This documentation section also applies to the Pixel &amp; Tonic Matrix fieldtype, as they are very similar in how they work.</p>
+<p>Super Search supports the native ExpressionEngine <a href="http://ellislab.com/expressionengine/user-guide/add-ons/channel/grid.html">Grid</a> fieldtype. This documentation section also applies to the Pixel &amp; Tonic Matrix fieldtype, as they are very similar in how they work.</p>
 
 <p>In brief, you can search on specific Grid fields or Grid field columns like you would any other regular custom field - this includes range, exact, empty syntax as well.</p>
 
@@ -508,81 +407,57 @@ will not be a valid match.</p></li>
   <p>/search&amp;grid_field=apple+pie</p>
 </blockquote>
 
-<p>This query will find entries where the <em>grid_field</em> Grid field contains any row
-of data with a value that contains either the word <strong>apple</strong> OR <strong>pie</strong>.</p></li>
+<p>This query will find entries where the <em>grid_field</em> Grid field contains any row of data with a value that contains either the word <strong>apple</strong> OR <strong>pie</strong>.</p></li>
 <li><p><strong>Value in a specific column of a Grid field</strong>:</p>
 
 <blockquote>
   <p>/search&amp;grid_field:col_2=cheesies</p>
 </blockquote>
 
-<p>This query will find entries where the <em>col_2</em> column of the <em>grid_field</em> Grid
-field contains any row of data with a value that contains the word <strong>cheesies</strong>.</p></li>
+<p>This query will find entries where the <em>col_2</em> column of the <em>grid_field</em> Grid field contains any row of data with a value that contains the word <strong>cheesies</strong>.</p></li>
 <li><p><strong>Exact Value(s) in Grid field columns</strong>:</p>
 
 <blockquote>
   <p>/search&amp;grid_field:col_2=monkey</p>
 </blockquote>
 
-<p>Exact searching on Grid fields works just like regular custom field Exact
-searches. Due to the nature of grid fields and the data they contain, Exact
-searches are pointless to perform on a whole Grid field, but it is available
-for searching on rows of data in specific columns. Simply append <em>-exact</em> to
-the column name in the field. This query will find entries where the <em>col_2</em>
-column of the <em>grid_field</em> Grid field contains at least 1 row of data with a
-value that exactly contains the word <strong>monkey</strong>. If a row for example,
-contains <strong>monkey pants</strong>, it will not be a valid match.</p></li>
+<p>Exact searching on Grid fields works just like regular custom field Exact searches. Due to the nature of grid fields and the data they contain, Exact searches are pointless to perform on a whole Grid field, but it is available for searching on rows of data in specific columns. Simply append <em>-exact</em> to the column name in the field. This query will find entries where the <em>col_2</em> column of the <em>grid_field</em> Grid field contains at least 1 row of data with a value that exactly contains the word <strong>monkey</strong>. If a row for example, contains <strong>monkey pants</strong>, it will not be a valid match.</p></li>
 <li><p><strong>Range from a Value in Grid field columns</strong>:</p>
 
-<p>Range searching on Grid fields works just like regular custom field Range
-searches. Due to the nature of grid fields and the data they contain, Range
-searches are pointless to perform on a whole Grid field, but it is available
-for searching on rows of data in specific columns. Range searcing allows you
-to search based on a range of data for a Grid field column. To do this, just
-append <em>-from</em> (minimum) or <em>-to</em> (maximum) to the column name in the field.</p>
+<p>Range searching on Grid fields works just like regular custom field Range searches. Due to the nature of grid fields and the data they contain, Range searches are pointless to perform on a whole Grid field, but it is available for searching on rows of data in specific columns. Range searcing allows you to search based on a range of data for a Grid field column. To do this, just append <em>-from</em> (minimum) or <em>-to</em> (maximum) to the column name in the field.</p>
 
 <blockquote>
   <p>/search&amp;product:price-from=20</p>
 </blockquote>
 
-<p>This query will find entries where the <em>price</em> column in the <em>product</em> field
-contains a value <strong>equal to or greater than 20</strong>.</p>
+<p>This query will find entries where the <em>price</em> column in the <em>product</em> field contains a value <strong>equal to or greater than 20</strong>.</p>
 
 <blockquote>
   <p>/search&amp;product:price-to=100</p>
 </blockquote>
 
-<p>This query will find entries where the <em>price</em> column in the <em>product</em> field
-contains a value <strong>equal to or less than 100</strong>.</p>
+<p>This query will find entries where the <em>price</em> column in the <em>product</em> field contains a value <strong>equal to or less than 100</strong>.</p>
 
 <blockquote>
   <p>/search&amp;product:price-from=20&amp;price-to=100</p>
 </blockquote>
 
-<p>This query will find entries where the <em>price</em> column in the <em>product</em> field
-contains a value <strong>equal to or greater than 20</strong>, AND <strong>equal to or less
-than 100</strong>.</p></li>
+<p>This query will find entries where the <em>price</em> column in the <em>product</em> field contains a value <strong>equal to or greater than 20</strong>, AND <strong>equal to or less than 100</strong>.</p></li>
 <li><p><strong>Empty Fields</strong>:</p>
 
-<p>Empty searching on Grid fields works just like regular custom field Empty
-searches. Due to the nature of grid fields and the data they contain, Empty
-searches are pointless to perform on a whole Grid field, but it is available
-for searching on rows of data in specific columns.</p>
+<p>Empty searching on Grid fields works just like regular custom field Empty searches. Due to the nature of grid fields and the data they contain, Empty searches are pointless to perform on a whole Grid field, but it is available for searching on rows of data in specific columns.</p>
 
 <blockquote>
   <p>/search&amp;meal:supper-empty=y</p>
 </blockquote>
 
-<p>To perform search to see if any rows for a specific column in a custom field
-are empty or not, append <em>-empty</em> to the column name in the field. This query
-will find entries where the <em>supper</em> column in the <em>meal</em> field is empty.</p>
+<p>To perform search to see if any rows for a specific column in a custom field are empty or not, append <em>-empty</em> to the column name in the field. This query will find entries where the <em>supper</em> column in the <em>meal</em> field is empty.</p>
 
 <blockquote>
   <p>/search&amp;meal:supper-empty=n</p>
 </blockquote>
 
-<p>This query will find entries where the <em>supper</em> column in the <em>meal</em> field
-is NOT empty.</p></li>
+<p>This query will find entries where the <em>supper</em> column in the <em>meal</em> field is NOT empty.</p></li>
 </ul>
 
 <p><a name="ordering_sorting"></a></p>
@@ -607,7 +482,7 @@ does not follow a field name, sort order will default to <strong>ascending</stro
 orderby strings will always override the orderby template parameter
 in <em>Results</em> tag.</p></li>
 <li><p><strong>Template Parameter</strong>:
-<code>orderby="title+desc+entry_date+summary+desc"</code>
+<code>orderby="title+desc+entry_date+summary+desc" </code>
 Just supply the orderby parameter in your <em>Results</em> tag and give it
 a string of order rules just as you would in the URI.</p></li>
 </ul>

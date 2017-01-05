@@ -7,7 +7,7 @@
 	<head lang="en">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Forget_Last_Search | Super Search | Solspace Addon Documentation</title>
+		<title>Forget Last Search | Super Search | Solspace Addon Documentation</title>
 		<meta name="description" content="" />
 		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
 		<meta name="viewport" content="width=device-width" />
@@ -32,7 +32,7 @@
 				<div class="bread_crumbs">
 					<ul class="crumbs">
 						<li class="first"><a href="index.html">Super Search</a></li>
-						<li>Forget_Last_Search</li>
+						<li>Forget Last Search</li>
 					</ul>
 				</div>
 			</div>
@@ -41,44 +41,49 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li class="current"><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li class="current"><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Super_Search:Forget_Last_Search template tag</h1>
+				<p>By default, the <a href="search.html">Super_Search:Search</a>
+tag remembers the last search a user conducted so that when they return
+to a search form on the site, the search variables they submitted can be
+recalled and the search form repopulated. If you wish to provide an
+option for the user to clear the history of their last search, you can
+provide a link that points to a template with the
+<em>Super_Search:Forget_Last_Search</em> function in it. This will cause the
+search form on the site to be cleared or reset.</p>
 
-<p>By default, the <a href="form.html">Super_Search:Form</a> tag remembers the last search a user conducted so that when they return to a search form on the site, the search variables they submitted can be recalled and the search form repopulated. If you wish to provide an option for the user to clear the history of their last search, you can
-provide a link that points to a template with the <em>Super_Search:Forget_Last_Search</em> function in it. This will cause the search form on the site to be cleared or reset.</p>
-
-<pre class="brush: html;">{exp:super_search:forget_last_search} content {/exp:super_search:forget_last_search}</pre>
+<pre class="brush: html;">{exp:super_search:forget_last_search} content {/exp:super_search:forget_last_search} </pre>
 
 <ul>
 <li><a href="#variables">Variables</a></li>
@@ -101,9 +106,10 @@ provide a link that points to a template with the <em>Super_Search:Forget_Last_S
 
 <h3>message</h3>
 
-<pre class="brush: html;">{message}</pre>
+<pre class="brush: html;">{message} </pre>
 
-<p>This variable returns a message indicating the success or failure of the action.</p>
+<p>This variable returns a message indicating the success or failure of the
+action.</p>
 
 <p><a name="conditionals"></a></p>
 
@@ -120,15 +126,16 @@ provide a link that points to a template with the <em>Super_Search:Forget_Last_S
 
 <h3>if failure</h3>
 
-<pre class="brush: html;">{if failure}{/if}</pre>
+<pre class="brush: html;">{if failure}{/if} </pre>
 
-<p>This conditional will show its contents if the action fails for any reason.</p>
+<p>This conditional will show its contents if the action fails for any
+reason.</p>
 
 <p><a name="if_success"></a></p>
 
 <h3>if success</h3>
 
-<pre class="brush: html;">{if success}{/if}</pre>
+<pre class="brush: html;">{if success}{/if} </pre>
 
 <p>This conditional will show its contents if the action succeeds.</p>
 
@@ -153,45 +160,44 @@ provide a link that points to a template with the <em>Super_Search:Forget_Last_S
 
 <h2>Setup</h2>
 
-<p>To implement this feature from your search form, your code would look something like this:</p>
+<p>To implement this feature from your search form, your code would look
+something like this:</p>
 
-<pre class="brush: html;">{exp:super_search:form
-    return="supersearch/results"
-}
+<pre class="brush: html;">&lt;form method="post" action="{path='search/results'}"&gt;
     &lt;h3&gt;Search for Products:&lt;/h3&gt;
-&lt;!-- Begin Forget Last Search link --&gt;
+    &lt;!-- Begin Forget Last Search link --&gt;
     &lt;p&gt;
         &lt;a href="{path='supersearch/forget_last_search'}"&gt;
             Forget Last Search?
         &lt;/a&gt;
     &lt;/p&gt;
-&lt;!-- End Forget Last Search link --&gt;
-    &lt;p&gt;
-        &lt;label for="keywords"&gt;Keywords:&lt;/label&gt;
-        &lt;input
-            type="text"
-            name="keywords"
-            id="keywords"
-            value="{super_search_keywords}" /&gt;
-    &lt;/p&gt;
-    &lt;p&gt;
-        &lt;label for="price-from"&gt;Price from:&lt;/label&gt;
-        &lt;input
-            type="text"
-            name="price-from"
-            id="price-from"
-            value="{super_search_price-from}" /&gt;
-        &lt;label for="price-to"&gt;to:&lt;/label&gt;
-        &lt;input
-            type="text"
-            name="price-to"
-            id="price-to"
-            value="{super_search_price-to}" /&gt;
-    &lt;/p&gt;
-    &lt;p&gt;
-        &lt;input type="submit" name="submit" value="Search!" /&gt;
-    &lt;/p&gt;
-{/exp:super_search:form}
+    &lt;!-- End Forget Last Search link --&gt;
+    {exp:super_search:search}
+        &lt;p&gt;
+            &lt;label for="keywords"&gt;Keywords:&lt;/label&gt;
+            &lt;input
+                type="text"
+                name="keywords"
+                id="keywords"
+                value="{super_search_keywords}" /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="price-from"&gt;Price from:&lt;/label&gt;
+            &lt;input
+                type="text"
+                name="price-from"
+                id="price-from"
+                value="{super_search_price-from}" /&gt;
+            &lt;label for="price-to"&gt;to:&lt;/label&gt;
+            &lt;input
+                type="text"
+                name="price-to"
+                id="price-to"
+                value="{super_search_price-to}" /&gt;
+        &lt;/p&gt;
+        &lt;p&gt;&lt;input type="submit" name="submit" value="Search!" /&gt;&lt;/p&gt;
+    {/exp:super_search:search}
+&lt;/form&gt;
 </pre>
 			</article>
 		</div>

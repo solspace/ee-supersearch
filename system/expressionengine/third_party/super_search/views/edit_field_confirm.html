@@ -1,0 +1,15 @@
+<?php echo $this->view('header.html');?>
+
+
+	<form action="<?=$base_uri; ?>&method=<?=$method; ?>&field_id=<?=$field_id; ?>&msg=field_edited_successfully" method="post">
+		<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+		<input type="hidden" name="field_id" value="<?=$field_id; ?>" />
+		<input type="hidden" name="sql" value="<?=$sql; ?>" />
+		<p><strong><?=lang('edit_confirm'); ?></strong></p>
+		<p><?=$question; ?></p>
+		<p class="notice"><?=lang('action_can_not_be_undone'); ?></p>
+		<p><input type="submit" class="submit" value="<?=lang('submit'); ?>" /></p>
+	</form>
+
+
+<?php echo $this->view('footer.html'); ?>

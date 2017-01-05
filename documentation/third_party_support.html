@@ -41,54 +41,68 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li class="current"><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Third Party Add-on Support</h1>
+				<p>Super Search, to some extent, will natively support any third party
+field type that stores its data normally within the custom field. For
+third party add-ons with custom field types that store something else in
+the <strong>exp_channel_data</strong> table, we have included a <a href="#developers_api">Search Index
+API</a> for developers to use.</p>
 
-<p>Super Search, to some extent, will natively support any third party field type that
-stores its data normally within the custom field. For third party add-ons with custom field types that store something else in the <strong>exp_channel_data</strong> table, we have included a <a href="#developers_api">Search Index API</a> for developers to use.</p>
-
-<p>Officially, Super Search includes limited third party add-on support to the following add-ons:</p>
+<p>Officially, Super Search includes limited third party add-on support to
+the following add-ons:</p>
 
 <ul>
-<li><a href="#solspace_tag">Solspace Tag 5</a></li>
-<li><a href="#solspace_rating">Solspace Rating 4</a></li>
-<li><a href="#developers_api">Search Index API for Developers</a></li>
+<li><a href="#solspace_tag">Solspace Tag 4</a></li>
+<li><a href="#solspace_rating">Solspace Rating 3</a></li>
+<li><a href="#pt_playa">Pixel &amp; Tonic Playa 4</a></li>
+<li><a href="#pt_matrix">Pixel &amp; Tonic Matrix 2.5</a></li>
 </ul>
 
-<h2>Solspace <a href="https://solspace.com/expressionengine/tag">Tag</a> <a name="solspace_tag"></a></h2>
+<p><a name="solspace_tag"></a></p>
 
-<p>Super Search includes extensive support for searching upon <a href="https://solspace.com/expressionengine/tag">Tag</a> add-on tags. Because Tag 4 includes the special fieldtype approach, tags are saved directly to the custom field. This means that as long as the Tag field(s) are set to <em>searchable</em> in the custom fields' settings, you are be able to perform direct searches on them, as well as keyword searches that include Tag searching. So in order to take advantage of this, you must have Tag 4+ installed, have tags using the custom field method (not the "publish tab" method), and the Tag fields set to <em>searchable</em>.</p>
+<h2>Solspace <a href="http://www.solspace.com/software/detail/tag/">Tag</a></h2>
+
+<p>Super Search includes extensive support for searching upon
+<a href="http://www.solspace.com/software/detail/tag/">Tag</a> add-on tags. Because
+Tag 4 includes the special fieldtype approach, tags are saved directly
+to the custom field. This means that as long as the Tag field(s) are set
+to <em>searchable</em> in the custom fields' settings, you are be able to
+perform direct searches on them, as well as keyword searches that
+include Tag searching. So in order to take advantage of this, you must
+have Tag 4+ installed, have tags using the custom field method (not the
+"publish tab" method), and the Tag fields set to <em>searchable</em>.</p>
 
 <p>In addition to the above, Super Search includes additional support for
 searching directly on tags:</p>
@@ -98,9 +112,11 @@ searching directly on tags:</p>
 <li><a href="search.html#tags-like">tags-like</a> form field in <a href="search.html">Search</a> loop</li>
 </ul>
 
-<h2>Solspace <a href="https://solspace.com/expressionengine/rating">Rating</a> <a name="solspace_rating"></a></h2>
+<p><a name="solspace_rating"></a></p>
 
-<p>Super Search includes extensive support for ordering results by ratings submitted with the <a href="https://solspace.com/expressionengine/rating">Rating</a> add-on. The following options/queries are available for the <em>orderby</em> param:</p>
+<h2>Solspace <a href="http://www.solspace.com/software/detail/rating/">Rating</a></h2>
+
+<p>Super Search includes extensive support for ordering results by ratings submitted with the <a href="http://www.solspace.com/software/detail/rating/">Rating</a> add-on. The following options/queries are available for the <em>orderby</em> param:</p>
 
 <ul>
 <li><strong>search&amp;orderby=rating</strong> - this would sort by overall Bayesian rating. Default <strong>desc</strong>.</li>
@@ -108,11 +124,45 @@ searching directly on tags:</p>
 <li><strong>search&amp;orderby=rating_field-hooplah</strong> - this would sort by a specific rating field with a name of <em>hooplah</em>, using the Bayesian value.</li>
 </ul>
 
-<h2>Search Index API for Developers <a name="developers_api"></a></h2>
+<p><a name="pt_playa"></a></p>
 
-<p>For developers of third party add-ons that use custom field types that store field data somewhere else (instead of the <strong>exp_channel_data</strong> table), you can add Super Search compatibility to your custom field type. Just add a public method <em>third_party_search_index($field_data)</em> to your field type class, and Super Search will know where to find the data. This is the same hook used in the <a href="http://gotolow.com/addons/low-search">Low Search</a> add-on.</p>
+<h2>Pixel &amp; Tonic <a href="http://pixelandtonic.com/playa">Playa</a></h2>
 
-<p>The <em>third_party_search_index</em> hook contains one parameter, <strong>$field_data</strong>, which contains the contents of your field currently in the database. Additionally, <strong>$this-&#62;settings</strong> is available, which includes <strong>$this-&#62;settings['entry_id']</strong>. Your method should return a string of searchable text.</p>
+<p>Super Search has limited support for Pixel &amp; Tonic's
+<a href="http://pixelandtonic.com/playa">Playa</a> add-on. You can perform regular
+searches (excluding exact, ranges, etc) on entry titles within Playa
+fields, as long as the field(s) are set to <em>searchable</em> in the custom
+fields' settings. This means that you are be able to perform direct
+searches on Playa fields, as well as keyword searches that include Playa
+field searching.</p>
+
+<p><a name="pt_matrix"></a></p>
+
+<h2>Pixel &amp; Tonic <a href="http://pixelandtonic.com/matrix">Matrix</a></h2>
+
+<p>Super Search has support for Pixel &amp; Tonic's <a href="http://pixelandtonic.com/matrix">Matrix</a> add-on. You can perform regular
+searches (excluding exact, ranges, etc) on the entire field, or specifically on columns, as long as the field(s) are set to <em>searchable</em> in the custom
+fields' settings. This means that you are be able to perform direct
+searches on Matrix fields, as well as keyword searches that include Matrix
+field searching. For more information on search syntax, visit the <a href="#grid_fields">Grid field Search Syntax documentation</a>.</p>
+
+<p><a name="developers_api"></a></p>
+
+<h2>Search Index API for Developers</h2>
+
+<p>For developers of third party add-ons that use custom field types that
+store field data somewhere else (instead of the <strong>exp_channel_data</strong>
+table), you can add Super Search compatibility to your custom field
+type. Just add a public method
+<em>third_party_search_index($field_data)</em> to your field type class, and
+Super Search will know where to find the data. This is the same hook
+used in the <a href="http://gotolow.com/addons/low-search">Low Search</a> add-on.</p>
+
+<p>The <em>third_party_search_index</em> hook contains one parameter,
+<strong>$field_data</strong>, which contains the contents of your field currently in
+the database. Additionally, <strong>$this-&#62;settings</strong> is available, which
+includes <strong>$this-&#62;settings['entry_id']</strong>. Your method should return a
+string of searchable text.</p>
 			</article>
 		</div>
 

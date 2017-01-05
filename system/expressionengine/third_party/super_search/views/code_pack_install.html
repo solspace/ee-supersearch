@@ -1,0 +1,89 @@
+<?php echo $this->view('header.html'); ?>
+
+<style type="text/css">
+	.template-table {
+		border-collapse:	separate !important;
+		border-spacing:		0 !important;
+		border-top:			1px solid #d0d7df;
+	}
+
+		.template-table .subtext {
+			margin-top: 10px;
+		}
+
+		.template-table tbody tr td:first-child {
+			vertical-align: top;
+		}
+
+		.template-table .sub-ul > li {
+			margin-top: 10px;
+		}
+
+			.template-table .sub-ul > li:first-child {
+				margin-top: 0;
+			}
+
+			.template-table .sub-ul li ul {
+				margin-left: 20px;
+			}
+</style>
+
+<?php if (count($errors) > 0) : ?>
+
+	<table id="entries" class="template-table mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+<?php $i = 0; foreach ($errors as $val) : $i++; ?>
+			<tr class="<?=$caller->cycle('odd', 'even')?>">
+				<td style="width:10%;">
+					<div style="color:darkred; font-weight:bold;">
+						<?=lang('error')?>
+					</div>
+				</td>
+				<td style="width:20%;"><?=$val['label']?></td>
+				<td>
+					<?=str_replace(
+						array(
+							'%conflicting_groups%',
+							'%conflicting_data%',
+							'%conflicting_global_vars%'
+							),
+						array(
+							'<div class="notice">'.implode( ", ", $conflicting_groups ).'</div>',
+							'<div class="notice">'.implode( "<br />", $conflicting_global_vars ).'</div>'
+							),
+						$val['description']
+					)?>
+				</td>
+			</tr>
+<?php endforeach; ?>
+		</table>
+<?php endif; ?>
+<?php if (count($errors) == 0 AND count($success) > 0) :?>
+
+	<table id="entries" class="template-table mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+<?php $i = 0; foreach ($success as $val) : $i++; ?>
+			<tr class="<?=$caller->cycle('odd', 'even')?>">
+				<td style="width:10%;">
+					<div style="color:darkgreen; font-weight:bold;">
+						<?=lang('success')?>
+					</div>
+				</td>
+				<td style="width:20%;"><?=$val['label']?></td>
+				<td>
+					<?=str_replace(
+						array(
+							'%template_count%',
+							'%global_vars%'
+						),
+						array(
+							$template_count,
+							'<div class="notice">'.implode( "<br />", $global_vars ).'</div>'
+						),
+						$val['description']
+					)?>
+				</td>
+			</tr>
+<?php endforeach; ?>
+		</table>
+<?php endif; ?>
+
+<?php echo $this->view('footer.html'); ?>

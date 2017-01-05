@@ -1,0 +1,11 @@
+<?php echo $this->view('header.html');?>
+
+	<h4 class="alert"><?php echo lang('error');?></h4>
+
+	<p>
+			<strong><?=$error_message?></strong>
+				<br /><br />
+			<strong><a href='javascript:history.go(-1)' style='text-transform:uppercase;'>&#171; <?=lang('back')?></a></strong>
+	</p>
+
+<?php echo $this->view('footer.html'); ?>

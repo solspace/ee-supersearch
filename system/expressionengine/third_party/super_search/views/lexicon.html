@@ -1,0 +1,72 @@
+<?php if( $just_lexicon === TRUE ) :
+
+ echo $this->view('header.html'); ?>
+
+	<?php if( $lexicon_action != '' ) : ?>
+
+		<h2>Lexicon is <em><?=$lexicon_action['state']?></em></h2>
+
+	<?php endif; ?>
+
+<?php endif;
+
+	$i = 0; ?>
+
+	<table 	class="mainTable padTable siteTable"
+			style='width:100%;'
+		   	cellspacing='0' cellpadding='0' border='0' autocomplete="off">
+		<thead>
+			<tr>
+				<th colspan="2">
+					<?=lang('lexicon')?>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width: 50%;">
+					<label for="separator">
+						<?=lang('build_search_lexicon')?>
+					</label>
+					<div class="subtext">
+						<?=lang('search_lexicon_explain')?>
+					</div>
+				</td>
+					<td style="width: 50%;">
+
+						<div class="live_block">
+
+							<span id="build_lexicon_block" class="block_action">
+
+								<span class="last_build"><?=$lexicon_last_build?></span>
+								<span class="just_now" style="display:none">
+									<?=lang('built_just_now')?>
+								</span>
+
+								<input type="submit" name="submit" value="<?=$lexicon_build_lang?>" class="submit live_block_build" id="build_lexicon" rel="<?=$lexicon_build_url?>"/>
+
+							</span>
+
+							<div class="lexicon_build_state block_state" style="display:none;">
+
+								<span  style="display:none;" id="lexicon_in_progress" class="block_in_progress">
+									<?=lang('build_in_progress')?>
+									<span id="lexicon_progress_count_current" class="block_progress_count_current">0</span> / <span id="lexicon_progress_count_total" class="block_progress_count_total"><?=$lexicon_progress_count_total?></span>
+								</span>
+
+								<div id="lexicon_progressbar" class="block_progressbar ui-progressbar"></div>
+
+							</div>
+
+							<span style="display:none;" id="lexicon_success" class="block_success">
+								<img src="<?=$success_png_url?>"/>
+								<?=lang('build_complete')?>
+							</span>
+
+						</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+<?php if( $just_lexicon === TRUE ) : echo $this->view('footer.html'); endif; ?>

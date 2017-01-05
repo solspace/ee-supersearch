@@ -41,41 +41,40 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li class="current"><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Extension Hooks</h1>
-
-<ul>
+				<ul>
 <li><a href="#super_search_extra_basic_fields">super_search_extra_basic_fields</a></li>
 <li><a href="#super_search_alter_search">super_search_alter_search</a></li>
 <li><a href="#super_search_alter_ids">super_search_alter_ids</a></li>
@@ -99,7 +98,7 @@
 
 <pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_extra_basic_fields') === TRUE)
 {
-    $basic_fields = ee()-&gt;extensions-&gt;call('super_search_extra_basic_fields', $this);
+    $basic_fields = ee()-&gt;extensions-&gt;universal_call('super_search_extra_basic_fields', $this);
 
     foreach ( $basic_fields as $bf )
     {
@@ -177,7 +176,7 @@
 
 <pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_entries_row_inject') === TRUE)
 {
-    $row    = ee()-&gt;extensions-&gt;call( 'super_search_entries_row_inject', $this, $row );
+    $row    = ee()-&gt;extensions-&gt;universal_call( 'super_search_entries_row_inject', $this, $row );
 }
 </pre>
 
@@ -195,7 +194,7 @@
 
 <pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_parse_uri_end') === TRUE)
 {
-    $q  = ee()-&gt;extensions-&gt;call( 'super_search_parse_uri_end', $this, $q );
+    $q  = ee()-&gt;extensions-&gt;universal_call( 'super_search_parse_uri_end', $this, $q );
 }
 </pre>
 
@@ -213,7 +212,7 @@
 
 <pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_prep_fuzzy_keywords_start') === TRUE )
 {
-    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_prep_fuzzy_keywords_start', $this, $arr );
+    $arr    = ee()-&gt;extensions-&gt;universal_call( 'super_search_prep_fuzzy_keywords_start', $this, $arr );
 }
 </pre>
 
@@ -227,7 +226,7 @@
 
 <pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_prep_fuzzy_keywords_end') === TRUE )
 {
-    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_prep_fuzzy_keywords_end', $this, $arr );
+    $arr    = ee()-&gt;extensions-&gt;universal_call( 'super_search_prep_fuzzy_keywords_end', $this, $arr );
 }
 </pre>
 
@@ -248,7 +247,7 @@
 {
     $failsafe   = $arr;
 
-    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_prep_order', $this, $arr, $ord );
+    $arr    = ee()-&gt;extensions-&gt;universal_call( 'super_search_prep_order', $this, $arr, $ord );
 
     $arr    = ( is_null( $arr )) ? $failsafe: $arr;
 }
@@ -276,7 +275,7 @@
 {
     $arr    = array( 'from' =&gt; $this-&gt;sess['search']['from'], 'and' =&gt; $and, 'not' =&gt; $not, 'or' =&gt; $or, 'subids' =&gt; $subids );
 
-    $arr    = ee()-&gt;extensions-&gt;call( 'super_search_do_search_and_array', $this, $arr);
+    $arr    = ee()-&gt;extensions-&gt;universal_call( 'super_search_do_search_and_array', $this, $arr);
 
     if (ee()-&gt;extensions-&gt;end_script === TRUE)
     {
@@ -305,7 +304,7 @@
 
 <pre class="brush: php;">if (ee()-&gt;extensions-&gt;active_hook('super_search_table_columns') === TRUE)
 {
-    $fields = ee()-&gt;extensions-&gt;call( 'super_search_table_columns', $this, $fields );
+    $fields = ee()-&gt;extensions-&gt;universal_call( 'super_search_table_columns', $this, $fields );
 }
 </pre>
 
@@ -324,7 +323,7 @@
 
 <pre class="brush: php;">if ( ee()-&gt;extensions-&gt;active_hook('super_search_array_variables') === TRUE )
 {
-    $parse  = ee()-&gt;extensions-&gt;call( 'super_search_array_variables', $this, $parse, $p );
+    $parse  = ee()-&gt;extensions-&gt;universal_call( 'super_search_array_variables', $this, $parse, $p );
 }
 </pre>
 			</article>

@@ -41,63 +41,87 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li class="current"><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Fuzzy Searching</h1>
-
-<p>Super Search includes <strong>fuzzy searching</strong>, which basically means that searches can be set to ignore plurals, match up similar words, and suggest other words based on spelling in search terms. There are settings in the Preferences tab of the Super Search control panel to enable/disable these behaviors. There is a Lexicon utility in the control panel that needs to be built/run for the first time, and then after that, it will maintain itself without interaction. Fuzzy search terms can be <a href="results.html#fuzzy_weighting">weighted by a multiplier</a> to drop them lower down the search results.</p>
+				<p>Super Search includes <strong>fuzzy searching</strong>, which basically means that
+searches can be set to ignore plurals, match up similar words, and
+suggest other words based on spelling in search terms. There are
+settings in the Preferences tab of the Super Search control panel to
+enable/disable these behaviours. There is a Lexicon utility in the
+control panel that needs to be built/run for the first time, and then
+after that, it will maintain itself without interaction. Fuzzy search
+terms can be <a href="results.html#fuzzy_weighting">weighted by a multiplier</a>
+to drop them lower down the search results.</p>
 
 <p>You can also indicate how close a fuzzy spelling or plural test needs to be to be considered valid using the <a href="results.html#fuzzy_distance">fuzzy_distance</a> parameter. The lesser the distance, the closer the match is to the given word. For example, <em>detrt</em> has a distance of <strong>2</strong> to <em>detroit</em>.</p>
 
-<p>It is important to note that all of the below features require the search Lexicon to learn and become smarter over time. In other words, if you have entries that contain the word <strong>cotton</strong>, the first time a user searches on <strong>coton</strong> (misspelled), they will not see results for <strong>cotton</strong>. The next time someone searches for <strong>coton</strong>, however, will then see results for <strong>cotton</strong>. This is because the first misspelling of the word needs to be added to the Lexicon database, and can then be referenced in future searches.</p>
+<p>It is important to note that all of the below features require the
+search Lexicon to learn and become smarter over time. In other words, if
+you have entries that contain the word <strong>cotton</strong>, the first time a user
+searches on <strong>coton</strong> (misspelled), they will not see results for <strong>cotton</strong>.
+The next time someone searches for <strong>coton</strong>, however, will then see results
+for <strong>cotton</strong>. This is because the first misspelling of the word needs to
+be added to the Lexicon database, and can then be referenced in future
+searches.</p>
 
 <p><a name="plurals"></a></p>
 
 <h2>Plurals</h2>
 
-<p>This will attempt to find plural or singluar versions of the passed terms. Ex: <strong>coat</strong> = <strong>coats</strong>, <strong>trowsers</strong> = <strong>trowser</strong>. Currently English language specific. Enabled via the preference in the Super Search control panel.</p>
+<p>This will attempt to find plural or singluar versions of the passed
+terms. Ex: <strong>coat</strong> = <strong>coats</strong>, <strong>trowsers</strong> = <strong>trowser</strong>. Currently English language specific. Enabled via the preference in the CP.</p>
 
 <p><a name="phonetics"></a></p>
 
 <h2>Phonetics</h2>
 
-<p>This will attempt to find phonetically similar terms within the search lexicon. Ex: <strong>Nolton</strong> = <strong>Noulton</strong>, <strong>Caren</strong> = <strong>Caron</strong> = <strong>Carren</strong> = <strong>Charon</strong>. Currently English language specific. Enabled via the preference in the Super Search control panel.</p>
+<p>This will attempt to find phonetically similar terms within the search
+lexicon. Ex: <strong>Nolton</strong> = <strong>Noulton</strong>, <strong>Caren</strong> = <strong>Caron</strong> = <strong>Carren</strong> = <strong>Charon</strong>. Currently English language specific. Enabled via the preference in the CP.</p>
 
 <p><a name="spelling"></a></p>
 
 <h2>Spelling</h2>
 
-<p>This will attempt to correct any terms in the search keywords which don't exist within the site. It will attempt to find the most similar and most common term, found via tuned fitness function based on the term specific site content. Suggestions are internally cached and will only be generated once per new invalid term. Be aware the fitness function is quite intensive initally when it needs to build up it's suggestions for the first time. After overhead in usage reduces drastically. Ex: <strong>peices</strong> might include results for <strong>pieces</strong>, <strong>kite</strong> might include results for <strong>kind</strong>. Enabled via the preference in the Super Search control panel.</p>
+<p>This will attempt to correct any terms in the search keywords which
+don't exist within the site. It will attempt to find the most similar
+and most common term, found via tuned fitness function based on the term
+specific site content. Suggestions are internally cached and will only
+be generated once per new invalid term. Be aware the fitness function is
+quite intensive initally when it needs to build up it's suggestions for
+the first time. After overhead in usage reduces drastically. Ex: <strong>peices</strong>
+might include results for <strong>pieces</strong>, <strong>kite</strong> might include results for <strong>kind</strong>.
+Enabled via the preference in the CP.</p>
 			</article>
 		</div>
 

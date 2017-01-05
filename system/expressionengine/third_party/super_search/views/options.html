@@ -1,0 +1,275 @@
+<?php echo $this->view('header.html'); ?>
+
+<form action="<?=$form_url?>" method="post">
+<input type="hidden" name="<?=$csrf_hidden_name?>"	value="<?=$CSRF_TOKEN?>" />
+
+	<?php $i = 0; ?>
+
+	<table 	class="mainTable padTable siteTable"
+			style='width:100%;'
+		   	cellspacing='0' cellpadding='0' border='0' autocomplete="off">
+		<thead>
+			<tr>
+				<th colspan="3">
+					<?=lang('search_options'); ?>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width: 50%;" colspan="2">
+					<label for="separator">
+						<?=lang('log_site_searches'); ?>
+					</label>
+					<div class="subtext"><?=lang('log_site_searches_subtext'); ?></div>
+				</td>
+					<td style="width: 50%;">
+						<label for="enable_search_log_yes">
+							<span><?=lang('yes'); ?></span>
+							<input type="radio" id="enable_search_log_yes" name="enable_search_log" value="y" <?php if($prefs['enable_search_log'] == 'y') : ?> checked="checked"<?php endif; ?> />
+						</label>
+						&nbsp;
+						<label for="enable_search_log_no">
+							<span><?=lang('no'); ?></span>
+							<input class="radio" type="radio" id="enable_search_log_no" name="enable_search_log" value="n" <?php if($prefs['enable_search_log'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+						</label>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width: 50%;" colspan="2">
+					<label for="separator">
+						<?=lang('ignore_common_word_list'); ?>
+					</label>
+					<div class="subtext"><?=lang('ignore_common_word_list_subtext'); ?></div>
+				</td>
+				<td style="width: 50%;">
+					<label for="use_ignore_word_list_yes">
+						<span><?=lang('yes'); ?></span>
+						<input type="radio" id="use_ignore_word_list_yes" name="use_ignore_word_list" value="y" <?php if($prefs['use_ignore_word_list'] == 'y') : ?> checked="checked"<?php endif; ?> />
+					</label>
+					&nbsp;
+					<label for="use_ignore_word_list_no">
+						<span><?=lang('no'); ?></span>
+						<input class="radio" type="radio" id="use_ignore_word_list_no" name="use_ignore_word_list" value="n" <?php if($prefs['use_ignore_word_list'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+					</label>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+
+				<td style="width : 4%; text-align : center;">
+				&#8627;
+				</td>
+				<td style="width: 46%; border-left : none;">
+
+					<label class="word_input" for="word_input">
+						<span><?=lang('ignore_word_list')?></span>
+					</label>
+
+					<div class="subtext"><?=lang('ignore_word_list_subtext'); ?></div>
+				</td>
+
+				<td class="solspace_word_group" style="width:70%">
+
+					<div class="ingore_list_input">
+
+						<input type="text" name="word_input" id="word_input" placeholder="<?=lang('ignore_word_list_input_placeholder')?>" autocomplete="off"b/>
+					</div>
+
+					<div class="ignore_list">
+
+						<?php $has_words = FALSE;
+						foreach( $prefs['ignore_word_list'] as $word ) :
+						$has_words = TRUE; ?>
+						<div class="current_word white_grad" data-word="<?=$word?>">
+							<span class="ex"></span>
+							<span class="exclude_word"><?=$word?></span>
+							<input type="hidden" name="word_hidden[]" value="<?=$word?>"/>
+						</div>
+						<?php endforeach; ?>
+
+						<p class="empty_ignore_list" style="<?php if($has_words) { echo('display:none'); } ?>"><?=lang('ignore_word_list_input_empty')?></p>
+
+					</div>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width: 50%;" colspan="2">
+					<label for="separator">
+						<?=lang('enable_smart_excerpt'); ?>
+					</label>
+					<div class="subtext"><?=lang('enable_smart_excerpt_subtext'); ?></div>
+				</td>
+					<td style="width: 50%;">
+						<label for="enable_smart_excerpt_yes">
+							<span><?=lang('yes'); ?></span>
+							<input type="radio" id="enable_smart_excerpt_yes" name="enable_smart_excerpt" value="y" <?php if($prefs['enable_smart_excerpt'] == 'y') : ?> checked="checked"<?php endif; ?> />
+						</label>
+						&nbsp;
+						<label for="enable_smart_excerpt_no">
+							<span><?=lang('no'); ?></span>
+							<input class="radio" type="radio" id="enable_smart_excerpt_no" name="enable_smart_excerpt" value="n" <?php if($prefs['enable_smart_excerpt'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+						</label>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width: 50%;" colspan="2">
+					<label for="separator">
+						<?=lang('enable_fuzzy_searching'); ?>
+					</label>
+					<div class="subtext"><?=lang('enable_fuzzy_searching_subtext'); ?></div>
+				</td>
+					<td style="width: 50%;">
+						<label for="enable_fuzzy_searching_yes">
+							<span><?=lang('yes'); ?></span>
+							<input type="radio" id="enable_fuzzy_searching_yes" name="enable_fuzzy_searching" value="y" <?php if($prefs['enable_fuzzy_searching'] == 'y') : ?> checked="checked"<?php endif; ?> />
+						</label>
+						&nbsp;
+						<label for="enable_fuzzy_searching_no">
+							<span><?=lang('no'); ?></span>
+							<input class="radio" type="radio" id="enable_fuzzy_searching_no" name="enable_fuzzy_searching" value="n" <?php if($prefs['enable_fuzzy_searching'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+						</label>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width : 4%; text-align : center">
+				&#8627;
+				</td>
+				<td style="width: 46%; border-left : none;">
+					<label for="separator">
+						<?=lang('enable_fuzzy_searching_plurals'); ?>
+					</label>
+					<div class="subtext"><?=lang('enable_fuzzy_searching_plurals_subtext'); ?></div>
+				</td>
+				<td style="width: 50%;">
+					<label for="enable_fuzzy_searching_plurals_yes">
+						<span><?=lang('yes'); ?></span>
+						<input type="radio" id="enable_fuzzy_searching_plurals_yes" name="enable_fuzzy_searching_plurals" value="y" <?php if($prefs['enable_fuzzy_searching_plurals'] == 'y') : ?> checked="checked"<?php endif; ?> />
+					</label>
+					&nbsp;
+					<label for="enable_fuzzy_searching_plurals_no">
+						<span><?=lang('no'); ?></span>
+						<input class="radio" type="radio" id="enable_fuzzy_searching_plurals_no" name="enable_fuzzy_searching_plurals" value="n" <?php if($prefs['enable_fuzzy_searching_plurals'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+					</label>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width : 4%; text-align : center">&#8627;
+				</td>
+				<td style="width: 46%; border-left : none">
+					<label for="separator">
+						<?=lang('enable_fuzzy_searching_phonetics'); ?>
+					</label>
+					<div class="subtext"><?=lang('enable_fuzzy_searching_phonetics_subtext'); ?></div>
+				</td>
+					<td style="width: 50%;">
+						<label for="enable_fuzzy_searching_phonetics_yes">
+							<span><?=lang('yes'); ?></span>
+							<input type="radio" id="enable_fuzzy_searching_phonetics_yes" name="enable_fuzzy_searching_phonetics" value="y" <?php if($prefs['enable_fuzzy_searching_phonetics'] == 'y') : ?> checked="checked"<?php endif; ?> />
+						</label>
+						&nbsp;
+						<label for="enable_fuzzy_searching_phonetics_no">
+							<span><?=lang('no'); ?></span>
+							<input class="radio" type="radio" id="enable_fuzzy_searching_phonetics_no" name="enable_fuzzy_searching_phonetics" value="n" <?php if($prefs['enable_fuzzy_searching_phonetics'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+						</label>
+				</td>
+			</tr>
+
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width : 4%; text-align : center">&#8627;
+				</td>
+				<td style="width: 46%; border-left : none">
+					<label for="separator">
+						<?=lang('enable_fuzzy_searching_spelling'); ?>
+					</label>
+					<div class="subtext"><?=lang('enable_fuzzy_searching_spelling_subtext'); ?></div>
+				</td>
+					<td style="width: 50%;">
+						<label for="enable_fuzzy_searching_spelling_yes">
+							<span><?=lang('yes'); ?></span>
+							<input type="radio" id="enable_fuzzy_searching_spelling_yes" name="enable_fuzzy_searching_spelling" value="y" <?php if($prefs['enable_fuzzy_searching_spelling'] == 'y') : ?> checked="checked"<?php endif; ?> />
+						</label>
+						&nbsp;
+						<label for="enable_fuzzy_searching_spelling_no">
+							<span><?=lang('no'); ?></span>
+							<input class="radio" type="radio" id="enable_fuzzy_searching_spelling_no" name="enable_fuzzy_searching_spelling" value="n" <?php if($prefs['enable_fuzzy_searching_spelling'] == 'n') : ?> checked="checked"<?php endif; ?>/>
+						</label>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	<table id="entries" class="mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th colspan="2"><?=lang('refresh_rules'); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="odd">
+				<td>
+					<div><strong><?=lang('current_cache');?></strong></div>
+					<div><?=$next_refresh;?></div>
+				</td>
+				<td>
+					<a href="<?= $caller->output($base_uri.'&method=clear_search_cache&msg=cache_cleared')?>"><?=lang('clear_search_cache'); ?></a>
+				</td>
+			</tr>
+			<tr class="even">
+				<td>
+					<div><strong><?=lang('refresh'); ?></strong></div>
+					<div><?=lang('refresh_explanation'); ?></div>
+				</td>
+				<td style="vertical-align:top;">
+					<div><input dir="ltr" style="width:10%" type="text" name="refresh" id="refresh" value="<?=$refresh; ?>" size="35" maxlength="6" class="input" /> &nbsp; <?=lang('in_minutes'); ?>
+					</div>
+				</td>
+			</tr>
+			<tr class="odd">
+				<td style="vertical-align:top;">
+					<div><strong><?=lang('template_refresh'); ?></strong>
+					<div><?=lang('template_refresh_explanation'); ?></div>
+				</td>
+				<td style="vertical-align:top;">
+					<div>
+						<?=$template_id_field?>
+					</div>
+				</td>
+			</tr>
+			<tr class="even">
+				<td style="vertical-align:top;">
+					<div><strong><?=lang('channel_refresh'); ?></strong>
+					<div><?=lang('channel_refresh_explanation'); ?></div>
+				</td>
+				<td style="vertical-align:top; width:75%;">
+					<div>
+						<?=$channel_id_field;?>
+					</div>
+				</td>
+			</tr>
+			<tr class="odd">
+				<td style="vertical-align:top;">
+					<div><strong><?=lang('category_refresh'); ?></strong>
+					<div><?=lang('category_refresh_explanation'); ?></div>
+				</td>
+				<td style="vertical-align:top; width:75%;">
+					<div>
+						<?=$category_group_id_field;?>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+<p><input style="float:right;"
+			type="submit" name="submit"
+			value="Update" class="submit"  /></p>
+</form>
+
+<?php echo $this->view('footer.html'); ?>

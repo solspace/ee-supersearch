@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>		<html class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html class="no-js"> <!--<![endif]-->
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Change Log | Super Search | Solspace Addon Documentation</title>
+		<meta name="description" content="" />
+		<meta name="copyright" content="(c) 2010 Copyright content: Copyright design: Solspace, Inc."/>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="assets/css/normalize.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox-1.3.4.css" />
+		<link href="assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="assets/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+		<script src="assets/js/modernizr.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<img src="assets/images/logo.png" />
+				</div>
+
+				<div class="bread_crumbs">
+					<ul class="crumbs">
+						<li class="first"><a href="index.html">Super Search</a></li>
+						<li>Change Log</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content-wrapper">
+			<nav class="toc">
+				<ul>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li class="current"><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
+<li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
+<li><a href="relevance_ordering.html">Relevance Ordering</a></li>
+<li><a href="search_syntax.html">Search Syntax</a></li>
+<li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
+<li><a href="third_party_support.html">Third Party Add-on Support</a></li>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
+
+<ul>
+<li><a href="cloud.html">Cloud</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
+</ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
+</ul>
+			</nav>
+
+			<article class="docs">
+				<ul>
+<li><a href="#v2.2.4">Version 2.2.4</a></li>
+<li><a href="#v2.2.3">Version 2.2.3</a></li>
+<li><a href="#v2.2.2">Version 2.2.2</a></li>
+<li><a href="#v2.2.1">Version 2.2.1</a></li>
+<li><a href="#v2.2.0">Version 2.2.0</a></li>
+<li><a href="#v2.1.4">Version 2.1.4</a></li>
+<li><a href="#v2.1.3">Version 2.1.3</a></li>
+<li><a href="#v2.1.2">Version 2.1.2</a></li>
+<li><a href="#v2.1.1">Version 2.1.1</a></li>
+<li><a href="#v2.1.0">Version 2.1.0</a></li>
+<li><a href="#v2.0.8">Version 2.0.8</a></li>
+<li><a href="#v2.0.7">Version 2.0.7</a></li>
+<li><a href="#v2.0.6">Version 2.0.6</a></li>
+<li><a href="#v2.0.5">Version 2.0.5</a></li>
+<li><a href="#v2.0.4">Version 2.0.4</a></li>
+<li><a href="#v2.0.3">Version 2.0.3</a></li>
+<li><a href="#v2.0.2">Version 2.0.2</a></li>
+<li><a href="#v2.0.1">Version 2.0.1</a></li>
+<li><a href="#v2.0.0">Version 2.0.0</a></li>
+<li><a href="#v1.4.4">Version 1.4.4</a></li>
+<li><a href="#v1.4.3">Version 1.4.3</a></li>
+<li><a href="#v1.4.2">Version 1.4.2</a></li>
+<li><a href="#v1.4.1">Version 1.4.1</a></li>
+<li><a href="#v1.4.0">Version 1.4.0</a></li>
+<li><a href="#v1.3.1">Version 1.3.1</a></li>
+<li><a href="#v1.3.0">Version 1.3.0</a></li>
+<li><a href="#v1.2.0">Version 1.2.0</a></li>
+<li><a href="#v1.1.0">Version 1.1.0</a></li>
+<li><a href="#v1.0.0">Version 1.0.0</a></li>
+</ul>
+
+<p><a name="v2.2.4"></a></p>
+
+<h2>Version 2.2.4 (March 24, 2016)</h2>
+
+<ul>
+<li>Fixed an XSS security risk that was possible in certain scenarios.</li>
+<li>Fixed a bug where a 'save&#95;search&#95;form' form element would sometimes appear inside the 'if super&#95;search&#95;no&#95;results' conditional.</li>
+<li>Fixed a bug where PHP errors would possibly display if the 'highlight&#95;keywords' parameter was used with a keyword containing multiple words.</li>
+</ul>
+
+<p><a name="v2.2.3"></a></p>
+
+<h2>Version 2.2.3 (March 4, 2015)</h2>
+
+<ul>
+<li>Fixed a bug where keyword searches and highlight_keywords parameter were not properly respected the Ignored Keywords list.</li>
+<li>Fixed a bug where the inclusive_keywords="no" parameter was not working correctly.</li>
+<li>Fixed a bug where some keyword searches would trigger a "prep_keywords" error.</li>
+</ul>
+
+<p><a name="v2.2.2"></a></p>
+
+<h2>Version 2.2.2 (January 6, 2015)</h2>
+
+<ul>
+<li>Updated for compatibility (deprecation errors) with ExpressionEngine 2.8+.</li>
+<li>Made some minor adjustments and improvements to the Demo Templates.</li>
+</ul>
+
+<p><a name="v2.2.1"></a></p>
+
+<h2>Version 2.2.1 (October 1, 2014)</h2>
+
+<ul>
+<li>Fixed a bug where Grid support was expecting a Matrix query to check for results.</li>
+<li>Fixed a bug where Matrix install-checking was giving false positives if Matrix was in the 'third_party' folder but not installed.</li>
+</ul>
+
+<p><a name="v2.2.0"></a></p>
+
+<h2>Version 2.2.0 (September 22, 2014)</h2>
+
+<ul>
+<li>Added support for searching on native Grid fieldtype and P&amp;T Matrix fieldtype fields.</li>
+<li>Updated and refreshed demo templates.</li>
+<li>Fixed a bug where a MySQL error would show when using the 'keyword_search_category_name' and 'relevance' parameters without a keyword search.</li>
+<li>Fixed a bug where searching on Matrix fields would sometimes trigger a database error.</li>
+</ul>
+
+<p><a name="v2.1.4"></a></p>
+
+<h2>Version 2.1.4 (April 8, 2014)</h2>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.8.</li>
+</ul>
+
+<p><a name="v2.1.3"></a></p>
+
+<h2>Version 2.1.3 (September 5, 2013)</h2>
+
+<ul>
+<li>Added 'max_limit' parameter to Results tag to prevent users from overriding results limit beyond the value provided.</li>
+<li>Updated front end forms for compatibility with ExpressionEngine 2.7+.</li>
+<li>Fixed a bug where conjoined MSM searches on duplicate field names (across MSM sites) would not work correctly.</li>
+<li>Fixed a bug where the 'limit' parameter was not being overwritten by a URI param value.</li>
+</ul>
+
+<p><a name="v2.1.2"></a></p>
+
+<h2>Version 2.1.2 (July 26, 2013)</h2>
+
+<ul>
+<li>Fixed a bug where searching with statuses and the status parameter was not always working correctly.</li>
+<li>Fixed a bug where wildcard searching would not work when searching across fields with duplicate names across MSM sites.</li>
+<li>Fixed a bug where Tag searching did not work.</li>
+</ul>
+
+<p><a name="v2.1.1"></a></p>
+
+<h2>Version 2.1.1 (July 3, 2013)</h2>
+
+<ul>
+<li>Fixed a bug where if you supplied the 'channel' template parameter, but did not pass 'channel' into the URL, the 'channel' template parameter was ignored.</li>
+<li>Fixed a bug where the module CP's Utility and Permissions tabs showed a PHP error when using EE 2.5.x and under.</li>
+<li>Fixed a bug where errors could display on the front end when using EE 2.5.x and under.</li>
+</ul>
+
+<p><a name="v2.1.0"></a></p>
+
+<h2>Version 2.1.0 (June 21, 2013)</h2>
+
+<ul>
+<li>Added {super_search_keywords_url} variable to Results page and Super_Search:Results tag to parse a websafe version of keywords search term(s) for creating URI-friendly links.</li>
+<li>Added support for native ExpressionEngine Relationship fieldtype for EE 2.6+. Previous relationship fieldtype no longer supported.</li>
+<li>Added support for parsing value arrays on regular custom fields in the Super_Search:Variables tag (ex: super_search_body_pickles).</li>
+<li>Added searching directly into 'url_title', and included in keyword searching and relevance.</li>
+<li>Added searching directly into 'screen_name'</li>
+<li>Added ability to order results by Rating module ratings.</li>
+<li>Added 'fuzzy_distance' parameter, which helps you indicate how close a fuzzy spelling or plural test needs to be to be considered valid. </li>
+<li>Fixed a bug with date range searching on custom date fields.</li>
+<li>Fixed a bug with exact field searching on phrases.</li>
+<li>Fixed a bug where the 'inclusive_categories' parameter was being ignored.</li>
+<li>Fixed a bug where fuzzy searching on words was case sensitive.</li>
+<li>Fixed a bug where searches on words containing an ampersand with no spaces next to it would yield 0 results.</li>
+</ul>
+
+<p><a name="v2.0.8"></a></p>
+
+<h2>Version 2.0.8 (May 7, 2013)</h2>
+
+<ul>
+<li>Updated for compatibility with ExpressionEngine 2.6.</li>
+<li>Fixed a bug where PHP errors would occur in the control panel on PHP 5.2.x.</li>
+<li>Fixed a bug where native JSON features were not being used if present.</li>
+</ul>
+
+<p><a name="v2.0.7"></a></p>
+
+<h2>Version 2.0.7 (March 12, 2013)</h2>
+
+<ul>
+<li>Added internal Demo Templates tab in control panel (replaces older "code pack" approach).</li>
+<li>Updates are now automatic and no longer require a manual update screen.</li>
+</ul>
+
+<p><a name="v2.0.6"></a></p>
+
+<h2>Version 2.0.6 (February 4, 2013)</h2>
+
+<ul>
+<li>Added offline documentation files to download package.</li>
+</ul>
+
+<p><a name="v2.0.5"></a></p>
+
+<h2>Version 2.0.5 (September 19, 2012)</h2>
+
+<ul>
+<li>Modified {super_search_keywords} variable to also parse inside of
+Super_Search:Results tag.</li>
+<li>Fixed a bug where PHP errors could show on sites using
+ExpressionEngine 2.5.3+ and PHP 5.3+.</li>
+<li>Fixed a bug where the {total_results} variable was always just
+parsing as "1" inside the Super_Search:Results tag.</li>
+<li>Fixed a bug where date range searching would trigger SQL errors if
+an incorrect date range value was searched upon.</li>
+</ul>
+
+<p><a name="v2.0.4"></a></p>
+
+<h2>Version 2.0.4 (June 12, 2012)</h2>
+
+<ul>
+<li>Added extra cookie security to prevent theoretically potential
+cross-site script attacks.</li>
+<li>Updated search log to capture only the essentials of a given search.</li>
+</ul>
+
+<p><a name="v2.0.3"></a></p>
+
+<h2>Version 2.0.3 (May 2, 2012)</h2>
+
+<ul>
+<li>Fixed a bug where the {count} variable did not parse correctly in
+Results tag.</li>
+</ul>
+
+<p><a name="v2.0.2"></a></p>
+
+<h2>Version 2.0.2 (April 27, 2012)</h2>
+
+<ul>
+<li>Added ability to require certain fields to be searched on. If a
+required field is missed, {if
+super_search_missing_required_fields} conditional will display
+its contents.</li>
+<li>Fixed a bug where the Super Search 1.4.x to 2.x upgrade missed
+adding the "terms" table.</li>
+<li>Fixed a bug where the Super Search extension label was missing a
+language variable.</li>
+<li>Fixed a bug where the "disable" parameter did not work in the
+Results tag.</li>
+</ul>
+
+<p><a name="v2.0.1"></a></p>
+
+<h2>Version 2.0.1 (April 13, 2012)</h2>
+
+<ul>
+<li>Updated the Save_Search_Form to now show up even when there is no
+results for a search query.</li>
+<li>Fixed a bug where EE pagination would strip apostrophes, quotes and
+other characters from search terms in the URI.</li>
+<li>Fixed a bug where the Save_Search_Form tag was not behaving
+correctly on the Results page.</li>
+<li>Fixed a bug where the {super_search_results} variable in History
+tag would parse as "1" when a saved search with 0 results was saved.</li>
+<li>Fixed a bug where "offset=0" would sometimes appear in the URI of a
+search query with pagination.</li>
+<li>Fixed a bug where ordering by "channel" would not work.</li>
+<li>Fixed a bug where a PHP error would display under specific
+circumstances when ordering by relevance.</li>
+</ul>
+
+<p><a name="v2.0.0"></a></p>
+
+<h2>Version 2.0.0 (April 10, 2012)</h2>
+
+<ul>
+<li>Removed support for ExpressionEngine 1.x (Super Search is now EE2
+only).</li>
+<li>Added the ability to order results by 'channel', 'channel_title',
+and 'channel_name'.</li>
+<li>Added the ability to specify 'inclusive_categories', for inclusive
+category searching.</li>
+<li>Added an Ignore List preference in the control panel to define a
+list of words to ignore in searches.</li>
+<li>Added the ability search on expiration date ranges, via
+'expiry_date-from' and 'expiry_date-to'.</li>
+<li>Added {count} and {total_results} variables to the
+Super_Search:History loop.</li>
+<li>Added the ability to test for dynamically passed values in search
+arrays with the 'if super_search_FIELDNAME_array_contains'
+conditional.</li>
+<li>Added support for extra MSM variables for Results loops:
+{entry_site_name}, {entry_site_label},
+{entry_site_description}, {entry_site_short_name},
+{entry_site_url}.</li>
+<li>Added a native search log to the SuperSearch control panel.</li>
+<li>Added the Super_Search:Cloud tag, which displays a cloud or list of
+popular search terms.</li>
+<li>Added support for MySQL strict mode.</li>
+<li>Added smart excerpts for excerpts that snip around the search terms
+within the {excerpt} if possible.</li>
+<li>Added "fuzzy searching" functionality for plurals, phonetics and
+spelling.</li>
+<li>Added 'search_in' form field / URI param to allow users to select
+which fields they which to search within.</li>
+<li>Added 'where' form field / URI param to allow the user to specify
+how they want their keyword search to be performed, with options for
+'all', 'and', 'exact' and 'word'.</li>
+<li>Added 'partial_author' parameter to Results tag for partial author
+searching.</li>
+<li>Added support for {super_search_category_array} conditional pairs
+for passed category searches.</li>
+<li>Added 'relevance_mutiplier' parameter to Results tag, which allows
+for dynamic weighting adjustments in ordering.</li>
+<li>Added 'relevance_proximity' option to take keyword relative
+proximity into account when calculating relevance.</li>
+<li>Added wildcard searching, controlled by 'wildcard_fields' and
+'wildcard_character' parameters.</li>
+<li>Added 'keyword_search_author_name' parameter to Results tag to
+allow keyword searches within author screen names.</li>
+<li>Added 'keyword_search_category_name' parameter to Results tag to
+allow keyword searches within category names.</li>
+<li>Added {super_search_current_title_letter} and
+{super_search_previous_title_letter} variables to Results tag to
+allow support for displaying alphabet headers between results.</li>
+<li>Added Super_Search:Variables tag, which allows you to parse
+previously searched on array data within the Super_Search:Search
+tag, when trying to evaluate data generated by another EE tag (such
+as Channel:Categories).</li>
+<li>Modified the default value for 'inclusive_keywords' param to be
+'yes'.</li>
+<li>Modified the 'redirect_post' parameter to default to 'yes'.</li>
+<li>Modified searching on ampersands in search terms to now work, as
+they are converted to %26 in the URI.</li>
+<li>Modified the Results tag behaviour to behave like Channel:Entries
+tag and show ALL entries if no parameters or search terms are
+provided (whereas before it would show no results).</li>
+<li>Modified the Search tag to correctly parse previously searched on
+data when placed on results page BEFORE the Results tag.</li>
+<li>Updated pagination to use a better parsing function in order to more
+easily support future upgrades of the EE pagination library.</li>
+<li>Updated the {super_search_keywords} variable to returns the
+keywords searched upon exactly as they were passed (instead of
+reordered alphabetically).</li>
+<li>Renamed exact field searching to use fieldname-exact' syntax instead
+of 'exact-fieldname' syntax.</li>
+<li>Renamed entry date range searching to use 'entry_date-from' and
+'entry_date-to' syntax instead of 'date-from' and 'date-to' syntax.</li>
+<li>Renamed search words within words parameter to
+'search_words_within_words' instead of
+'search-words-within-words' for naming consistency.</li>
+<li>Refreshed the Super Search control panel.</li>
+<li>Deprecated "num", "order", and "start" parameters in favor of
+"limit", "orderby", and "offset" respectively.</li>
+<li>Deprecated ingore_tags_in_keywords= parameter in Results tag, as
+Solspace Tag searching is already natively supported.</li>
+<li>Deprecated the "super_search_field_name_array" variable pair.
+The usage of variables and conditionals within in remain supported.</li>
+<li>Fixed a bug where orderby on native EE date fields wasn't always
+correct.</li>
+<li>Fixed a bug where using custom relevance weights on fields with
+captilization in the names did not work.</li>
+<li>Fixed a bug where a trailing '|' on some parameters would throw an
+error.</li>
+<li>Fixed a bug where certain inlusive category search syntax would
+cause the following parameter to be ignored.</li>
+<li>Fixed a bug where secondary ordering of results with orderby=""
+parameter would not work when ordering results by relevance.</li>
+</ul>
+
+<p><a name="v1.4.4"></a></p>
+
+<h2>Version 1.4.4 (January 26, 2012)</h2>
+
+<ul>
+<li>Updated pagination to support ExpressionEngine 2.4.</li>
+</ul>
+
+<p><a name="v1.4.3"></a></p>
+
+<h2>Version 1.4.3 (October 17, 2011)</h2>
+
+<ul>
+<li>Updated code to comply with a removed function from Codeigniter for
+EE 2.3.1+.</li>
+<li>Fixed a bug where relevance ordering was not working properly when
+"inclusive_keywords" parameter was set to "yes".</li>
+</ul>
+
+<p><a name="v1.4.2"></a></p>
+
+<h2>Version 1.4.2 (September 7, 2011)</h2>
+
+<ul>
+<li>Added the ability to order by custom field(s) and 'random' in order
+chains.</li>
+<li>Added extra safety checks to the 'order' parameter to avoid MySQL
+errors when bad data is passed.</li>
+<li>Updated the 'site' parameter to allow both '|' and '+' seperators.</li>
+<li>Updated the 'site' parameter to allow specifing sites by site_name
+and site_id.</li>
+<li>Updated the order parameter to allow ordering by non-searchable
+fields as-well as searchable.</li>
+<li>Updated the order parameter to allow ordering by 'entry_id'.</li>
+<li>Updated the 'super_search_alter_ids' hook to resort after third
+parties have altered the result set.</li>
+<li>Fixed a bug where author searching was being ignored.</li>
+<li>Fixed a bug where exact searching on fields that pass array values
+would not work.</li>
+<li>Fixed a bug where {relevance_count} wasn't including inclusive
+keywords.</li>
+</ul>
+
+<p><a name="v1.4.1"></a></p>
+
+<h2>Version 1.4.1 (July 14, 2011)</h2>
+
+<ul>
+<li>Added 'keyword_search_author_name' parameter and form field to
+allow for keyword searching on author name.</li>
+<li>Added 'keyword_search_category_name' parameter and form field to
+allow for keyword searching on category name.</li>
+<li>Added the option to specify MSM site(s) through a form field or URI.</li>
+<li>Added the option to specify the 'redirect_post' parameter as a form
+field when submitting a search form.</li>
+<li>Fixed a bug where the 'super_search_total_results' variable
+wasn't parsing correctly when performance mode was off and results
+set wasn't paginating.</li>
+<li>Fixed a bug where the 'inclusive_keywords' parameter wasn't working
+in Results tag.</li>
+<li>Fixed a bug where quotes would be removed from search terms when
+loading saved searches.</li>
+<li>Fixed a bug where orderby="random" in Results tag was not working.</li>
+<li>Fixed a bug where filtering a search on categories and searching on
+Tag module tags would cause categories to be ignored in the results.</li>
+<li>Fixed a bug when concurrently searching MSM sites with duplicate
+channel names would not properly search all searchable fields.</li>
+<li>Fixed a bug where keywords weren't being highlighted when they
+occured at the very end of fields.</li>
+<li>Fixed a bug where forward native relationship field data was pulling
+the wrong data in the Results loop.</li>
+</ul>
+
+<p><a name="v1.4.0"></a></p>
+
+<h2>Version 1.4.0 (May 20, 2011)</h2>
+
+<ul>
+<li>Added support for keyword search terms to be added to the EE Search
+Log.</li>
+<li>Added 'inclusive_keywords' form field and parameter to allow for
+inclusive search term searches (without '&amp;&amp;' characters).</li>
+<li>Added 'include_uncategorized' parameter to Results tag to allow for
+uncategorized entries posts to show up when filtering against a
+'not' clause using the category parameter, defaults to yes.</li>
+<li>Added 'mark' as a valid option for the highlight_keywords=""
+parameter in Results tag.</li>
+<li>Added support for GET searching to have URI's with better support
+for things like Google Analytics.</li>
+<li>Fixed a bug where very specific pagination URI's would get sanitised
+over-zealously in template outputting.</li>
+<li>Fixed a bug where duplicate field_names across MSM sites when
+searching concurrently would get ignored.</li>
+<li>Fixed a bug where the 'category_indicator' parameter was defaulting
+to category_url_title, and not category_name.</li>
+<li>Fixed a bug where specifying the search:field_name="value"
+parameter in Results tag would not be factored into
+{super_search_total_results} count and pagination.</li>
+<li>Fixed a bug where a {segment_&#35;} variable would not parse when
+there was a '/' infront of it, and that value is a Pagination
+segment.</li>
+<li>Fixed a bug where Tag searching was not filtering on channel.</li>
+<li>Fixed a bug where titles were not being in keyword searches.</li>
+<li>Fixed a bug where inclusive searching on custom fields did not work.</li>
+<li>Fixed a bug where multi-word statuses were being ignored when
+searched upon.</li>
+<li>Fixed a bug where searching on multiple statuses in the URI would
+not work.</li>
+<li>Fixed a bug where empty URI searches on fields would trigger an
+error.</li>
+</ul>
+
+<p><a name="v1.3.1"></a></p>
+
+<h2>Version 1.3.1 (March 21, 2011)</h2>
+
+<ul>
+<li>Added the ability to control searching on words within words through
+URI, POST and template parameter ("search-words-within-words").</li>
+<li>Added NSM Add-on Updater support.</li>
+<li>Fixed a bug where "date-from" and "date-to" searching were not
+looking at the beginning and end (respectively) of whatever range
+was specified.</li>
+<li>Fixed a bug where pagination on hardcoded searches would sometimes
+get wonky.</li>
+<li>Fixed a bug where if you performed an inclusive category search
+where one of the categories exists but is NOT assigned to any
+entries, it would just be ignored from the search query.</li>
+</ul>
+
+<p><a name="v1.3.0"></a></p>
+
+<h2>Version 1.3.0 (December 13, 2010)</h2>
+
+<ul>
+<li>Added ability to search on Solspace Tag module tags.</li>
+<li>Updated and enhanced User module CP area (in EE 2.x) to conform
+completely to native EE styling.</li>
+<li>Modified Super Search to exempt custom_field-empty searches on
+Channel's that do not contain that field.</li>
+<li>Modified Super Search searching to be more efficient in both
+Performance ON and OFF modes.</li>
+<li>Modified the group="" parameter to now accept member group ID's in
+addition to member group titles.</li>
+<li>Modified the author searching to now accept member ID's in addition
+to usernames and screen names.</li>
+<li>Modified the "categorylike" form field/URI value to now be
+"category-like". Deprecated "categorylike".</li>
+<li>Deprecated performance mode on EE 2.x in order to offer greater
+support for custom field types going forward.</li>
+<li>Removed "flow_ui" theme from Super Search module in EE 1.x.</li>
+<li>Fixed a bug where the {super_search_keywords} variable was
+returning escaped strings in Super_search:Search.</li>
+<li>Fixed a bug where searching on native EE custom relationship fields
+did not work.</li>
+<li>Fixed a bug where the {auto_path} variable did not parse at all in
+Performance OFF mode.</li>
+<li>Fixed a bug where numeric type fields in EE 2.x would trigger errors
+in the Super Search CP.</li>
+<li>Fixed a bug where multi-word statuses in the status="" parameter
+would be ignored.</li>
+<li>Fixed a bug where multi-word groups in the group="" parameter would
+be ignored.</li>
+<li>Fixed a bug where Super Search tags were overwriting additional
+calls to Channel:Entries tags in a template.</li>
+<li>Fixed a bug where Super Search tags were overwriting calls to the
+{reverse_related_entries} variable pair in a template.</li>
+<li>Fixed a bug where a reference approach to passing extension
+variables sometimes caused PHP errors in the Super_Search:Results
+tag.</li>
+<li>Fixed a bug where ";" would sometimes append itself to category
+values in the URI.</li>
+<li>Fixed a bug where searching on more than one Playa 2 field would not
+work correctly.</li>
+<li>Fixed a bug where exact searches on Playa 2 fields would not work.</li>
+</ul>
+
+<p><a name="v1.2.0"></a></p>
+
+<h2>Version 1.2.0 (August 16, 2010)</h2>
+
+<ul>
+<li>Upgraded module to use Solspace Bridge 1.0 with CodeIgniter,
+therefore allowing compatibility with EE 2.x.</li>
+<li>Added support for date formatting on variables for "date-from" and
+"date-to" searching.</li>
+<li>Added support for inclusive keyword and custom field searching. Ex:
+"cherry&amp;&amp;pie" will find results that contain BOTH "cherry" and
+"pie".</li>
+<li>Added ability to apply custom ordering to results where the order is
+arbitrary. Example is a blog with a custom field called 'grade'.
+Grades can be A+, A, A-, B+, etc. Supply this format in the URI:
+search&amp;order=grade+custom+'A+,A,A-,B+,B,B-,C+,C,C-' OR
+search&amp;order=grade+custom+%22A+,A,A-,B+,B,B-,C+,C,C-%22 OR use this
+in the "order" parameter:
+order="grade+custom+'A+,A,A-,B+,B,B-,C+,C,C-'". Remember to put
+quotes around the string that controls the order.</li>
+<li>Added support for {path}, {permalink} and {url_title_path}
+variables for Results tag in Performance ON mode.</li>
+<li>Added support for conditionals on URI searches for channel
+shortnames. Ex: {if super_search_channel_article}Article{/if} or
+{if super_search_channel_not_articles}We searched for entries
+not belonging to "Articles" channel{/if}.</li>
+<li>Added the dynamic="off" parameter to Super Search tags to ignore
+POST and URI arguments.</li>
+<li>Added support for {if previous_page} and {if next_page}
+conditionals in the Results tag.</li>
+<li>Added the ignore_field="some_field|some_other_field" parameter
+to Results tag. In the rare circumstance you need to display
+submitted value data, but not have Super Search perform a search on
+it, you would use this feature.</li>
+<li>Modified the "excerpt" field to match EE's excerpt field behaviour
+from the Search module in Performance mode.</li>
+<li>Modified the phrase identifier to only look at double quotes and no
+longer single quotes, to provide better support for keywords with
+apostrophes.</li>
+<li>Modified the {relevance_count} variable to also work in Performance
+OFF mode.</li>
+<li>Fixed a bug where the use of SLASH as a substitution for / in URL
+searches was not working in POST searches.</li>
+<li>Fixed a bug where searching on Gypsy fields that belonged to a field
+group that was not assigned to any blog did no work.</li>
+<li>Fixed a bug where if you indicated the relevance parameter in
+Results tag but you don't send a keyword through the search, you
+would get PHP errors about keywords.</li>
+<li>Fixed a bug where when performing a POST search on categories and
+using "category_1&amp;&amp;category_2", it would change to include a ";"
+at the end of the categories in the URI string.</li>
+<li>Fixed a bug where where category conditionals would NOT evaluate
+properly in a Results template unless the variable itself was
+specified.</li>
+<li>Fixed a bug where using a status other than OPEN in the URI would
+cause the Results tag to display no results in Performance OFF mode.</li>
+<li>Fixed a bug where specifying the "num" parameter in the URI or POST
+search would NOT override the "num" template parameter.</li>
+</ul>
+
+<p><a name="v1.1.0"></a></p>
+
+<h2>Version 1.1.0 (February 2, 2010)</h2>
+
+<ul>
+<li>Added a safeguard to prevent empty arrays from being returned for
+the per field weblog ID test in $SQL.</li>
+<li>Added search and display support for Gypsy, standard FieldFrame
+fields and Playa fields.</li>
+<li>Added a CP preference to enable/disable Keyword searching on Playa
+Relationship fields.</li>
+<li>Added ability to search on entry title's much like a custom field.</li>
+<li>Added ability to search on native EE relationship fields.</li>
+<li>Added the include_entry_ids="" parameter to force display of
+specific weblog entry ID's.</li>
+<li>Added support for Pages module {page_url} and {page_uri} variables
+in Performance mode.</li>
+<li>Added an indicator to the
+relevance="title=10+summary=5+count_words_within_words" parameter
+to allow relevance counting of words within words.</li>
+<li>Added {relevance_count} variable, which shows the total number of
+relevance points awarded to a given weblog entry returned in a
+search.</li>
+<li>Fixed a bug where if an EE custom field group had searchable fields
+in it, but was not assigned to any weblogs, MySQL errors would be
+triggered.</li>
+<li>Fixed a bug where Entry dates and custom date fields were not
+parsing in performance ON mode.</li>
+<li>Fixed a bug where the 'date-from' and 'date-to' variables would not
+parse in a Results page.</li>
+<li>Fixed a bug when you're on one MSM site and are pulling content from
+a different MSM site, custom field searching would not work
+correctly.</li>
+<li>Fixed a bug where Preferences in the CP were not updating.</li>
+<li>Fixed a bug where the Excerpt field could still trigger an
+"undefined index" error.</li>
+<li>Fixed a bug where multiple Super_Search:Results calls in a template
+were returning one another's results.</li>
+<li>Fixed a bug where the _highlight_keywords() method was not always
+working in all instances.</li>
+<li>Fixed a bug where the {homepage} variable would not parse in
+performance mode.</li>
+<li>Fixed a bug where the 'num' URI param was not working in performance
+ON or OFF mode.</li>
+<li>Fixed a bug where inclusive category searching would not work
+through POST form searches.</li>
+<li>Fixed a bug where category variables were not parsing properly in
+the Search method.</li>
+</ul>
+
+<p><a name="v1.0.0"></a></p>
+
+<h2>Version 1.0.0 (December 16, 2009)</h2>
+
+<ul>
+<li>Added standard EE syntax parsing to _prep_keywords so that people
+can pass a param with "|" or "not" and achieve expected traditional
+EE behavior.</li>
+<li>Added {excerpt} variable to Results loop with performance mode
+"off".</li>
+<li>Added support for searching for keywords with the forward slash "/"
+character in the term.</li>
+<li>Added the allow_repeats="no" parameter, which lets you have
+multiple Super Search calls in a session and each successive call
+will exclude previously found entries from it's query so that all
+entries found in a session are unique.</li>
+<li>Added the paginate_base="search/results" parameter, which is
+available for use in the event you're doing something really complex
+with Super Search, and you're having problems with Super Search
+determining the actual base URL of the template group and template
+in the URI.</li>
+<li>Complete overhaul of core search methodology to support multiple
+instances of Super Search in a given page when used as a
+weblog:entries replacement.</li>
+<li>Eliminated do_search_wt() since the order param can really screw
+things up on account of we allow ordering by custom fields.</li>
+<li>Removed heaviest usage of session cache since it was preventing
+proper function if you called Super Search twice in one session with
+diff params. All successive calls after the first would inherit from
+the first params.</li>
+<li>Modified caching functionality to correct a bug with 0 refresh
+intervals.</li>
+<li>Modified Super Search to check to see if the custom weblog field
+designated to the Excerpt field per weblog actually exists.</li>
+<li>Fixed a bug where custom fields were being pulled in for all MSM
+sites and causing errors with MySQL statements.</li>
+<li>Fixed a bug where {super_search_channel} was not available for
+parsing in Search().</li>
+<li>Fixed a bug that would display a MySQL error if no custom fields are
+searchable.</li>
+<li>Fixed a bug where pagination would not work in performance off mode
+when searching for short strings of less than 3 chars.</li>
+<li>Fixed a bug where date searching would sometimes not show all valid
+results.</li>
+<li>Fixed a bug where date-to was not assuming the absolute last
+possible hour, minute and second within the specified time range.</li>
+<li>Fixed a bug with Super_Search:Search where a PHP error was thrown.</li>
+<li>Fixed a bug where syntax with Statuses was not working correctly.</li>
+<li>Fixed a bug where the Save_Search_Form function would output a
+MySQL error if a duplicate search name of "Search" was entered.</li>
+<li>Fixed a bug where the highlight_keywords="" parameter would only
+work in Performance mode.</li>
+<li>Initial release.</li>
+</ul>
+			</article>
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shCore.js"></script>
+		<script src="assets/syntaxhighlighter/scripts/shAutoloader.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

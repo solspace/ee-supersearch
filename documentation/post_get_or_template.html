@@ -41,46 +41,49 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li class="current"><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>POST, GET, or Template?</h1>
-
-<p>With many different options for generating search results, you might be wondering what the best way to go is. This page gives you some insight on each of the available methods, and will give you a better understanding of how each works, and what's best for your scenario.</p>
+				<p>With many different options for generating search results, you might be
+wondering what the best way to go is. This page gives you some insight on
+each of the available methods, and will give you a better understanding of
+how each works, and what's best for your scenario.</p>
 
 <h3>Available Methods</h3>
 
-<p>On a page with a <a href="results.html">Super_Search:Results</a> loop, Super Search looks for
-search parameters in 3 locations to refine the search parameters. You can supply search parameters via any (or mixes) of:</p>
+<p>On a page with a <strong>{exp:super_search:results}</strong> loop, Super Search looks for
+search parameters in 3 locations to refine the search parameters. You can
+supply search parameters via any (or mixes) of:</p>
 
 <ul>
 <li><strong>Template</strong> parameters</li>
@@ -88,11 +91,15 @@ search parameters in 3 locations to refine the search parameters. You can supply
 <li><strong>GET</strong> data</li>
 </ul>
 
-<p>All the parameters <a href="results.html#parameters">listed here</a> are available to all the various methods.</p>
+<p>All the parameters <a href="results.html#parameters">listed here</a> are available to all
+the various methods.</p>
 
 <h3>Common Usage</h3>
 
-<p>The most common usage of this is to have a <em>Results</em> loop on a results page with some basic setup and limits for the search set, and then use any passed POST or GET data to refine the search data. For example, a common results page may have the markup:</p>
+<p>The most common usage of this is to have a <em>Results</em> loop on a results page
+with some basic setup and limits for the search set, and then use any passed
+POST or GET data to refine the search data. For example, a common results
+page may have the markup:</p>
 
 <pre class="brush: html;">{exp:super_search:results
     channel="news"
@@ -108,24 +115,29 @@ search parameters in 3 locations to refine the search parameters. You can supply
 
 <p>With a search form like:</p>
 
-<pre class="brush: html;">{exp:super_search:form
-    return="supersearch/results"
-}
+<pre class="brush: html;">&lt;form action="{path='search/results'}/" method="post"&gt;
     &lt;label for="keywords"&gt;Keywords&lt;/label&gt;
     &lt;input type="text" name="keywords" id="keywords" /&gt;
     &lt;input type="submit" value="Search!" /&gt;
-{/exp:super_search:form}
+&lt;/form&gt;
 </pre>
 
-<p>Super Search automatically redirects the POST search query into a query string in the URI. When that search form is submitted, it returns to a URI that would look something like:</p>
+<p>Super Search automatically redirects the POST search query into a query
+string in the URI. When that search form is submitted, it returns to a URI
+that would look something like:</p>
 
 <pre class="brush: html;">/search&amp;keywords=test</pre>
 
-<p>The <em>Results</em> loop would run a search using the <em>keywords</em> value from the POST data along with the parameters that are set on the <em>Results</em> tag (ex: limiting to 20 entries within the <em>news</em> channel).</p>
+<p>The <em>Results</em> loop would run a search using the <em>keywords</em> value from the
+POST data along with the parameters that are set on the <em>Results</em> tag (ex:
+limiting to 20 entries within the <em>news</em> channel).</p>
 
 <h2>Parameter Method Precedence</h2>
 
-<p>It is possible to pass the same parameter multiple times via different methods. For example, a <em>keywords</em> value can be passed on a POST URI as well as being hardcoded within the <em>Results</em> tag. In that case, the parsing follows cascading method to filter the actual parameter that will get used.</p>
+<p>It is possible to pass the same parameter multiple times via different
+methods. For example, a <em>keywords</em> value can be passed on a POST URI as well
+as being hardcoded within the <em>Results</em> tag. In that case, the parsing
+follows cascading method to filter the actual parameter that will get used.</p>
 
 <ol>
 <li>Initially <em>template</em> data is parsed and sets some baselines.</li>
@@ -133,64 +145,100 @@ search parameters in 3 locations to refine the search parameters. You can supply
 <li>Finally <em>GET</em> data is parsed.</li>
 </ol>
 
-<p>At each stage, any parameters that have not already been passed via a previous method are either filtered down, added to the search set, or in certain cases ignored.</p>
+<p>At each stage, any parameters that have not already been passed via a
+previous method are either filtered down, added to the search set, or in
+certain cases ignored.</p>
 
 <h2>Why Does It Work That Way?</h2>
 
 <h3>When Params Are Ignored</h3>
 
-<p>Take for instance the <em>channel</em> parameter. If no <em>channel</em> parameter is supplied <em>anywhere</em>, Super Search will search over all the possible channels. In reality you'll probably want to limit it to search over just a few channels, so you might add this to your <em>Results</em> tag:</p>
+<p>Take for instance the <em>channel</em> parameter. If no <em>channel</em> parameter is supplied <em>anywhere</em>, Super Search will search over all
+the possible channels. In reality you'll probably want to limit it to search
+over just a few channels, so you might add this to your <em>Results</em> tag:</p>
 
 <pre class="brush: html;">channel="news|products"</pre>
 
-<p>Once the channel parameter is set via a <em>template</em> parameter, it gets special treatment. So if a user went to a URI like:</p>
+<p>Once the channel parameter is set via a <em>template</em> parameter, it gets special
+treatment. So if a user went to a URI like:</p>
 
 <pre class="brush: html;">/search&amp;keywords=secret&amp;channel=secret_channel</pre>
 
-<p>Super Search detects that the <em>channel</em> parameter has already been set via a <em>template</em> parameter, and <strong>secret_channel</strong> isn't a valid option from those set, and ignores it completely from the POST data.</p>
+<p>Super Search detects that the <em>channel</em> parameter has already been set via a
+<em>template</em> parameter, and <strong>secret_channel</strong> isn't a valid option from
+those set, and ignores it completely from the POST data.</p>
 
 <h3>When Params Are Filtered</h3>
 
-<p>Similar to the above, assume a <em>channel</em> parameter is set in the <em>template</em> parameters. If the specific data set was similar to the below code, Super Search will limit the search set to the <strong>news</strong>, <strong>products</strong> and <strong>blog</strong> channels:</p>
+<p>Similar to the above, assume a <em>channel</em> param is set in the <strong>template</strong>
+parameters. If the specific data set was similar to the below code, Super
+Search will limit the search set to the <em>news</em>, <em>products</em> and <em>blog</em> channels:</p>
 
 <pre class="brush: html;">channel="news|products|blog"</pre>
 
-<p>You may wish for a user to have the option to limit their searches to a specific channel, so present them with the option in the search form for channels, and they end up with a URI similar to:</p>
+<p>You may wish for a user to have the option to limit their searches to a
+specific channel, so present them with the option in the search form for
+channels, and they end up with a URI similar to :</p>
 
 <pre class="brush: html;">/search&amp;keywords=test&amp;channel=news</pre>
 
-<p>Even though the <em>channel</em> parameter has already been parsed, when Super Search looks to parse the POST data and see's that there is a duplicate <em>channel</em> parameter, additional filtering kicks in. As the passed value <strong>news</strong> exists in the valid set of channels supplied via <em>template</em> parameter, the search set is reduced to only act upon the <strong>news</strong> channel.</p>
+<p>Even though the <em>channel</em> parameter has already been parsed, when Super Search
+looks to parse the POST data and see's that there is a duplicate <em>channel</em>
+parameter, additional filtering kicks in. As the passed value <strong>news</strong> exists
+in the valid set of channels supplied via <strong>template</strong> parameter, the search
+set is reduced to only act upon the <strong>news</strong> channel.</p>
 
-<p>This kind of filtering is limited to senstive parameters such as <a href="results.html#channel">channel</a>, <a href="results.html#site">site</a>, <a href="results.html#status">status</a> and a few others. Full parameter options are <a href="results.html#parameters">available in the documentation</a>.</p>
+<p>This kind of filtering is limited to senstive parameters such as
+<a href="results.html#channel">channel</a>,
+<a href="results.html#site">site</a>,
+<a href="results.html#status">status</a>
+and a few others. Full parameter options are
+<a href="results.html#parameters">available in the documentation</a>.</p>
 
 <p><a name="template"></a></p>
 
 <h3>Template Parameters</h3>
 
-<p>When building your <em>Results</em> loop, specifying the parameters in the loop gives you the highest precedence. Anything you supply directly in the <em>Results</em> tag takes highest priority.</p>
+<p>When building your <em>Results</em> loop, specifying the parameters in the loop
+gives you the highest precedence. Anything you supply directly in the
+<em>Results</em> tag takes highest priority.</p>
 
-<p>Some params set via <strong>template</strong> parameters take control over everything. For example, supplying <strong>search</strong> parameter via a <strong>template</strong> param will halt the parsing of any other passed variables via POST or GET.</p>
+<p>Some params set via <strong>template</strong> parameters take control over everything.
+For example, supplying <strong>search</strong> parameter via a <strong>template</strong> param will
+halt the parsing of any other passed variables via POST or GET.</p>
 
-<p>Some params set via <strong>template</strong> parameters however, can be overwritten by passed variables via POST and GET. For example, supplying an <em>orderby</em> or <em>limit</em> param via POST or GET will override the <em>orderby</em> or <em>limit</em> template parameters in the <em>Results</em> tag.</p>
+<p>Some params set via <strong>template</strong> parameters however, can be overwritten by
+passed variables via POST and GET. For example, supplying an <em>orderby</em> or
+<em>limit</em> param via POST or GET will override the <em>orderby</em> or <em>limit</em> template
+parameters in the <em>Results</em> tag.</p>
 
 <p><a name="post"></a></p>
 
 <h3>POST</h3>
 
-<p>Passing search params via <strong>POST</strong> is the easiest way to get going. As mentioned above, Super Search automatically redirects the POST search query into a query string in the URI. The searches each have a unique URI and users can easily bookmark specific pages and are free to manipulate the search query in the URI even further. A major advantage POST has over GET is the ability to pass a search parameter as an array. These arrays can be very useful when building more advanced searches. Using array's you can allow filtering to specific sets of categories. See GET explanation below for more information.</p>
+<p>Passing search params via <strong>POST</strong> is the easiest way to get going. As
+mentioned above, Super Search automatically redirects the POST search query
+into a query string in the URI. The searches each have a unique URI and users
+can easily bookmark specific pages and are free to manipulate the search
+query in the URI even further. A major advantage POST has over GET is the
+ability to pass a search parameter as an array. These arrays can be very
+useful when building more advanced searches. Using array's you can allow
+filtering to specific sets of categories. See GET explanation below for more
+information.</p>
 
 <p><a name="get"></a></p>
 
 <h3>GET</h3>
 
-<p>You can also pass parameters via <strong>GET</strong> which will result in a unique URI which can easily be tracked with Google Analytics. Users can also bookmark specific pages and are free to manipulate the search query in the URI even further. It's important that you append an additional segment of "<em>search</em>" in your return URL for <strong>GET</strong> to work (so your results page should be something like <strong>http://site.com/template_group/template_name/search?keywords=pie</strong>).</p>
+<p>You can also pass parameters via <strong>GET</strong> which will result in a unique URI
+which can easily be tracked with Google Analytics. Users can also bookmark
+specific pages and are free to manipulate the search query in the URI even
+further.</p>
 
-<p><strong>GET</strong> does have it's limitations. As mentioned above, it is impossible to pass search arrays via <strong>GET</strong>. For example:</p>
+<p><strong>GET</strong> does have it's limitations. As mentioned above, it is impossible to
+pass search arrays via <strong>GET</strong>. For example:</p>
 
-<pre class="brush: html;">{exp:super_search:form
-    return="supersearch/results/search"
-    method="get"
-}
+<pre class="brush: html;">&lt;form action="{path_to_results}" method="get"&gt;
     &lt;label for="category_one"&gt;Category One&lt;/label&gt;
         &lt;input type="checkbox" name="category[]" id="category_one" value="1"/&gt;
     &lt;label for="category_two"&gt;Category Two&lt;/label&gt;
@@ -198,10 +246,12 @@ search parameters in 3 locations to refine the search parameters. You can supply
     &lt;label for="category_three"&gt;Category Three&lt;/label&gt;
         &lt;input type="checkbox" name="category[]" id="category_three" value="1"/&gt;
     &lt;input type="submit" value="Search"/&gt;
-{/exp:super_search:form}
+&lt;/form&gt;
 </pre>
 
-<p>Will return an "<em>Invalid GET Data - Array</em>" error. This is part of EE's core URI parsing safety mechanisms and there's no way around it. For the case you want to pass array's of data, you have to use a <strong>POST</strong>.</p>
+<p>Will return an "<em>Invalid GET Data - Array</em>" error. This is part of EE's core
+URI parsing safety mechanisms and there's no way around it. For the case you
+want to pass array's of data, you have to use a <strong>POST</strong>.</p>
 			</article>
 		</div>
 

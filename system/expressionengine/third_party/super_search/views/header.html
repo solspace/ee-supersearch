@@ -1,0 +1,39 @@
+<?=$js_magic_checkboxes?>
+
+ <?php if ($message != ''):?>
+    <script type="text/javascript">
+        jQuery(function($){
+            $.ee_notice('<?php echo addslashes($message);?>',{open: true, type:"success"});
+            setTimeout(function(){ $.ee_notice.destroy(); }, 3000);
+        });
+    </script>
+<?php endif;?>
+
+<style type="text/css">
+	*:focus {
+		outline: none;
+	}
+	#mainContent .pageContents p#solspace_version_number {
+		color:			#fff;
+	    left: 			100%;
+	    margin: 		-38px 0 0 -380px;
+	    position: 		absolute;
+	    text-align: 	right;
+	    text-shadow: 	0 1px 0 #666;
+	    width: 			300px;
+	    z-index: 		1;
+	}
+</style>
+
+<p id="solspace_version_number"><strong><?=$lang_module_version?> <?=$module_version?></strong></p>
+
+<ul class="tab_menu" id="tab_menu_tabs">
+<?php foreach($module_menu AS $menu_name => $menu_item) : ?>
+	<li class="content_tab<?=($menu_name == $module_menu_highlight) ? ' current': ''?>">
+		<a  <?php if (isset($menu_item['new_window']) AND
+						$menu_item['new_window']): ?>onclick="window.open(this.href); return false;"<?php endif;?>
+			href="<?php echo $menu_item['link'];?>"><?php echo $menu_item['title'];?></a>
+	</li>
+<?php endforeach; ?>
+</ul>
+<div style="height:1px; margin-bottom:-1px;" class="clear_left shun"></div>

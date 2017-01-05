@@ -1,0 +1,117 @@
+<?php echo $this->view('header.html'); ?>
+
+<?php if( $lexicon_built == 'n') : ?>
+	<div class="super_search_notification">
+		<h4><?=lang('lexicon_needs_building')?></h4>
+		<p><?=lang('lexicon_explain')?> <a href="<?=$lexicon_url?>"><?=lang('build_now')?></a>
+	</div>
+
+<?php endif; ?>
+
+
+<?php if( isset( $no_results ) !== FALSE AND $no_results == TRUE ) : ?>
+
+	<div class="super_search_notification">
+		<p><?=$lang_no_searches_yet?></p>
+	</div>
+
+<?php else : ?>
+
+	<div id="super_search_top_terms" class="super_search_tables">
+		<h2><?=lang('top_search_terms')?> <span class="view_all">(<a href="<?=$all_terms_link?>"><?=lang('view_all')?></a>)</span></h2>
+
+		<table class="mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th style="width:4%;"><?=lang('search_rank')?></th>
+					<th><?=lang('search_term')?></th>
+					<th style="width:35px;"><?=lang('search_count')?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if( ! is_array( $top_terms ) ) : ?>
+					<tr>
+						<td colspan="2">
+							<?=lang('no_searches_yet')?>
+						</td>
+					</tr>
+				<?php else:
+					$i = 1;
+					$j = 0;
+					foreach( $top_terms as $term ) : ?>
+					<tr class="<?=(++$j % 2 ? 'odd' : 'even')?>">
+						<td><?=$i?></td>
+						<td>
+							<span class="search_term">
+								<a href="<?=$term_link_base.$term['term_id']?>"><?=$term['term']?></a>
+							</span>
+						</td>
+						<td><?=$term['count']?></td>
+					</tr>
+					<?php $i++;
+					endforeach; ?>
+				<?php endif; ?>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="super_search_recent_searches" class="super_search_tables super_search_recent_searches">
+		<h2><?=lang('recent_searches')?> <span class="view_all">(<a href="<?=$all_log_link?>"><?=lang('view_all')?></a>)</span></h2>
+
+		<table class="mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th style="width: 125px;"><?=lang('datetime')?></th>
+					<th class="loading_holder"><?=lang('recent_searches')?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if( ! is_array( $searches_grouped ) ) : ?>
+					<tr>
+						<td>
+							<?=lang('no_searches_yet')?>
+						</td>
+					</tr>
+				<?php else:
+					$group_count = 0;
+					$i = 0;
+					foreach( $searches_grouped as $key => $group ) :
+						$group_count++;
+
+						if( $group_count <= 20 ) : ?>
+
+						<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+							<td class="search_date">
+								<?=$key?>
+							</td>
+							<td>
+								<ul>
+								<?php foreach( $group as $search ) : ?>
+									<li>
+										<span class="search_term" id="search_<?=$search['log_id']?>">
+											<a href="<?=$search['term_view_url']?>"><?=$search['term']?></a>
+										</span>
+									</li>
+								<?php endforeach; ?>
+								</ul>
+							</td>
+						</tr>
+
+						<?php endif; ?>
+
+					<?php
+					endforeach; ?>
+				<?php endif; ?>
+			</tbody>
+		</table>
+
+	</div>
+
+
+	<br class="clear"/>
+
+
+<?php endif; ?>
+
+
+<?php echo $this->view('footer.html'); ?>

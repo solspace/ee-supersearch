@@ -1,0 +1,82 @@
+<?php if( $just_spelling ) :
+ echo $this->view('header.html'); ?>
+
+	<?php if( $spelling_action != '' ) : ?>
+
+		<h2>Spelling is <em><?=$spelling_action['state']?></em></h2>
+
+	<?php endif; ?>
+
+<?php endif;
+
+	$i = 0; ?>
+
+	<table 	class="mainTable padTable siteTable"
+			style='width:100%;'
+		   	cellspacing='0' cellpadding='0' border='0' autocomplete="off">
+		<thead>
+			<tr>
+				<th colspan="2">
+					<?=lang('suggestions')?>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="<?=(++$i % 2 ? 'odd' : 'even')?>">
+				<td style="width: 50%;" rowspan="2">
+					<label for="separator">
+						<?=lang('build_suggestions_corpus')?>
+					</label>
+					<div class="subtext">
+						<?=lang('suggestions_explain')?>
+					</div>
+				</td>
+
+				<td style="height :  50px">
+
+					<span id="build_spelling_unknown_block">
+
+						<span class="last_build">
+							<?=$suggestions_unknown_lang?>
+						</span>
+
+						<input type="submit" name="submit" value="<?=$spelling_build_lang?>" class="submit" id="build_spelling" rel="<?=$spelling_build_url?>"/>
+
+
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 50%; height :  50px">
+
+					<span id="build_lexicon_block">
+						<span class="last_build">
+							<?=$suggestions_known_lang?>
+						</span>
+
+						<a href="#">Clear all and rebuild</a>
+					</span>
+
+					<div class="lexicon_build_state" style="display:none;">
+
+						<span  style="display:none;" id="lexicon_in_progress">
+							<?=lang('build_in_progress')?>
+							<span id="lexicon_progress_count_current">0</span> / <span id="lexicon_progress_count_total"><?=$lexicon_progress_count_total?></span>
+						</span>
+
+						<div id="lexicon_progressbar" class="ui-progressbar"></div>
+
+					</div>
+
+					<span style="display:none;" id="lexicon_success">
+						<img src="<?=$success_png_url?>"/>
+						<?=lang('build_complete')?>
+					</span>
+
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+
+<?php if( $just_spelling === TRUE ) : echo $this->view('footer.html'); endif; ?>

@@ -1,0 +1,32 @@
+<select class="<?=$attributes['class']?>" name="<?=$attributes['name']?>" id="<?=$attributes['id']?>" multiple="<?=$attributes['multiple']?>" size="<?=$attributes['size']?>" style="height:75px;">
+
+	<?php foreach( $data AS $group ) : 
+
+		if( isset( $group['class'] ) AND $group['class'] == 'optgroup' ) :	?>
+		<optgroup label="<?=$group['label']?>">				
+		<?php endif; ?>
+
+			<?php if( isset( $group['data'] ) AND is_array( $group['data'] ) ) : ?>
+			
+			<?php foreach( $group['data'] AS $option ) : ?>
+				<option value="<?=$option['value']?>" 
+					<?php if( isset( $option['selected'] ) === TRUE AND $option['selected'] === TRUE ) : ?>selected="selected"<?php endif; ?>
+				><?=$option['text']?></option>
+			<?php endforeach; 
+
+			else : ?>
+				
+				<option value="<?=$group['value']?>" 
+					<?php if( isset( $group['selected'] ) === TRUE AND $group['selected'] === TRUE ) : ?>selected="selected"<?php endif; ?>
+				><?=$group['text']?></option>
+				
+			<?php endif;
+
+		if( isset( $group['class'] ) AND $group['class'] == 'optgroup' ) : ?>
+		</optgroup>
+		<?php endif; ?>
+
+
+	<?php endforeach; ?>
+
+</select>

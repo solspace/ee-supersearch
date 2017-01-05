@@ -1,0 +1,89 @@
+<?php echo $this->view('header.html');?>
+
+
+<div style="margin-bottom:10px;">
+	<label><?php echo lang('field_group_switcher');?>:&nbsp;&nbsp;</label>
+		<select name="group_list_pulldown" class="select" onchange="switchGroup(this.value, 'edit_weblog_fields')">
+			<?php foreach( $field_groups as $group_id => $group_label ) : ?>
+				<option value='<?php echo $group_id;?>' <?php echo ($group_id == $default_group_id) ? 'selected="selected"' : '';?>><?php echo $group_label; ?></option>
+			<?php endforeach; ?>
+		</select>
+		<span id="group_loader" style="display:none;"><img src="<?=PATH_CP_GBL_IMG?>loader.gif" width="16" height="16" style="vertical-align:sub;" /></span>
+</div>
+
+
+<div id="edit_weblog_fields">
+<?php foreach($field_groups as $group_id => $group_label) :?>
+	<div id="<?php echo $group_id;?>_field_group" style="display: <?php echo ($group_id == $default_group_id) ? 'block' : 'none';?>; padding:0; margin: 0;">
+		<table id="main_table" class="mainTable padTable" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+			<thead>
+				<tr>
+					<th class="tableHeadingAlt" style="width:5%;"><?=lang('id'); ?></th>
+					<th class="tableHeadingAlt" style="width:45%;"><?=lang('name'); ?></th>
+					<th class="tableHeadingAlt" style="width:10%;"><?=lang('type'); ?></th>
+					<th class="tableHeadingAlt" style="width:5%;"><?=lang('length'); ?></th>
+					<th class="tableHeadingAlt" style="width:25%;"><?=lang('precision'); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+
+			<?php if ( ! isset($fields[$group_id]) OR count( $fields[$group_id] ) == 0 ) : ?>
+				<tr class="odd">
+					<td colspan="5"><?=lang('no_fields_for_group'); ?></td>
+				</tr>
+			<?php else: ?>
+				<?php foreach ( $fields[$group_id] as $key => $val ) : ?>
+					<?php $switch = $caller->cycle( 'odd', 'even' ); ?>
+					<tr class="<?=$switch; ?>">
+						<td><?=$key; ?></td>
+						<td><a href="<?php echo $caller->output( $base_uri . '&method=edit_field_form&field_id='.$key ); ?>"><?=$val['field_label']; ?></a></td>
+						<td><?=ucfirst( $val['type'] ); ?></td>
+						<td><?=$val['length']; ?></td>
+						<td><?=$val['precision']; ?></td>
+					</tr>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</tbody>
+		</table>
+	</div>
+<?php endforeach; ?>
+</div>
+
+<script type="text/javascript">
+
+	function switchGroup(group_id, form_id)
+	{
+		document.getElementById('group_loader').style.display = 'inline';
+
+		// The group loader image is given a second to be seen before we switch to the new Site
+		// Origins of image: http://www.ajaxload.info/
+		setTimeout('switchGroup_action("' + group_id + '", "' + form_id + '")', 350);
+	}
+
+	function switchGroup_action(group_id, form_id)
+	{
+		if (document.getElementById(form_id))
+		{
+			var groupDivs = document.getElementById(form_id).getElementsByTagName('div');
+
+			console.log( groupDivs );
+			for(var i = 0, s = groupDivs.length; i < s; i++)
+			{
+				if (groupDivs[i].id.indexOf('_field_group') != -1)
+				{
+					groupDivs[i].style.display = 'none';
+				}
+			}
+		}
+
+		if (document.getElementById(group_id + '_field_group'))
+		{
+			document.getElementById(group_id + '_field_group').style.display = 'block';
+		}
+
+		document.getElementById('group_loader').style.display = 'none';
+	}
+
+</script>
+
+<?php echo $this->view('footer.html'); ?>

@@ -41,46 +41,47 @@
 		<div class="content-wrapper">
 			<nav class="toc">
 				<ul>
-<li><h3>Setup</h3>
-
-<ul>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="updates.html">Updates</a></li>
-</ul></li>
-<li><h3>Getting Started</h3>
-
-<ul>
-<li><a href="introduction.html">Introduction</a></li>
-<li><a href="control-panel.html">Control Panel</a></li>
+<li><a href="https://solspace.com/expressionengine/super-search/">More Info | Purchase</a></li>
+<li><a href="change_log.html">Change Log</a></li>
+<li><a href="install_update.html">Install / Update</a></li>
+<li><a href="getting_started.html">Getting Started</a></li>
+<li><a href="control_panel.html">Control Panel</a></li>
 <li><a href="fuzzy_searching.html">Fuzzy Searching</a></li>
 <li><a href="relevance_ordering.html">Relevance Ordering</a></li>
 <li><a href="search_syntax.html">Search Syntax</a></li>
 <li><a href="post_get_or_template.html">POST, GET, or Template?</a></li>
 <li><a href="third_party_support.html">Third Party Add-on Support</a></li>
-</ul></li>
-<li><h3>Templating</h3>
+<li><a href="extension_hooks.html">Extension Hooks</a></li>
+<li class="template_tags"><h3>Template Tags</h3>
 
 <ul>
 <li><a href="cloud.html">Cloud</a></li>
-<li><a href="curated_results.html">Curated_Results</a></li>
-<li><a href="forget_last_search.html">Forget_Last_Search</a></li>
-<li><a href="form.html">Form</a></li>
+<li><a href="forget_last_search.html">Forget Last Search</a></li>
 <li><a href="history.html">History</a></li>
 <li><a href="results.html">Results</a></li>
-<li><a href="save_search_form.html">Save_Search_Form</a></li>
+<li><a href="save_search_form.html">Save Search Form</a></li>
+<li><a href="search.html">Search</a></li>
 </ul></li>
+<li><h3>Requirements</h3><div class="requirements">
+
+<ul>
+<li>EE 2.10.x - 2.11.x</li>
+<li>PHP 5.3+</li>
+<li>MySQL 5+</li>
+<li>All modern browsers or IE 10+</li>
+</ul></div></li>
 </ul>
 			</nav>
 
 			<article class="docs">
-				<h1>Overview</h1>
+				<h2>Overview</h2>
 
 <p>Super Search greatly improves search functionality, allowing for powerful and flexible searching on channel entries in ExpressionEngine. It can be used both as a search engine and as a replacement for the <em>Channel:Entries</em> tag.</p>
 
 <p>The architecture of the add-on borrows from Google's model of constructing search queries. Anything you might want to search for... keywords, channels, categories, statuses, authors, custom fields, date ranges, custom field numeric ranges, etc, can be loaded into a single URI segment with the Super Search syntax. This makes pages highly shareable, flexible and versatile. Searches can be performed in a variety and/or combination of a few different ways:</p>
 
 <ol>
-<li>Through a POST or GET <a href="form.html">search form</a> (Super Search automatically redirects the POST as a human-readable query in the URI).</li>
+<li>Through a POST or GET <a href="search.html">search form</a> (Super Search automatically redirects the POST as a human-readable query in the URI).</li>
 <li>Visiting a <a href="results.html">Results</a> template with a search query in the URI, whether it be linked from another page, or a bookmarked URL, etc.</li>
 <li>Hard-coding values for any type of search, including keywords, channels, categories, custom fields, etc</li>
 </ol>
@@ -88,8 +89,6 @@
 <p>Super Search supports <a href="relevance_ordering.html">relevance</a>-based searching, which allows you to create simple or advanced algorithms to control ranking of entries in search results. This is done by using the relevance-related parameters in the <a href="results.html">Super_Search:Results</a> tag.</p>
 
 <p>Super Search also supports <a href="fuzzy_searching.html">Fuzzy Searching</a>, which basically means that searches can be set to ignore plurals, match up similar words, and suggest other words based on spelling in search terms.</p>
-
-<p>And finally, Super Search includes a <a href="control-panel.html#curation">Search Curation</a> feature, which is designed to allow manual selection of entry results for keyword searches. This would typically be used as supplimental search results to normal search results, similar to how Google displays sponsored results at the top or side of search results pages.</p>
 			</article>
 		</div>
 
