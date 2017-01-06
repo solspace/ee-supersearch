@@ -20,7 +20,7 @@ And finally, Super Search includes a [Search Curation](https://solspace.com/expr
 Super Search by [Solspace, Inc.](http://solspace.com) is a discontinued product and is provided here for free to users that wish to still use it.
 **USE OF SUPER SEARCH FROM THIS REPO COMES WITH NO SUPPORT OR GUARANTEE THAT IT WILL WORK. WE WILL NOT UPDATE THIS REPO OR ACCEPT ANY PULL REQUESTS.**
 
-Last ExpressionEngine versions known to work on is **EE 2.11.x** and **EE 3.4.x**
+Last ExpressionEngine versions known to work on is **EE 2.11.x** and **EE 3.5.x**
 
 Documentation can be found here:
 https://solspace.com/expressionengine/legacy/super-search
